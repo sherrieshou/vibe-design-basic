@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="给设计师看的 HTML、CSS、JavaScript 与 Assets 前端基础入门手册。" />
+  <title>给设计师的页面代码入门</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <header>
+      <div class="utility-bar">
+        <div class="utility-left"><span class="index-chip">#01</span><span>Designer's Vibe Coding Manual</span></div>
+        <div class="utility-right"><span class="status-dot"></span><span>Created by Yixing Shou</span></div>
+      </div>
+      <div class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">DESIGN × CODE/ 2026</p>
+          <h1><span>Vibe Design <br>基本功</span></h1>
+          <p class="hero-tag">人人都可Vibe出优质Code</p>
+          <p class="hero-lede"> 给设计师的页面代码入门：用 <strong>HTML / CSS / JavaScript / Assets</strong>，把体验想法快速变成可交互、能演示的页面。</p>
+        </div>
+        <div class="hero-panel">
+          <div class="hero-visual" aria-hidden="true">
+            <div class="formula-orbit">
+              <svg class="formula-orbit__field" viewBox="0 0 260 260" role="img">
+                <circle class="formula-orbit__boundary" cx="130" cy="130" r="108" />
+                <g class="formula-orbit__rings">
+                  <path class="formula-orbit__track formula-orbit__track--accent" data-cx="130" data-cy="130" data-rx="88" data-ry="25" data-angle="0" />
+                  <path class="formula-orbit__track formula-orbit__track--signal" data-cx="130" data-cy="130" data-rx="88" data-ry="25" data-angle="60" />
+                  <path class="formula-orbit__track formula-orbit__track--ink" data-cx="130" data-cy="130" data-rx="88" data-ry="25" data-angle="120" />
+                </g>
+                <g class="formula-orbit__motion">
+                  <polyline class="formula-orbit__connector" points="" />
+                  <circle class="formula-orbit__dot formula-orbit__dot--accent" r="4.2" />
+                  <circle class="formula-orbit__dot formula-orbit__dot--signal" r="4.2" />
+                  <circle class="formula-orbit__dot formula-orbit__dot--ink" r="4.2" />
+                </g>
+              </svg>
+            </div>
+          </div>
+          <div class="hero-meta">
+            <div><div class="meta-label">Goal1</div><div class="meta-value">熟悉代码结构</div></div>
+            <div><div class="meta-label">Goal2</div><div class="meta-value">懂得修改他人代码</div></div>
+          </div>
+          <a class="hero-action" href="#why"><span>Start reading</span><span class="arrow">↓</span></a>
+        </div>
+      </div>
+    </header>
+
+    <div class="layout">
+      <aside class="sidebar" aria-label="章节目录">
+        <nav class="toc">
+          <p class="toc-title">Contents / 目录</p>
+          <a href="#why"><span>01</span><span>为什么要懂前端基础</span></a>
+          <a href="#folder"><span>02</span><span>项目文件夹是什么</span></a>
+          <a href="#four"><span>03</span><span>四个文件类型</span></a>
+          <a href="#terms"><span>04</span><span>代码演示</span></a>
+          <a href="#summary"><span>05</span><span>代码如何链接在一起</span></a>
+          <a href="#inspect-code"><span>06</span><span>快速检查修改代码</span></a>
+          <a href="#code-level"><span>07</span><span>页面代码和开发代码</span></a>
+          <a href="#collab"><span>08</span><span>AI 时代如何协作</span></a>
+          <a href="#glossary"><span>09</span><span>词汇表</span></a>
+          <p class="toc-note">本册只讲最适合设计师起步的四项：HTML、CSS、JavaScript 与 Assets 文件夹。</p>
+        </nav>
+      </aside>
+
+      <main>
+        <section class="section" id="why">
+          <div class="section-head"><div class="section-no">01 / WHY</div><h2>为什么要懂前端基础？</h2></div>
+          <p class="section-intro">AI 时代的设计师常常通过 vibe coding 的方式实现想法。但如果不知道怎么阅读生成内容，则 AI 输出的内容对我们来说将是一个 "黑盒"，我们无法理解也无法修改。<br>通过阅读本文，你将获得以下能力：</p>
+  
+          <div class="grid-3" style="margin-top:40px">
+            <article><span class="card-index">01</span><h3>看懂并删改 AI 代码</h3><p>从“只能看结果”变成“可以继续修改”<br> 删改 AI 屎山代码、能分辨哪些代码是结构，哪些是样式，哪些是行为，知道怎么删掉冗余、保留主干。</p></article>
+            <article><span class="card-index">02</span><h3>写出更规范的交付代码</h3><p>了解给不同的合作方应该传递什么样的代码结构<br> 为什么产品和运营只要 HTML 而开发要 React、Node.js 等？</p></article>
+            <article><span class="card-index">03</span><h3>减少反复微调成本</h3><p>知道怎么下手改<br>与其通过和 codex、Trae 单轮对话，有些简单样式可以不要麻烦 Agent，节省时间和 Token。</p></article>
+          </div>
+          
+        </section>
+
+        <section class="section" id="folder">
+          <div class="section-head"><div class="section-no">02 / FOLDER</div><h2>项目文件夹就是“工作台”</h2></div>
+          <p class="section-intro">做一个项目时，不要把文件乱放。把相关东西放进同一个文件夹里，页面才容易打开、修改、交接。</p>
+          <div class="folder-shell">
+            <div class="folder-tree" aria-label="示例项目目录">
+              <div>live-gift-demo/ <span class="tree-muted">← 项目文件夹</span></div>
+              <div>├── <span class="tree-html">index.html</span> <span class="tree-muted">← 页面结构</span></div>
+              <div>├── <span class="tree-css">style.css</span> <span class="tree-muted">← 视觉样式</span></div>
+              <div>├── <span class="tree-js">script.js</span> <span class="tree-muted">← 交互行为</span></div>
+              <div>└── <span class="tree-asset">assets/</span> <span class="tree-muted">← 素材文件夹</span></div>
+              <div>&nbsp;&nbsp;&nbsp; ├── gift.png</div>
+              <div>&nbsp;&nbsp;&nbsp; ├── host-avatar.jpg</div>
+              <div>&nbsp;&nbsp;&nbsp; └── enter.mp3</div>
+            </div>
+            <div class="folder-explain">
+              <h3>一个文件夹 = 一套可搬运的上下文</h3>
+              <p>你把整个文件夹交给同事或 AI，对方就能同时看到页面、样式、行为和素材。路径关系不被破坏，页面通常就能正常工作</p>
+              <div class="rule"></div>
+              <div class="mini-check">入口文件通常叫 <code>index.html</code>，双击它就能用浏览器打开</div>
+              <div class="mini-check">文件名尽量用英文、小写和连字符，如 <code>gift-panel.png</code></div>
+              <div class="mini-check"><code>assets</code> 是约定俗成的名字，也可以叫 images、media，<br>但要在所有用到的地方保持一致</div>
+            </div>
+          </div>
+          <div class="callout"><div class="callout-icon">!</div><p><strong>CSS 和 JavaScript 也可以直接写在 HTML 里：</strong>但是为了我们更好的可视化并找到对应代码，建议将 CSS 和 JavaScript 写在单独的文件中。</p></div>
+        </section>
+
+        <section class="section" id="four">
+          <div class="section-head"><div class="section-no">03 / FOUR</div><h2>4个文件<br />分别解决四类问题</h2></div>
+          <p class="section-intro">先记它们在工作中的“职责边界”，在AI 出错时，你才能准确找到是哪出了问题。</p>
+          <div class="concept-grid">
+            <article class="concept">
+              <div class="concept-stage"><div class="role-demo role-demo--html" aria-hidden="true"><div class="role-demo__avatar"></div><div class="role-demo__content"><span></span><span></span></div><div class="role-demo__action"><i></i><b>+</b></div></div></div>
+              <div class="concept-copy"><span class="concept-tag">01 · Structure</span><h3>HTML / 页面里有什么</h3><p>HTML 负责把内容组织成清楚的层级与模块。（标题、按钮、头像、弹窗、输入框……）</p><p class="plain">就像 Figma 左侧的图层和分组。</p></div>
+            </article>
+            <article class="concept">
+              <div class="concept-stage"><div class="role-demo role-demo--css" aria-hidden="true"><div class="role-demo__avatar"></div><div class="role-demo__content"><span></span><span></span></div><div class="role-demo__action"><i></i><b>+</b></div></div></div>
+              <div class="concept-copy"><span class="concept-tag">02 · Appearance</span><h3>CSS / 它们长什么样</h3><p>颜色、字号、圆角、间距、排版、响应式和动画</p><p class="plain">就像 Figma 右侧的样式面板控制样式参数。</p></div>
+            </article>
+            <article class="concept">
+              <div class="concept-stage"><div class="role-demo role-demo--js" aria-hidden="true"><div class="role-demo__avatar"></div><div class="role-demo__content"><span></span><span></span></div><div class="role-demo__action"><i></i><b>+</b><svg class="click-cursor" viewBox="0 0 24 30" aria-hidden="true"><path d="M2 1v25l7-7 5 10 4-2-5-10h9L2 1z" /></svg><span class="click-ripple"></span><span class="burst-particle burst-particle--star">★</span><span class="burst-particle burst-particle--triangle">▲</span><span class="burst-particle burst-particle--square"></span><span class="burst-particle burst-particle--triangle">▲</span><span class="burst-particle burst-particle--star">★</span><span class="burst-particle burst-particle--square"></span></div></div></div>
+              <div class="concept-copy"><span class="concept-tag">03 · Behavior</span><h3>JavaScript / 交互逻辑是什么</h3><p>点击后出现反馈、倒计时变化、记住用户选择</p><p class="plain">就行 Figma 的原型连线、变量、条件和状态切换。</p></div>
+            </article>
+            <article class="concept">
+              <div class="concept-stage"><div class="asset-visual" aria-hidden="true"><div class="role-demo"><div class="role-demo__avatar"><img src="assets/avatar.jpg" alt="" /></div><div class="role-demo__content"><span></span><span></span></div><div class="role-demo__action"><i></i><b>+</b></div></div><svg class="asset-arrow" viewBox="0 0 150 120"><path d="M8 112C14 68 43 28 122 11" /><path d="m102 5 21 6-10 19" /></svg><span class="asset-caption">&lt;感谢我的猫 李酱油 出镜&gt;</span></div></div>
+              <div class="concept-copy"><span class="concept-tag">04 · Material</span><h3>Assets / 页面使用的原料</h3><p>图片、图标、字体、音效、视频等，通常集中放在 assets 文件夹里，方便查找和替换。</p><p class="plain">就像 Figma 画板里拖入的图片</p></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" id="terms">
+          <div class="section-head"><div class="section-no">04 / CODE: demoToggle</div><h2>用一个开关<br />看懂三种文件如何配合。</h2></div>
+          <div class="toggle-lab">
+            <div class="toggle-header">
+              <div class="toggle-header__col">页面显示</div>
+              <div class="toggle-header__col toggle-header__col--code">代码</div>
+              <div class="toggle-header__col toggle-header__col--note">半人工工作流</div>
+            </div>
+            <article class="toggle-row">
+              <div class="toggle-preview toggle-preview--structure"><span class="toggle-row-label">结构 / HTML</span><p class="toggle-comment">只有 HTML 时，浏览器能读懂结构，<br />但还没有 Toggle 的视觉样式。</p></div>
+              <div class="toggle-code"><div class="toggle-code-label">HTML · 放一个 Toggle</div><pre><span class="tok-tag">&lt;button</span> id=<span class="tok-value">"demoToggle"</span><span class="tok-tag">&gt;</span> <span class="tok-comment">// 创建一个按钮，给它起个名字叫 demoToggle</span>
+  <span class="tok-tag">&lt;span</span> class=<span class="tok-value">"track"</span><span class="tok-tag">&gt;&lt;/span&gt;</span> <span class="tok-comment">// 开关的轨道背景</span>
+  <span class="tok-tag">&lt;span</span> class=<span class="tok-value">"text"</span><span class="tok-tag">&gt;</span>OFF<span class="tok-tag">&lt;/span&gt;</span> <span class="tok-comment">// 显示状态文字</span>
+<span class="tok-tag">&lt;/button&gt;</span> <span class="tok-comment">// 按钮结束</span></pre></div>
+              <aside class="toggle-note"><p>HTML 负责页面结构。通常只需要在内容变化时调整，例如删减字段、修改文案或调整信息层级。<br /><code>&lt;button id="demoToggle"&gt;</code> 这里的 id 会在 CSS 以及 JS 内保持统一，以便代码链接。</p></aside>
+            </article>
+            <article class="toggle-row">
+              <div class="toggle-preview toggle-preview--style"><span class="toggle-row-label">外观 / CSS</span><div class="demo-toggle is-on" aria-hidden="true"><span class="demo-toggle__track"><span class="demo-toggle__thumb"></span></span><span class="demo-toggle__text">ON</span></div></div>
+              <div class="toggle-code"><div class="toggle-code-label">CSS · 让它好看</div><pre><span class="tok-prop">.demoToggle</span> { <span class="tok-comment">// 通过名称判断这套样式应用于哪个组件</span>
+  <span class="tok-prop">border-radius</span>: <span class="tok-value">999px</span>; <span class="tok-comment">// 把边角变成圆形</span>
+  <span class="tok-prop">background</span>: <span class="tok-value">#b7ff5a</span>; <span class="tok-comment">// 设置背景色为绿色</span>
+}</pre></div>
+              <aside class="toggle-note"><p><strong>CSS 是设计师最主要关注和调整的文件。</strong>颜色、间距、字号、圆角、布局和动效，通常都可以在这里快速修改。</p></aside>
+            </article>
+            <article class="toggle-row">
+              <div class="toggle-preview toggle-preview--behavior"><span class="toggle-row-label">行为 / JavaScript</span><button class="demo-toggle" id="demoToggle" type="button" aria-pressed="false"><span class="demo-toggle__track"><span class="demo-toggle__thumb"></span></span><span class="demo-toggle__text">OFF</span></button><span class="toggle-status" id="toggleStatus" aria-live="polite">当前状态：关闭</span></div>
+              <div class="toggle-code"><div class="toggle-code-label">JavaScript · 点击交互切换状态</div><pre><span class="tok-fn">demoToggle</span>.onclick = () =&gt; { <span class="tok-comment">// 当按钮被点击时</span>
+  <span class="tok-fn">demoToggle</span>.classList.toggle(<span class="tok-value">"is-on"</span>); <span class="tok-comment">// 切换开关状态</span>
+  <span class="tok-fn">toggleText</span>.textContent =
+    isOn ? <span class="tok-value">"ON"</span> : <span class="tok-value">"OFF"</span>; <span class="tok-comment">// 根据状态显示文字</span>
+};</pre></div>
+              <aside class="toggle-note"><p>JavaScript 负责交互逻辑。产品传递过来的交互一般可以直接使用，除非需要改变行为或状态规则，通常不需要频繁修改。</p></aside>
+            </article>
+          </div>
+        </section>
+
+        <section class="section summary" id="summary">
+          <div class="section-head"><div class="section-no">05 / CONNECT</div><h2>这些代码是如何<br />连接在一起的？</h2></div>
+          <p class="section-intro" style="color:#aaa">页面不是一堆孤立的文件。HTML 通过标签组织内容，再通过相对路径找到 CSS、JavaScript 和 Assets，浏览器把它们组合成最终体验。</p>
+          <div class="connection-map">
+            <article class="connection-card">
+              <strong>01 / HTML 连接页面结构</strong>
+              <p>HTML 标签像一组有层级的容器；在文件头部，再用路径把 CSS 和 JavaScript 接入当前页面。</p>
+              <pre><span class="tok-tag">&lt;link</span> rel=<span class="tok-value">"stylesheet"</span>
+  href=<span class="tok-value">"style.css"</span> <span class="tok-tag">/&gt;</span>
+<span class="tok-tag">&lt;script</span> src=<span class="tok-value">"script.js"</span><span class="tok-tag">&gt;&lt;/script&gt;</span>
+</pre>
+            </article>
+            <article class="connection-card">
+              <strong>02 / 文件夹连接文件</strong>
+              <p>同一个项目文件夹里，HTML 用相对路径找到同级的 CSS 和 JavaScript。</p>
+              <pre>designer-demo/
+├── index.html
+├── style.css
+├── script.js
+└── assets/avatar.jpg</pre>
+            </article>
+            <article class="connection-card connection-card--wide">
+              <strong>03 / 浏览器完成组合</strong>
+              <p>浏览器先读取 HTML，再根据路径加载 CSS 和 JavaScript。</p>
+              <div class="connection-flow"><span>index.html</span><i>→</i><span>style.css</span><i>→</i><span>script.js</span><b>＝ 页面体验</b></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="section inspect-section" id="inspect-code">
+          <div class="section-head"><div class="section-no">06 / INSPECT</div><h2>如何检查修改代码？</h2></div>
+          <p class="section-intro">用 Google Chrome 的 Inspect 找到问题出处，再回到 Trae 里修改对应文件，是最适合设计师入门的调试路径。</p>
+          <div class="inspect-grid">
+            <div class="inspect-header">左侧示意图</div>
+            <div class="inspect-header inspect-header--text">步骤文字说明</div>
+            <div class="inspect-shot"><img src="assets/06-01.png" alt="Chrome 打开页面示意图" /></div>
+            <article class="inspect-step"><span>01</span><h3>页面检查</h3><p>先在Chrome浏览器里打开当前 HTML 页面 （双击文件夹内的 html），确认你看到的是最新效果。在页面内任何地方点击右键，选择“检查”</p></article>
+            <div class="inspect-shot"><img src="assets/06-02.png" alt="右键选择 Inspect 示意图" /></div>
+            <article class="inspect-step"><span>02</span><h3>Inspect</h3><p>检查（开发者工具）上半部分是 HTMl 内容，下半部分是 CSS。（如果没显示正确可以选择 Elements 和 Styles tab 查看。）</p></article>
+            <div class="inspect-shot"><img src="assets/06-03.png" alt="定位具体元素示意图" /></div>
+            <article class="inspect-step"><span>03</span><h3>定位具体元素</h3><p>点击右上角的选择工具，hover 到页面元素后，可以观察你想调整的组件是在哪个html 元素标签内。</p></article>
+            <div class="inspect-shot"><img src="assets/06-04.png" alt="查看样式来源示意图" /></div>
+            <article class="inspect-step"><span>04</span><h3>查看样式来源</h3><p>点击后，在检查面板里就可以看到当前选中的html标签以及其 id 和它的 style，并查看细节：颜色、间距、字号等。</p></article>
+            <div class="inspect-shot"><img src="assets/06-05.png" alt="回到 Trae 找文件示意图" /></div>
+            <article class="inspect-step"><span>05</span><h3>预览</h3><p>可以通过双击 css 里某项的数值，通过该数字来实时预览效果。但这一步不会修改源代码，仅供预览。</p></article>
+            <div class="inspect-shot"><img src="assets/06-06.png" alt="修改后刷新验证示意图" /></div>
+            <article class="inspect-step"><span>06</span><h3>回到 IDE 修改源码</h3><p>通过复制组件名，并在 IDE 里搜索组件名，找到对应的组件，直接修改代码。保存代码，回到 Chrome 刷新页面，确认修改是否命中问题。</p></article>
+          </div>
+          <div class="inspect-callout"><div class="callout-icon">!</div><p><strong>简单微调可以直接在 IDE 里修改，节省时间。</strong>复杂变动可以交给 Codex、Trae Work 等 coding agent；但先找到问题出处也很重要，它能帮助 agent 更有针对性地修改。</p></div>
+        </section>
+
+        <section class="section code-level" id="code-level">
+          <div class="section-head"><div class="section-no">07 / CODE LEVEL</div><h2>页面代码和开发级代码<br />有什么区别？</h2></div>
+          <p class="level-statement">HTML、CSS 和 JavaScript 做的是可直接打开的页面代码，和开发级工程不同。<br>开发级代码通常需要“环境”（依赖、框架、构建工具等让代码跑起来的条件）和“部署环境”（把代码发布到服务器或平台的配置）。<br>
+            但我们依然可以用 HTML / CSS / JavaScript，因为它们更轻、更易交接，能让产品、运营等没有代码经验和环境的人直接双击打开查看。</p>
+        </section>
+
+        <section class="section collab-section" id="collab">
+          <div class="section-head"><div class="section-no">08 / COLLAB</div><h2>AI 时代的设计师<br />如何和其他团队合作？</h2></div>
+          <div class="collab-grid">
+            <article class="collab-card">
+              <span class="collab-kicker">当下 · 半人工</span>
+              <h3>产品给原型，设计还原样式，开发接入工程</h3>
+              <p>产品经理通过产品需求交接给我们一套可以交互的原型 HTML 代码；设计师基于这份代码，把视觉样式、布局细节和交互反馈还原出来，再把可演示页面交接给开发。</p>
+            </article>
+            <article class="collab-card collab-card--future">
+              <span class="collab-kicker">未来 · 全自动</span>
+              <h3>设计和开发共同维护组件与代码仓库</h3>
+              <p>设计师和开发一起维护组件、规范和代码仓库；设计师通过沉淀 Skill，把组件使用方式、品牌规范和页面经验交给模型，从而提升 AI 调用组件和生成页面的准确性。</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section glossary-section" id="glossary">
+          <div class="section-head"><div class="section-no">09 / GLOSSARY</div><h2>词汇表</h2></div>
+          <p class="section-intro">以下内容基本用不到，但是可以了解一下~</p>
+          <div class="glossary-grid">
+            <article class="glossary-card"><h3>React</h3><p>不是一种能直接打开的页面文件，而是一套更适合搭复杂页面的开发方式。</p></article>
+            <article class="glossary-card"><h3>Node.js</h3><p>不是做页面的东西，而是让 JavaScript 能在浏览器外面运行的环境，很多前端开发工具都靠它。</p></article>
+            <article class="glossary-card"><h3>Next.js</h3><p>是在 React 上再包一层的开发框架，帮你把页面组织、路由和上线方式都一起管起来。</p></article>
+            <article class="glossary-card"><h3>JSX</h3><p>是一种写 React 时常用的语法，长得像 HTML，但通常不能直接当网页文件打开。</p></article>
+            <article class="glossary-card"><h3>npm</h3><p>前端项目里常用的“工具和依赖管理器”，可以理解成下载和管理开发零件的地方。</p></article>
+            <article class="glossary-card"><h3>框架</h3><p>一套已经搭好基本规则和结构的开发方案，能让多人协作时更统一。</p></article>
+            <article class="glossary-card"><h3>依赖</h3><p>项目里借来用的现成工具或库，没有它们有些功能就跑不起来。</p></article>
+            <article class="glossary-card"><h3>打包</h3><p>把很多零散代码和资源整理成更适合发布的一份或几份文件。</p></article>
+            <article class="glossary-card"><h3>API / 接口</h3><p>页面和后端互相要数据、传数据时约定好的连接方式。</p></article>
+            <article class="glossary-card"><h3>TypeScript</h3><p>JavaScript 的增强版，主要是帮开发时更早发现问题、让大项目更稳。</p></article>
+            <article class="glossary-card"><h3>JSON</h3><p>一种专门用来装结构化数据的文本格式，适合让系统和系统之间清楚地传信息。</p></article>
+            <article class="glossary-card"><h3>Git</h3><p>项目开发里常用的版本管理工具，可以理解成 “代码的历史记录和协作系统”。</p></article>
+          </div>
+          <div class="footer-line"><span>Design × Frontend / Internal Handbook</span><span>HTML → CSS → JS + Assets</span></div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
