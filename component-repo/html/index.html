@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="面向设计师、组件维护者和业务开发的 Panel 组件库维护指南。">
+  <title>Panel 组件库维护指南</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header>
+      <div class="utility-bar">
+        <div class="utility-left"><span class="index-chip">#02</span><span>Component Repository Manual</span></div>
+        <div class="utility-right"><span class="status-dot"></span><span>Designer Maintains Code</span></div>
+      </div>
+      <div class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">DESIGN SYSTEM × REPO / 2026</p>
+          <h1><span>Panel 组件库<br>维护指南</span></h1>
+          <p class="hero-tag">Components / Gallery / Rules</p>
+          <p class="hero-lede">给设计师看的代码仓库维护说明：知道去哪里增删改查组件、如何使用 Gallery 验证、怎样让设计规则和代码事实保持一致。</p>
+        </div>
+        <div class="hero-panel" aria-label="维护闭环">
+          <div class="repo-loop" aria-hidden="true">
+            <div class="repo-node repo-node--accent">增</div>
+            <div class="repo-node repo-node--signal">删</div>
+            <div class="repo-node">改</div>
+            <div class="repo-node repo-node--dark">查</div>
+          </div>
+          <div class="hero-meta">
+            <div><div class="meta-label">Start</div><div class="meta-value">从 Gallery 复现</div></div>
+            <div><div class="meta-label">Rule</div><div class="meta-value">只改真实组件</div></div>
+          </div>
+          <a class="hero-action" href="#section-1"><span>Start reading</span><span class="arrow">↓</span></a>
+        </div>
+      </div>
+    </header>
+    <div class="layout">
+      <aside class="sidebar" aria-label="章节目录">
+        <nav class="toc" aria-label="文档目录">
+          <p class="toc-title">Contents / 目录</p>
+          <div id="toc-list"></div>
+        </nav>
+      </aside>
+      <main>
+        <article class="doc-content">
+<h1>Panel 组件库维护指南</h1>
+<blockquote>
+<p>一句话原则：组件负责外观和行为，Gallery 负责验证，文档说明何时使用；业务页面不要临时补组件能力。</p>
+</blockquote>
+<p>这份指南只保留维护组件库最常用的路径：先看懂文件夹，再定位应该修改哪里，最后验证和交付。</p>
+<h2>文件夹地图</h2>
+<div class="folder-map-layout">
+<section class="repo-architecture" aria-label="panel 仓库架构图">
+  <div class="repo-architecture__root" data-map-node="panel">
+    <span>Repository Root</span>
+    <strong>panel/</strong>
+    <small>按职责分成四个区域</small>
+  </div>
+  <div class="repo-architecture__branches">
+    <article class="architecture-card architecture-card--entry" data-map-node="entry">
+      <header><span>01</span><div class="architecture-card__title"><h4>入口与约束</h4><small>先读总规则，再从公共入口使用组件</small></div></header>
+      <ul>
+        <li class="architecture-item architecture-item--file" data-map-node="agents docs"><code>AGENTS.md</code><small>总说明与阅读顺序</small></li>
+        <li class="architecture-item architecture-item--file" data-map-node="index entry"><code>index.ts</code><small>路由服务台</small></li>
+        <li class="architecture-item architecture-item--file" data-map-node="shared cross"><code>settings-panel.css</code><small>把整套 panel 的基础样式接起来</small></li>
+        <li class="architecture-item architecture-item--file" data-map-node="test cross"><code>settings-panel.test.ts</code><small>组件库契约测试</small></li>
+      </ul>
+    </article>
+    <article class="architecture-card architecture-card--components" data-map-node="components">
+      <header><span>02</span><div class="architecture-card__title"><h4>组件实现</h4><small>组件目录放 TSX/CSS，分类规则放同层 AGENTS.md</small></div></header>
+      <ul class="architecture-card__chips">
+        <li class="architecture-item architecture-item--folder" data-map-node="components fields"><code>fields/</code><small>一级配置</small></li>
+        <li class="architecture-item architecture-item--folder" data-map-node="components pickers"><code>pickers/</code><small>二级选择</small></li>
+        <li class="architecture-item architecture-item--folder" data-map-node="components shell"><code>shell/</code><small>页面结构</small></li>
+        <li class="architecture-item architecture-item--folder" data-map-node="components operation"><code>operation/</code><small>操作页</small></li>
+        <li class="architecture-item architecture-item--folder" data-map-node="components shared cross"><code>shared/</code><small>提供所有组件都能复用的共享资源和基础能力</small></li>
+      </ul>
+    </article>
+    <article class="architecture-card architecture-card--rules" data-map-node="reference cross">
+      <header><span>03</span><div class="architecture-card__title"><h4><code>reference/</code> 跨组件规则</h4><small>负责跨组件与页面级决策</small></div></header>
+      <ul>
+        <li class="architecture-item architecture-item--file" data-map-node="configuration reference"><code>configuration_rule.md</code><small>内容放哪一类页面</small></li>
+        <li class="architecture-item architecture-item--file" data-map-node="usage reference"><code>component_usage.md</code><small>需求应该选哪个组件</small></li>
+        <li class="architecture-item architecture-item--file" data-map-node="composition reference"><code>component_composition.md</code><small>组件如何组合成页面</small></li>
+      </ul>
+    </article>
+    <article class="architecture-card architecture-card--runtime" data-map-node="runtime">
+      <header><span>04</span><div class="architecture-card__title"><h4>预览与运行</h4><small>只负责展示、验证、宿主能力和运行资源</small></div></header>
+      <ul class="architecture-card__chips architecture-card__chips--runtime">
+        <li class="architecture-item architecture-item--folder architecture-item--gallery" data-map-node="gallery"><code>gallery/</code><small>预览验证</small><img src="../assets/gallery.png" alt="Gallery 预览截图"></li>
+        <li class="architecture-item architecture-item--folder" data-map-node="runtime"><code>runtime/</code><small>宿主动作</small></li>
+        <li class="architecture-item architecture-item--folder"><code>assets/</code><small>图标资源</small></li>
+        <li class="architecture-item architecture-item--folder"><code>src/</code><small>React 启动</small></li>
+        <li class="architecture-item architecture-item--file"><code>index.html</code><small>Gallery 宿主</small></li>
+      </ul>
+    </article>
+  </div>
+</section>
+<aside class="maintenance-flow" aria-labelledby="maintenance-flow-title">
+  <header>
+    <span>Workflow</span>
+    <div class="maintenance-flow__title" id="maintenance-flow-title">最小维护闭环</div>
+    <p>第一次维护不需要读完所有文档。悬停或聚焦步骤，查看对应文件。</p>
+  </header>
+  <ol>
+    <li><button type="button" data-highlight="gallery"><span>01</span><strong>复现问题</strong><small>在 Gallery 或真实页面确认现象</small></button></li>
+    <li><button type="button" data-highlight="index components"><span>02</span><strong>找到目录</strong><small>从 panel/index.ts 追到真实组件</small></button></li>
+    <li><button type="button" data-highlight="components reference"><span>03</span><strong>修改组件</strong><small>同步检查组件规则和 reference</small></button></li>
+    <li><button type="button" data-highlight="gallery"><span>04</span><strong>验证状态</strong><small>回到 Gallery 检查边界状态</small></button></li>
+    <li><button type="button" data-highlight="check" data-no-map-highlight="true"><span>05</span><strong>检查</strong><small>确认结构、验证和构建状态</small></button></li>
+  </ol>
+</aside>
+</div>
+<div class="component-section-heading" role="heading" aria-level="2" data-toc-label="每个组件">
+  <span>02 / COMPONENT</span>
+  <strong>02. 每个组件</strong>
+</div>
+<section class="component-pattern" aria-label="组件规则 Markdown 文档关系">
+  <div class="component-pattern__copy">
+    <pre class="component-file-example"><code>ComponentName/
+├── ComponentName.tsx
+└── ComponentName.css</code></pre>
+    <p class="component-pattern__note">注释：每个组件都有 TSX 交互代码、CSS 样式代码以及 MD 描述。</p>
+    <p><code>AGENTS.md</code> 说明同类组件怎么维护，<code>reference/*.md</code> 负责跨组件的选型、分类和组合规则。</p>
+  </div>
+  <div class="rules-tree">
+    <div class="rules-tree__root">
+      <small>总入口</small>
+      <code>panel/AGENTS.md</code>
+    </div>
+    <div class="rules-tree__branches">
+      <section class="rules-branch">
+        <header>
+          <span>01</span>
+          <div><strong>分类级规则</strong><small>同类组件如何使用与维护</small></div>
+        </header>
+        <ul>
+          <li><code>fields/AGENTS.md</code></li>
+          <li><code>pickers/AGENTS.md</code></li>
+          <li><code>shell/AGENTS.md</code></li>
+          <li><code>operation/AGENTS.md</code></li>
+          <li><code>shared/AGENTS.md</code></li>
+        </ul>
+      </section>
+      <section class="rules-branch rules-branch--reference">
+        <header>
+          <span>02</span>
+          <div><strong>跨组件规则</strong><small>内容分类、组件选型与页面组合</small></div>
+        </header>
+        <ul>
+          <li><code>reference/configuration_rule.md</code></li>
+          <li><code>reference/component_usage.md</code></li>
+          <li><code>reference/component_composition.md</code></li>
+        </ul>
+      </section>
+    </div>
+  </div>
+</section>
+<h3>按问题定位文件</h3>
+<div class="folder-map-layout issue-locator-layout">
+<section class="repo-architecture" aria-label="按问题定位文件架构图">
+  <div class="repo-architecture__root" data-map-node="panel">
+    <span>Repository Root</span>
+    <strong>panel/</strong>
+    <small>按问题定位要看的文件</small>
+  </div>
+  <div class="repo-architecture__branches">
+    <article class="architecture-card architecture-card--entry" data-map-node="entry">
+      <header><span>01</span><div class="architecture-card__title"><h4>入口与约束</h4><small>导出、公共样式和契约测试</small></div></header>
+      <ul>
+        <li class="architecture-item architecture-item--file" data-map-node="agents docs"><code>AGENTS.md</code><small>总说明与阅读顺序</small></li>
+        <li class="architecture-item architecture-item--file" data-map-node="index entry"><code>index.ts</code><small>组件路由</small></li>
+        <li class="architecture-item architecture-item--file" data-map-node="shared cross css"><code>settings-panel.css</code><small>把整套 panel 的基础样式接起来</small></li>
+        <li class="architecture-item architecture-item--file" data-map-node="test cross"><code>settings-panel.test.ts</code><small>组件库契约测试</small></li>
+      </ul>
+    </article>
+    <article class="architecture-card architecture-card--components" data-map-node="components">
+      <header><span>02</span><div class="architecture-card__title"><h4>组件实现</h4><small>TSX / CSS / 分类级 AGENTS.md</small></div></header>
+      <ul class="architecture-card__chips">
+        <li class="architecture-item architecture-item--folder" data-map-node="components fields"><code>fields/</code><small>一级配置</small></li>
+        <li class="architecture-item architecture-item--folder" data-map-node="components pickers"><code>pickers/</code><small>二级选择</small></li>
+        <li class="architecture-item architecture-item--folder" data-map-node="components shell layout"><code>shell/</code><small>页面结构</small></li>
+        <li class="architecture-item architecture-item--folder" data-map-node="components operation"><code>operation/</code><small>操作页</small></li>
+        <li class="architecture-item architecture-item--folder" data-map-node="components shared css token"><code>shared/</code><small>提供所有组件都能复用的共享资源和基础能力</small></li>
+      </ul>
+    </article>
+    <article class="architecture-card architecture-card--rules" data-map-node="reference cross">
+      <header><span>03</span><div class="architecture-card__title"><h4><code>reference/</code> 跨组件规则</h4><small>内容分类、组件选型与页面组合</small></div></header>
+      <ul>
+        <li class="architecture-item architecture-item--file" data-map-node="configuration reference"><code>configuration_rule.md</code><small>这是哪种页面 / 哪种配置任务</small></li>
+        <li class="architecture-item architecture-item--file" data-map-node="usage reference"><code>component_usage.md</code><small>这个配置项该用哪个组件</small></li>
+        <li class="architecture-item architecture-item--file" data-map-node="composition reference"><code>component_composition.md</code><small>这些组件怎么排布、怎么组合</small></li>
+      </ul>
+    </article>
+    <article class="architecture-card architecture-card--runtime" data-map-node="runtime">
+      <header><span>04</span><div class="architecture-card__title"><h4>预览与运行</h4><small>Gallery、宿主能力和运行资源</small></div></header>
+      <ul class="architecture-card__chips architecture-card__chips--runtime">
+        <li class="architecture-item architecture-item--folder architecture-item--gallery" data-map-node="gallery"><code>gallery/</code><small>预览案例</small><img src="../assets/gallery.png" alt="Gallery 预览截图"></li>
+        <li class="architecture-item architecture-item--folder" data-map-node="runtime"><code>runtime/</code><small>宿主动作</small></li>
+        <li class="architecture-item architecture-item--folder"><code>assets/</code><small>图标资源</small></li>
+        <li class="architecture-item architecture-item--folder"><code>src/</code><small>React 启动</small></li>
+        <li class="architecture-item architecture-item--file"><code>index.html</code><small>Gallery 宿主</small></li>
+      </ul>
+    </article>
+  </div>
+</section>
+<aside class="maintenance-flow issue-locator-flow" aria-labelledby="issue-locator-title">
+  <header>
+    <span>Locator</span>
+    <div class="maintenance-flow__title" id="issue-locator-title">要修改的问题</div>
+    <p>悬停或点击问题，左侧会高亮优先查看的目录或文件。</p>
+  </header>
+  <ol>
+    <li><button type="button" data-highlight="token"><strong>design token</strong><small>影响到的全部组件</small></button></li>
+    <li><button type="button" data-highlight="shell composition"><strong>页面如何组合</strong><small>页面组合文档</small></button></li>
+    <li><button type="button" data-highlight="fields"><strong>一级配置项</strong><small>对应二级页和写回</small></button></li>
+    <li><button type="button" data-highlight="pickers"><strong>二级选择页</strong><small>一级入口、草稿、确认和取消</small></button></li>
+    <li><button type="button" data-highlight="operation"><strong>操作页和嘉宾操作页</strong><small>普通操作页与嘉宾操作页差异</small></button></li>
+    <li><button type="button" data-highlight="index entry"><strong>组件路由</strong><small>真实项目构建</small></button></li>
+    <li><button type="button" data-highlight="components"><strong>组件自己的使用条件</strong><small>上级文档只保留引用</small></button></li>
+    <li><button type="button" data-highlight="usage"><strong>这个配置项该用哪个组件</strong><small>component_usage.md</small></button></li>
+    <li><button type="button" data-highlight="composition"><strong>这些组件怎么排布、怎么组合</strong><small>component_composition.md</small></button></li>
+    <li><button type="button" data-highlight="configuration"><strong>这是哪种页面 / 哪种配置任务</strong><small>configuration_rule.md</small></button></li>
+    <li><button type="button" data-highlight="gallery"><strong>预览案例</strong><small>不写组件内部样式</small></button></li>
+  </ol>
+</aside>
+</div>
+<h2 data-section-label="03 / PROMPT">常用 Prompt</h2>
+<p>维护完 <code>panel</code> 仓库后，可以把这些 prompt 丢给 AI 做第一轮风险筛查。它们不能替代人眼判断，但能帮你先找出高风险项。</p>
+<section class="review-prompts" aria-label="审查 prompt gallery">
+  <div class="review-prompt-tabs" role="tablist" aria-label="审查 prompt 类型">
+    <button type="button" class="active" role="tab" aria-selected="true" data-prompt-tab="prompt-targeted">定向维护</button>
+    <button type="button" role="tab" aria-selected="false" data-prompt-tab="prompt-rules">清理代码</button>
+    <button type="button" role="tab" aria-selected="false" data-prompt-tab="prompt-delivery">交付审查</button>
+  </div>
+  <div class="review-prompt-panels">
+    <article class="review-prompt-panel active" data-prompt-panel="prompt-targeted">
+      <header><span>01</span><strong>定向维护 Prompt</strong><button type="button" data-copy-prompt="prompt-targeted-text">复制 Prompt</button></header>
+      <pre><code id="prompt-targeted-text">我想在 panel 组件库里做一个小型规则改动，请先帮我判断这条规则应该写到哪个文件夹的哪个 Markdown。
+
+需求：
+{把你的具体需求写在这里}
+（示例：在 panel 里我想更新一个 TeamMemberConfig 的 md：如果整个配置页只有一个 TeamMemberConfig 的时候，右上角的彩色角标就不显示了。）
+
+请你回答：
+1. 应该写到哪个 md 文件。
+2. 为什么写到这里，而不是其他 md。
+3. 是否还需要同步检查代码、Gallery 或测试；如果无法判断，请标记“需要人工确认”。
+
+要求：
+- 输出必须包含明确文件路径。
+- 如果涉及代码、Gallery 或测试同步，也请列出需要后续检查的位置。</code></pre>
+    </article>
+    <article class="review-prompt-panel" data-prompt-panel="prompt-rules" hidden>
+      <header><span>02</span><strong>清理代码 Prompt</strong><button type="button" data-copy-prompt="prompt-rules-text">复制 Prompt</button></header>
+      <pre><code id="prompt-rules-text">请审查 panel 组件库的文档规则、组件实现、Gallery 和测试是否一致，不要修改文件。
+
+重点检查：
+1. Markdown 是否有失效路径、错误文件名、旧组件名、旧目录名。
+2. 同一条详细规则是否重复出现在多个 md 中。
+3. 已经沉淀到 TSX / CSS / token 的细节是否仍在 Markdown 里重复维护。
+4. 每个 md 的职责是否清晰：
+   - AGENTS.md 是否写当前规则和阅读顺序
+   - reference/component_usage.md 是否只写组件选型
+   - reference/configuration_rule.md 是否只写内容放哪类页面
+   - reference/component_composition.md 是否只写页面组合方式
+   - gallery/AGENTS.md 是否只写 Gallery 展示规则
+5. 文档说的 props、能力、状态、CSS class、token 是否和代码实际支持一致。
+6. 文档说的二级页、确认写回、取消不更新等交互，代码或 Gallery 是否真的支持。
+7. Gallery 是否只调用组件，不通过 Gallery CSS 改组件内部样式。
+8. CSS 是否有裸值、无效 class、旧 variant 或 token 使用不一致。
+9. 测试文件、示例或 Markdown 是否还断言旧规则、旧像素或旧交互。
+10. 区分“文档引用组件说明”和“完整重复维护同一条规则”，只有后者算重复。
+
+请输出：
+- 必须处理
+- 建议处理
+- 可以保留
+- 需要人工确认
+- 涉及文件
+- 文档说法
+- 代码实际情况
+- 建议是改代码、改文档，还是需要人工确认</code></pre>
+    </article>
+    <article class="review-prompt-panel" data-prompt-panel="prompt-delivery" hidden>
+      <header><span>03</span><strong>交付审查 Prompt</strong><button type="button" data-copy-prompt="prompt-delivery-text">复制 Prompt</button></header>
+      <pre><code id="prompt-delivery-text">请帮我对当前 panel 组件库做交付审查，不要修改文件，先筛出风险。
+
+检查：
+1. 文件夹结构是否干净，是否有临时文件、构建产物、旧备份或不该交付的内容。
+2. panel/index.ts 是否导出了当前正确主路径，业务是否只从推荐入口导入。
+3. 是否还有直接引用旧路径的 import。
+4. 新增或修改的组件是否放在正确目录，并在 Gallery 中有必要展示。
+5. Gallery 是否只调用组件，不写组件内部样式，并覆盖关键状态和关键交互。
+6. Markdown 是否存在路径错误、旧规则、重复规则或和代码冲突。
+7. CSS 是否有裸值、无效 class、旧 variant 或 token 使用不一致。
+8. 测试或示例是否还断言旧规则。
+9. 构建和必要测试是否需要重新跑。
+10. 所有 icon 是否都导出为透明底 PNG；如果无法确认，请标记为“需要人工确认”。
+11. 是否有必须人工肉眼确认的视觉点或设计取舍。
+
+请按以下格式输出：
+- 可以交付
+- 交付前必须处理
+- 建议后续优化
+- 需要人工确认
+- 建议下一步验证命令
+
+要求：
+- 不要直接修改。
+- 不要只列文件名。
+- 每个问题都说明原因和风险。
+- 如果没有发现问题，也要说明检查过哪些范围。</code></pre>
+    </article>
+  </div>
+  <aside class="review-prompt-usage">
+    <strong>使用建议</strong>
+    <p>小型规则改动先跑定向维护；发现规则、代码、Gallery 或测试冲突时跑清理代码；维护后或准备交付时跑交付审查。</p>
+  </aside>
+</section>
+        </article>
+      </main>
+    </div>
+  </div>
+  <script src="../js/script.js"></script>
+</body>
+</html>
