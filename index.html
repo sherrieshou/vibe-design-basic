@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Vibe Design Basic 仓库目录页。">
+  <title>Vibe Design Basic｜目录</title>
+  <link rel="stylesheet" href="component-repo/css/style.css">
+  <style>
+    .directory-hero {
+      min-height: calc(100vh - 76px);
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(360px, .95fr);
+      border-bottom: 0;
+    }
+
+    .directory-panel {
+      display: grid;
+      align-content: center;
+      gap: 18px;
+      padding: clamp(28px, 4vw, 56px);
+      border-left: 1px solid var(--line-strong);
+      background: #fff;
+    }
+
+    .directory-card {
+      display: grid;
+      grid-template-columns: 56px minmax(0, 1fr) auto;
+      gap: 18px;
+      align-items: center;
+      padding: 22px;
+      border: 1px solid #30302d;
+      color: var(--ink);
+      background: var(--surface);
+      text-decoration: none;
+      transition: background-color .16s ease, border-color .16s ease, transform .16s ease;
+    }
+
+    .directory-card:hover,
+    .directory-card:focus-visible {
+      border-color: var(--accent);
+      background: #fff;
+      outline: 0;
+      transform: translateY(-2px);
+    }
+
+    .directory-card__index {
+      display: grid;
+      place-items: center;
+      width: 56px;
+      height: 56px;
+      color: #fff;
+      background: #141414;
+      font: 700 14px/1 var(--mono);
+    }
+
+    .directory-card h2 {
+      display: block;
+      margin: 0;
+      font: 700 24px/1.15 var(--mono);
+      letter-spacing: -.04em;
+    }
+
+    .directory-card h2::before {
+      content: none;
+    }
+
+    .directory-card p {
+      margin: 7px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .directory-card__arrow {
+      font: 700 22px/1 var(--mono);
+      color: var(--accent);
+    }
+
+    @media (max-width: 920px) {
+      .directory-hero {
+        grid-template-columns: 1fr;
+      }
+
+      .directory-panel {
+        border-top: 1px solid var(--line-strong);
+        border-left: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <header>
+      <div class="utility-bar">
+        <div class="utility-left"><span class="index-chip">INDEX</span><span>Vibe Design Basic</span></div>
+        <div class="utility-right"><span class="status-dot"></span><span>Page Directory</span></div>
+      </div>
+      <div class="hero directory-hero">
+        <div class="hero-copy">
+          <p class="eyebrow">DESIGN SYSTEM × REPO / INDEX</p>
+          <h1><span>Vibe Design<br>Basic</span></h1>
+          <p class="hero-lede">Vibe design 解决方案</p>
+        </div>
+        <nav class="directory-panel" aria-label="页面入口">
+          <a class="directory-card" href="vibe-design-basic-page/index.html">
+            <span class="directory-card__index">01</span>
+            <span>
+              <h2>Vibe Design Basic</h2>
+              <p>原始视觉展示页面，保留项目的基础品牌样式和页面内容。</p>
+            </span>
+            <span class="directory-card__arrow">→</span>
+          </a>
+          <a class="directory-card" href="component-repo/html/index.html">
+            <span class="directory-card__index">02</span>
+            <span>
+              <h2>Component Repo 维护指南</h2>
+              <p>给设计师看的组件仓库维护说明，包含文件夹地图、组件规则和常用 Prompt。</p>
+            </span>
+            <span class="directory-card__arrow">→</span>
+          </a>
+        </nav>
+      </div>
+    </header>
+  </div>
+</body>
+</html>
