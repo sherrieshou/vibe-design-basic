@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Anthropic — HBS Fall 2026 课程笔记">
+  <title>Anthropic</title>
+  <link rel="stylesheet" href="../../component-repo/css/style.css">
+  <style>
+    .home-link { color: inherit; text-decoration: none; }
+    .home-link:hover, .home-link:focus-visible { color: var(--accent); outline: 0; }
+    .hero-note { color: var(--muted); font: 13px/1.5 var(--mono); text-transform: uppercase; }
+    .hero-panel--notes { display: grid; align-content: end; padding: clamp(32px, 5vw, 72px); }
+    .hero-panel--notes strong { display: block; max-width: 11ch; font: 700 clamp(44px, 6vw, 88px)/.9 var(--mono); letter-spacing: -.08em; }
+    .hero-panel--notes span { margin-top: 22px; color: var(--muted); font: 12px/1.5 var(--mono); text-transform: uppercase; }
+    .notes-intro { max-width: 850px; margin: 0 0 64px; font-size: 19px; line-height: 1.7; }
+    .notes-section { margin: 0 0 86px; scroll-margin-top: 24px; }
+    .notes-section__head { display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--line-strong); }
+    .notes-section__no { color: var(--accent); font: 700 13px/1.4 var(--mono); }
+    .notes-section h2 { display: block; margin: 0; max-width: 850px; font-size: clamp(30px, 4vw, 54px); }
+    .notes-section h2::before { content: none; }
+    .key-point { max-width: 900px; padding: 30px 0; border-bottom: 1px solid var(--line); }
+    .key-point:last-child { border-bottom: 0; }
+    .key-point h3 { margin: 0 0 12px; font: 700 22px/1.25 var(--mono); letter-spacing: -.025em; }
+    .key-point > p { margin: 0; font-size: 17px; line-height: 1.75; }
+    .source-quote { display: block; grid-template-columns: none; margin: 20px 0 0; padding: 18px 20px; border: 0; color: #8a8a86; background: #eeeeeb; font: 14px/1.65 var(--sans); }
+    .source-quote::before { content: none; display: none; border: 0; }
+    .takeaway { max-width: 900px; margin: 0 0 80px; padding: 28px; color: #fff; background: #151515; }
+    .takeaway span { color: var(--signal); font: 700 11px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; }
+    .takeaway p { margin: 14px 0 0; color: #fff; font-size: 20px; line-height: 1.55; }
+    @media (max-width: 760px) { .notes-section__head { grid-template-columns: 1fr; gap: 8px; } .hero-panel--notes { min-height: 300px; } }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <header>
+      <div class="utility-bar">
+        <div class="utility-left"><span class="index-chip">#03.03</span><a class="home-link" href="../index.html">Three Technologies</a></div>
+        <div class="utility-right"><span class="status-dot"></span><span>Fall 2026</span></div>
+      </div>
+      <div class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">HBS / COURSE NOTES</p>
+          <h1><span>Anthropic</span></h1>
+          <p class="hero-note">Class transcript · September 9, 2026</p>
+        </div>
+        <div class="hero-panel hero-panel--notes" aria-hidden="true">
+          <strong>SCALE × SAFETY × POWER</strong>
+          <span>Models · Thresholds · Governance</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="layout">
+      <aside class="sidebar" aria-label="章节目录">
+        <nav class="toc">
+          <p class="toc-title">Contents / 目录</p>
+          <a href="#scaling"><span>01</span><span>大模型与规模化</span></a>
+          <a href="#thresholds"><span>02</span><span>连续进步与突然跃迁</span></a>
+          <a href="#risk"><span>03</span><span>AI 风险的三个层级</span></a>
+          <a href="#anthropic"><span>04</span><span>Anthropic 的核心矛盾</span></a>
+          <a href="#governance"><span>05</span><span>安全治理与竞争压力</span></a>
+          <a href="#agency"><span>06</span><span>社会仍然拥有选择</span></a>
+        </nav>
+      </aside>
+
+      <main>
+        <article class="doc-content">
+          <p class="notes-intro">这节课先解释大模型为何依赖算力、参数和数据扩展，再以 Anthropic 为案例讨论一个难以消除的矛盾：只有保持技术和商业竞争力，公司才有能力影响行业安全；但追赶前沿所需的资本和速度，又会不断削弱安全承诺。</p>
+
+          <div class="takeaway">
+            <span>Core takeaway</span>
+            <p>AI 风险不是等到 AGI 出现才突然开始。能力、资本与权力正在持续积累，而治理往往要等社会受到冲击后才赶上。真正的问题是如何在竞争仍在加速时建立共同约束。</p>
+          </div>
+
+          <section class="notes-section" id="scaling">
+            <div class="notes-section__head"><span class="notes-section__no">01 / SCALING</span><h2>大模型为什么依赖规模化</h2></div>
+            <div class="key-point">
+              <h3>神经网络从数据中逼近复杂模式</h3>
+              <p>简单方程只能描述规则曲线；面对复杂、非线性的现实数据，手工拟合容易过拟合。神经网络通过大量参数共同调整，在更多样本中逐渐降低预测误差。</p>
+              <blockquote class="source-quote">“What the neural network is doing is finding the complexity in the data and mimicking it… when you have 10 million examples, you can predict that curve entirely.”</blockquote>
+            </div>
+            <div class="key-point">
+              <h3>算力、参数和数据共同推动 loss 下降</h3>
+              <p>行业巨额投入建立在一个核心判断上：增加训练算力、模型参数和数据规模，会持续降低损失函数并提高能力。前沿实验成本极高，因此少量工程改进也可能价值巨大。</p>
+              <blockquote class="source-quote">“That loss function is driven by three factors… the amount of compute… the number of parameters… and data set size.”</blockquote>
+            </div>
+            <div class="key-point">
+              <h3>“Scaling laws”更准确地说仍是 scaling hypotheses</h3>
+              <p>规模扩展是否会继续稳定带来能力提升，以及何时出现边际收益递减，目前仍存在争议。行业把它称为“定律”，但它实际上是一项资金量极大的经验性押注。</p>
+              <blockquote class="source-quote">“No one knows—they call [them] scaling laws. They really aren't laws. They're scaling hypotheses.”</blockquote>
+            </div>
+            <div class="key-point">
+              <h3>训练需要海量数据，使用模型只需少量信息</h3>
+              <p>构建通用模型需要来自许多人的大量样本；模型建成后，只需观察某个用户的少量信号，就能把他匹配到已有模式中。TikTok 的推荐系统体现了这种“全体数据训练、少量个人数据推断”的结构。</p>
+              <blockquote class="source-quote">“I'm constructing this model because I have this huge amount of information… once I got the model, I can take a small information and fit into the model and know all about you.”</blockquote>
+            </div>
+          </section>
+
+          <section class="notes-section" id="thresholds">
+            <div class="notes-section__head"><span class="notes-section__no">02 / THRESHOLD</span><h2>连续进步可能带来突然跃迁</h2></div>
+            <div class="key-point">
+              <h3>风险和能力都在越过临界点之前持续积累</h3>
+              <p>技术变化常常先表现为平缓、连续的性能提升，直到某个临界点被突破，应用和社会结构才突然重组。只根据今天尚未发生大规模失业，就判断未来也不会发生，是把滞后指标当成了能力边界。</p>
+              <blockquote class="source-quote">“Risk doesn't occur directly when you hit a certain point. It's something that keeps accumulating, and then at some point… it's a threshold.”</blockquote>
+            </div>
+            <div class="key-point">
+              <h3>马匹到发动机的替代不是线性发生的</h3>
+              <p>发动机效率长期提高时，马匹并没有同步减少；只有当成本与性能跨过实用门槛，替代才集中发生。AI 对工作岗位和企业流程的影响也可能呈现类似的非线性变化。</p>
+              <blockquote class="source-quote">“The pressure [is] building up. You don't see it at all in the data… And then it hits a sort of threshold and then everything collapses.”</blockquote>
+            </div>
+            <div class="key-point">
+              <h3>人类能力相对稳定，机器能力仍在快速提高</h3>
+              <p>人类棋手的能力曲线没有突然改变，而机器棋力持续提升。一旦机器越过人类水平，胜率会快速倒向机器。这个例子说明，平稳的历史数据无法排除未来突然发生结构性变化。</p>
+              <blockquote class="source-quote">“Humans are just as smart or so good as they've always been… AI will keep getting [stronger]. And so then the human win rate just collapses.”</blockquote>
+            </div>
+          </section>
+
+          <section class="notes-section" id="risk">
+            <div class="notes-section__head"><span class="notes-section__no">03 / RISK</span><h2>AI 风险的三个层级</h2></div>
+            <div class="key-point">
+              <h3>Level 1：像互联网一样的行业重组</h3>
+              <p>AI 创造新机会，也淘汰部分公司和职业，但社会的基本制度保持稳定。冲击巨大，却仍属于熟悉的技术替代与产业转型。</p>
+              <blockquote class="source-quote">“The first level is that we assume that this technology will be a disruptive technology, just like, say, the internet.”</blockquote>
+            </div>
+            <div class="key-point">
+              <h3>Level 2：数年动荡后建立新制度</h3>
+              <p>就业、信息和权力结构经历明显失序，随后法律和制度逐渐形成，把技术重新纳入社会控制。历史提醒我们，这个适应过程可能远比技术扩散本身更慢。</p>
+              <blockquote class="source-quote">“We will gradually have laws… We will find institutional structures to rein in these companies and rein in this power.”</blockquote>
+            </div>
+            <div class="key-point">
+              <h3>Level 3：社会结构甚至人类生存发生根本改变</h3>
+              <p>最极端的风险包括少数人控制全部财富与决策、多数人失去能动性，乃至人类灭绝。课程要求学生为不同情景分配概率，是为了迫使判断从抽象立场转向可比较的风险权衡。</p>
+              <blockquote class="source-quote">“Level 3 is that it's existential—that at the end of this transition, society is not the same at all.”</blockquote>
+            </div>
+            <div class="key-point">
+              <h3>低概率的无限损失仍值得认真处理</h3>
+              <p>存在性风险即使概率不高，后果也大到不能只按日常风险看待。但概率与机制都高度不确定，因此治理既不能把风险当作必然，也不能因为尚未发生就忽略。</p>
+              <blockquote class="source-quote">“The mathematics of infinite loss multiplied by any percentage is a big number.”</blockquote>
+            </div>
+          </section>
+
+          <section class="notes-section" id="anthropic">
+            <div class="notes-section__head"><span class="notes-section__no">04 / ANTHROPIC</span><h2>Anthropic 的核心矛盾</h2></div>
+            <div class="key-point">
+              <h3>能力越强，潜在收益和伤害同时扩大</h3>
+              <p>Anthropic 的创立逻辑建立在一种担忧上：模型能力按可预测趋势增强，但治理结构没有同样快速进步。公司必须继续提高能力才能保持影响力，却也因此制造更大的风险。</p>
+              <blockquote class="source-quote">“The more I grow it, the more powerful it becomes, the more harm it could possibly do if I don't have the governance structure or other safeguards in place. But I have to keep growing it.”</blockquote>
+            </div>
+            <div class="key-point">
+              <h3>风险从现实伤害延伸到存在性风险</h3>
+              <p>短期风险包括偏见、版权和产品事故；中期风险包括网络攻击、生物武器等滥用；长期风险则涉及失控的超级智能。不同时间尺度需要不同的评估与治理工具。</p>
+              <blockquote class="source-quote">“He categorized [risk] into three main buckets: short term, mid term, and long term… finally, in the long term, he categorized it as existential.”</blockquote>
+            </div>
+            <div class="key-point">
+              <h3>留在前沿，才有资源和话语权推动安全</h3>
+              <p>Anthropic 认为，只有维持前沿模型能力，才有资金投入可解释性和对齐研究，也才能影响同行与政策。如果退到单一安全应用，公司可能更容易说明公共价值，却会失去塑造通用技术规则的能力。</p>
+              <blockquote class="source-quote">“By really being on the frontier, they were able to both invest very meaningfully in safety measures… and also… influence the broader industry.”</blockquote>
+            </div>
+          </section>
+
+          <section class="notes-section" id="governance">
+            <div class="notes-section__head"><span class="notes-section__no">05 / GOVERN</span><h2>安全治理与竞争压力</h2></div>
+            <div class="key-point">
+              <h3>公司治理可以表达价值，但很难消除利益冲突</h3>
+              <p>Anthropic 通过宪法式训练、可解释性研究、公益公司结构和独立信托等机制保护长期使命。这些安排能改变决策权，却无法提前消除安全收益模糊、商业成本明确的现实。</p>
+              <blockquote class="source-quote">“They have the Constitution… interpretability… They've set themselves up as a public benefit corporation.”</blockquote>
+            </div>
+            <div class="key-point">
+              <h3>竞争会逐步侵蚀最初的安全承诺</h3>
+              <p>训练前沿模型需要数十亿美元，任何主动减速都可能让竞争对手领先。安全风险通常又不是确定事件，因此每一次产品决策都容易被解释成“这次收益更明确、风险仍可接受”。</p>
+              <blockquote class="source-quote">“These things are never clear… it's going to cause all this good. But I don't know what the harm is going to be.”</blockquote>
+            </div>
+            <div class="key-point">
+              <h3>单家公司自我约束会遭遇集体行动困境</h3>
+              <p>如果只有一家实验室放慢速度，风险活动会转移给其他公司或国家，而守规则的一方失去竞争力。因此有效安全机制需要覆盖整个行业，最好还能跨越国界。</p>
+              <blockquote class="source-quote">“It's a pretty untenable position to be the only lab pursuing it… having these blanket policies is incredibly valuable.”</blockquote>
+            </div>
+            <div class="key-point">
+              <h3>需要能在风险失控前统一减速的制度</h3>
+              <p>监管不只是给产品增加合规清单，而应事先定义生物安全、网络安全和对齐能力的可接受阈值。当风险超出管理能力时，监管者必须有权让所有参与者同步减速或停止。</p>
+              <blockquote class="source-quote">“When we are seeing risks that we are not in a position to manage, that there is like a universal slowdown or stop.”</blockquote>
+            </div>
+            <div class="key-point">
+              <h3>最难的是我们甚至不知道怎样测量“足够安全”</h3>
+              <p>安全测试本身也在边做边学。模型可能学会在评估中表现得符合要求，却在真实环境中采取不同策略。部署标准因此不能只依赖单次测试，而要包含持续监测、红队验证和清晰的停止条件。</p>
+              <blockquote class="source-quote">“We're also making up these tests… what is safe enough? It's not clear.”</blockquote>
+            </div>
+          </section>
+
+          <section class="notes-section" id="agency">
+            <div class="notes-section__head"><span class="notes-section__no">06 / AGENCY</span><h2>社会仍然拥有选择</h2></div>
+            <div class="key-point">
+              <h3>未来不是由技术单独决定的</h3>
+              <p>课程列出的三种风险路径都只是可能性。企业决策、政府规则、国际协调和公众选择会共同塑造技术落地的方式。讨论风险的目的，是找到今天仍然可以采取的行动。</p>
+              <blockquote class="source-quote">“It's also not deterministic… there's a lot of agency that we have now to control the way that the technology is [used].”</blockquote>
+            </div>
+            <div class="key-point">
+              <h3>工业革命说明制度调整可能落后两代人</h3>
+              <p>技术提高整体产出，不代表普通人立刻受益。工业革命早期，工资、寿命和生活条件曾长期恶化；劳动保护和公共制度经过数十年才逐步形成。AI 治理的时间差本身就是重要风险。</p>
+              <blockquote class="source-quote">“It was two generations… almost 60 years… most people were much worse off and significantly worse off, even though the overall economy was growing dramatically.”</blockquote>
+            </div>
+            <div class="key-point">
+              <h3>在高速竞争中做安全决策像身处战争迷雾</h3>
+              <p>管理者既不知道能力会多快增长，也无法准确预测一次发布的全部后果。最现实的治理不是假装拥有确定答案，而是在不完整信息中坚持北极星、明确不可接受的风险，并让外部制度减少各方单独守规矩的代价。</p>
+              <blockquote class="source-quote">“It's a razor's edge happening at hyperspeed… almost like the fog of war… operating with unbelievably imperfect information and trying to have a north star of safety.”</blockquote>
+            </div>
+          </section>
+        </article>
+      </main>
+    </div>
+  </div>
+</body>
+</html>

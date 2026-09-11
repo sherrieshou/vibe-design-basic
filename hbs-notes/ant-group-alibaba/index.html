@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Ant Group and Alibaba — HBS Fall 2026 课程笔记">
+  <title>Ant Group × Alibaba</title>
+  <link rel="stylesheet" href="../../component-repo/css/style.css">
+  <style>
+    .home-link { color: inherit; text-decoration: none; }
+    .home-link:hover, .home-link:focus-visible { color: var(--accent); outline: 0; }
+    .hero-note { color: var(--muted); font: 13px/1.5 var(--mono); text-transform: uppercase; }
+    .hero-panel--notes { display: grid; align-content: end; padding: clamp(32px, 5vw, 72px); }
+    .hero-panel--notes strong { display: block; max-width: 11ch; font: 700 clamp(44px, 6vw, 88px)/.9 var(--mono); letter-spacing: -.08em; }
+    .hero-panel--notes span { margin-top: 22px; color: var(--muted); font: 12px/1.5 var(--mono); text-transform: uppercase; }
+    .notes-intro { max-width: 850px; margin: 0 0 64px; font-size: 19px; line-height: 1.7; }
+    .notes-section { margin: 0 0 86px; scroll-margin-top: 24px; }
+    .notes-section__head { display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--line-strong); }
+    .notes-section__no { color: var(--accent); font: 700 13px/1.4 var(--mono); }
+    .notes-section h2 { display: block; margin: 0; max-width: 850px; font-size: clamp(30px, 4vw, 54px); }
+    .notes-section h2::before { content: none; }
+    .key-point { max-width: 900px; padding: 30px 0; border-bottom: 1px solid var(--line); }
+    .key-point:last-child { border-bottom: 0; }
+    .key-point h3 { margin: 0 0 12px; font: 700 22px/1.25 var(--mono); letter-spacing: -.025em; }
+    .key-point > p { margin: 0; font-size: 17px; line-height: 1.75; }
+    .source-quote { display: block; grid-template-columns: none; margin: 20px 0 0; padding: 18px 20px; border: 0; color: #8a8a86; background: #eeeeeb; font: 14px/1.65 var(--sans); }
+    .source-quote::before { content: none; display: none; border: 0; }
+    .takeaway { max-width: 900px; margin: 0 0 80px; padding: 28px; color: #fff; background: #151515; }
+    .takeaway span { color: var(--signal); font: 700 11px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; }
+    .takeaway p { margin: 14px 0 0; color: #fff; font-size: 20px; line-height: 1.55; }
+    @media (max-width: 760px) { .notes-section__head { grid-template-columns: 1fr; gap: 8px; } .hero-panel--notes { min-height: 300px; } }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <header>
+      <div class="utility-bar">
+        <div class="utility-left"><span class="index-chip">#03.02</span><a class="home-link" href="../index.html">Three Technologies</a></div>
+        <div class="utility-right"><span class="status-dot"></span><span>Fall 2026</span></div>
+      </div>
+      <div class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">HBS / COURSE NOTES</p>
+          <h1><span>Ant Group<br>× Alibaba</span></h1>
+          <p class="hero-note">Class transcript · September 8, 2026</p>
+        </div>
+        <div class="hero-panel hero-panel--notes" aria-hidden="true">
+          <strong>DATA × SPEED × SCALE</strong>
+          <span>Platform · Flywheel · Organization</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="layout">
+      <aside class="sidebar" aria-label="章节目录">
+        <nav class="toc">
+          <p class="toc-title">Contents / 目录</p>
+          <a href="#transformation"><span>01</span><span>从金融科技到科技金融</span></a>
+          <a href="#data"><span>02</span><span>数据如何改变信贷</span></a>
+          <a href="#flywheel"><span>03</span><span>数据飞轮与迭代壁垒</span></a>
+          <a href="#digital"><span>04</span><span>数字化重塑产品边界</span></a>
+          <a href="#organization"><span>05</span><span>组织、竞争与监管</span></a>
+        </nav>
+      </aside>
+
+      <main>
+        <article class="doc-content">
+          <p class="notes-intro">这节课通过蚂蚁集团与阿里巴巴的案例，讨论数字技术为什么不只是提高传统金融的效率，而是能够重新定义客户、风险、产品与组织。真正难以复制的并非某个算法，而是数据、反馈速度、合作网络和长期迭代共同形成的系统。</p>
+
+          <div class="takeaway">
+            <span>Core takeaway</span>
+            <p>技术只有进入公司的核心结构，才能改变业务。数据带来更好的决策，决策带来更多客户和反馈；飞轮转得越快，后来者越难追上。</p>
+          </div>
+
+          <section class="notes-section" id="transformation">
+            <div class="notes-section__head"><span class="notes-section__no">01 / TRANSFORM</span><h2>从金融科技到科技金融</h2></div>
+            <div class="key-point">
+              <h3>真正的数字化必须改变公司结构</h3>
+              <p>大型公司往往把新技术附加在旧流程边缘，却不愿改变组织本身。这样可以获得局部效率，却无法释放技术带来的新商业模式。蚂蚁的不同之处，是从数据和技术出发重新设计金融，而不是只为传统金融增加工具。</p>
+              <blockquote class="source-quote">“When they bring in AI, they just touch the edges of things, but they don't change the structure of the company. And when you don't do that, you don't get the benefit of it.”</blockquote>
+            </div>
+            <div class="key-point">
+              <h3>阿里巴巴提供了信任、用户与真实交易场景</h3>
+              <p>蚂蚁并非从零起步。支付宝已经建立用户信任，阿里生态又提供持续发生的支付、交易和商业活动。它可以在同一个入口上继续扩展信贷、保险和财富管理，形成平台而非单一产品。</p>
+              <blockquote class="source-quote">“They were able to use that already established trust… to then create a platform approach. One product of just like doing payments? What about insurance? What about credit?”</blockquote>
+            </div>
+            <div class="key-point">
+              <h3>核心区别是让数据定义产品</h3>
+              <p>传统金融机构通常先有贷款业务，再用技术改进流程；蚂蚁先观察已有交易数据能够揭示什么，再决定可以提供哪些金融服务。这是从 technology for finance 转向 finance built from technology。</p>
+              <blockquote class="source-quote">“Finance companies were looking at ways to integrate technology into what they were already doing… [Ant] looked at all the transaction data they have from Alibaba.”</blockquote>
+            </div>
+          </section>
+
+          <section class="notes-section" id="data">
+            <div class="notes-section__head"><span class="notes-section__no">02 / DATA</span><h2>数据如何改变信贷判断</h2></div>
+            <div class="key-point">
+              <h3>从平均风险转向个人风险定价</h3>
+              <p>传统金融依赖群体平均值和有限的信用记录。更丰富的数据让平台可以针对每位用户估计还款能力、定价风险，并把原本无法服务的小微企业和个人纳入金融体系。</p>
+              <blockquote class="source-quote">“Instead of picking averages… if I know everything about this user, I can price my product… Every user optimized [for the] risk return ratio.”</blockquote>
+            </div>
+            <div class="key-point">
+              <h3>看似无关的数据也可能具有预测力</h3>
+              <p>交易、社交关系、设备行为，甚至手机充电时间，都可能与信用风险存在统计关联。模型的价值之一，是在海量变量中发现人无法事先想到的相关性。</p>
+              <blockquote class="source-quote">“A priori, you don't know which information is useful or not… there's some correlation there between these two things that you think are completely uncorrelated.”</blockquote>
+            </div>
+            <div class="key-point">
+              <h3>机器减少人的偏见，也可能放大数据里的偏见</h3>
+              <p>人会根据职业、住址或犯罪记录形成主观模型，导致歧视；数据模型可以挑战这些未经验证的假设。但相关性不等于因果，使用社交关系等信息也会产生公平、隐私和代理歧视问题。</p>
+              <blockquote class="source-quote">“We make these assumptions because in our minds, we have a model… And that's the cause of lots and lots of discrimination in the system.”</blockquote>
+            </div>
+          </section>
+
+          <section class="notes-section" id="flywheel">
+            <div class="notes-section__head"><span class="notes-section__no">03 / FLYWHEEL</span><h2>数据飞轮与迭代壁垒</h2></div>
+            <div class="key-point">
+              <h3>更多数据带来更好的决策和更多数据</h3>
+              <p>更准确的风险判断帮助平台服务更多客户；更多客户带来更多交易和反馈；这些新数据又继续提升模型。规模、速度、个性化和信任相互增强，形成自我强化的飞轮。</p>
+              <blockquote class="source-quote">“You get more customers, which comes with more data, which then just completes the wheel.”</blockquote>
+            </div>
+            <div class="key-point">
+              <h3>飞轮的速度与大小同样重要</h3>
+              <p>竞争优势不仅来自数据量，还来自完成一次“决策—反馈—改进”需要多久。实时决策带来更快的客户增长和实验速度，让领先者在同样时间里完成更多学习循环。</p>
+              <blockquote class="source-quote">“It's also the rate at which the wheel cycles… having data enables you to move faster and build momentum.”</blockquote>
+            </div>
+            <div class="key-point">
+              <h3>人在边缘案例中校正模型</h3>
+              <p>模型并非自动变好。分析人员需要识别漂移、解释异常，并修正训练与决策流程。随着人机反馈循环不断重复，系统积累了无法通过复制代码立即获得的经验。</p>
+              <blockquote class="source-quote">“When the model drifts… the human comes in. And what the human is doing is correcting, going back in, exploring it.”</blockquote>
+            </div>
+            <div class="key-point">
+              <h3>持续的小迭代可以击败资源优势</h3>
+              <p>案例用 eBay 对抗 Amazon Auctions 说明，庞大的用户和资源并不足以保证胜利。与客户每天互动并完成数百次优化循环，可以形成后来者难以追回的产品细节和学习速度。</p>
+              <blockquote class="source-quote">“We've had 700 cycles of [iteration] and they are working on our weekly cycle or a monthly cycle.”</blockquote>
+            </div>
+          </section>
+
+          <section class="notes-section" id="digital">
+            <div class="notes-section__head"><span class="notes-section__no">04 / DIGITAL</span><h2>数字化重塑产品边界</h2></div>
+            <div class="key-point">
+              <h3>“3—1—0”把金融服务变成实时软件</h3>
+              <p>贷款申请可以在三分钟内完成、一秒内获批，并几乎不需要人工处理。流程从数周缩短到秒级后，改变的不只是体验，还包括成本结构、服务对象和可提供的产品。</p>
+              <blockquote class="source-quote">“You can fill out an [application] in three minutes. It takes them one second to give you approval and there's zero [human intervention].”</blockquote>
+            </div>
+            <div class="key-point">
+              <h3>接近零边际成本创造全新市场</h3>
+              <p>当每笔贷款不再需要增加人工处理成本，平台可以经济地提供传统银行无法承做的一美元短期贷款，也可以同时处理大额融资。数字能力改变了产品最小单位与市场边界。</p>
+              <blockquote class="source-quote">“There's almost no marginal cost because you don't have to expand your team… You could say, I will lend you one dollar for one hour.”</blockquote>
+            </div>
+            <div class="key-point">
+              <h3>模型可以发现人类分类之外的机会</h3>
+              <p>人做交叉销售时会从“搭配”或“生活方式”出发；模型只根据相关性和利润判断，可能发现购买紧身牛仔裤的人最可能购买手机保险。这类结果揭示了人类直觉没有覆盖的组合。</p>
+              <blockquote class="source-quote">“The model came back and said the thing you need to put up next is phone insurance… No one has ever done it.”</blockquote>
+            </div>
+            <div class="key-point">
+              <h3>平台通过合作伙伴实现价值获取</h3>
+              <p>蚂蚁提供数据、客户触达和风险判断，银行与保险机构提供资本、牌照、专业能力和长期关系。平台不必承担全部资产风险，也能分享它为合作方创造的经济价值。</p>
+              <blockquote class="source-quote">“These partners have trust, their long-standing relationships, they have expertise in wealth management or insurance… We're going to leverage that expertise and take share of that.”</blockquote>
+            </div>
+          </section>
+
+          <section class="notes-section" id="organization">
+            <div class="notes-section__head"><span class="notes-section__no">05 / SYSTEM</span><h2>组织、竞争与监管</h2></div>
+            <div class="key-point">
+              <h3>用“空白公司”暴露既有组织的约束</h3>
+              <p>让一组管理者从零设计 AI 原生竞争者，另一组继续代表原公司，两边给出的方案会完全不同。既有组织受遗留系统、预算方式和权责结构限制，即使看见威胁，也很难按照新技术的逻辑行动。</p>
+              <blockquote class="source-quote">“The one that's just starting out and using things in a way that's not constrained by organization is going to completely kill the other organization.”</blockquote>
+            </div>
+            <div class="key-point">
+              <h3>数字速度会让旧监管规则失效</h3>
+              <p>传统资本与流程监管建立在银行较慢的资金周转周期上。当数字平台大幅提高资金周转速度，同样的资本可以支持更大规模的业务，原有规则便可能无法达到预期效果。</p>
+              <blockquote class="source-quote">“They were able to completely blow past those regulations because the regulations were designed for traditional banks that had a certain cycle time.”</blockquote>
+            </div>
+            <div class="key-point">
+              <h3>技术平台最终会成为政治力量</h3>
+              <p>当平台掌握大量数据、金融基础设施和市场分配能力，它与国家权力之间的关系就不再只是商业监管。蚂蚁上市被叫停说明，技术带来的规模和集中度会迫使政府重新划定边界。</p>
+              <blockquote class="source-quote">“All of these companies are creating a level of power and a level of concentration of power… And so then governments are forced to come in.”</blockquote>
+            </div>
+            <div class="key-point">
+              <h3>AI 会加速已有的数字飞轮</h3>
+              <p>蚂蚁早期主要依赖数据分析和机器学习；更强的深度学习与 AI 能在更多信息类型上复制相同逻辑，并进一步提高预测、决策与产品迭代速度。</p>
+              <blockquote class="source-quote">“Deep learning now adds steroids to all those things. So it can be done much quicker, it can be done faster… across different information types.”</blockquote>
+            </div>
+          </section>
+        </article>
+      </main>
+    </div>
+  </div>
+</body>
+</html>
