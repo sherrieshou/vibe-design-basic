@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="D2D Feminine Prediction Project kickoff notes">
+  <title>D2D Feminine Prediction Project</title>
+  <link rel="stylesheet" href="../component-repo/css/style.css">
+  <style>
+    .home-link { color: inherit; text-decoration: none; }
+    .home-link:hover, .home-link:focus-visible { color: var(--accent); outline: 0; }
+    .hero-note { color: var(--muted); font: 13px/1.5 var(--mono); text-transform: uppercase; }
+    .hero-panel--project { display: grid; align-content: end; padding: clamp(30px, 5vw, 70px); }
+    .hero-panel--project strong { display: block; font: 700 clamp(44px, 6vw, 86px)/.88 var(--mono); letter-spacing: -.08em; }
+    .hero-panel--project span { margin-top: 22px; color: var(--muted); font: 12px/1.5 var(--mono); text-transform: uppercase; }
+    .notes-intro { max-width: 880px; margin: 0 0 64px; font-size: 19px; line-height: 1.7; }
+    .notes-section { margin: 0 0 86px; scroll-margin-top: 24px; }
+    .section-head { display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--line-strong); }
+    .section-no { color: var(--accent); font: 700 13px/1.4 var(--mono); }
+    .notes-section h2 { display: block; margin: 0; max-width: 880px; font-size: clamp(30px, 4vw, 54px); }
+    .notes-section h2::before { content: none; }
+    .key-point { max-width: 920px; padding: 30px 0; border-bottom: 1px solid var(--line); }
+    .key-point:last-child { border-bottom: 0; }
+    .key-point h3 { margin: 0 0 12px; font: 700 22px/1.25 var(--mono); letter-spacing: -.025em; }
+    .key-point > p { margin: 0; font-size: 17px; line-height: 1.75; }
+    .source-quote { display: block; margin: 20px 0 0; padding: 18px 20px; border: 0; color: #858580; background: #eeeeeb; font: 14px/1.65 var(--sans); }
+    .source-quote::before { content: none; display: none; }
+    .visual { max-width: 980px; margin: 30px 0 18px 154px; border: 1px solid var(--line-strong); background: #f8f8f5; }
+    .visual-label { padding: 11px 16px; border-bottom: 1px solid var(--line-strong); color: var(--muted); font: 700 10px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; }
+    .model-flow { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); }
+    .flow-node { position: relative; min-height: 150px; padding: 22px 17px; border-right: 1px solid var(--line); }
+    .flow-node:last-child { border-right: 0; }
+    .flow-node b { display: block; margin-bottom: 20px; color: var(--accent); font: 700 11px/1 var(--mono); }
+    .flow-node strong { display: block; font: 700 16px/1.25 var(--mono); }
+    .flow-node small { display: block; margin-top: 9px; color: var(--muted); line-height: 1.45; }
+    .flow-node:not(:last-child)::after { content: "→"; position: absolute; right: -9px; top: 67px; z-index: 1; color: var(--accent); background: #f8f8f5; font: 700 16px/1 var(--mono); }
+    .user-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+    .user-card { min-height: 225px; padding: 25px; border-right: 1px solid var(--line); }
+    .user-card:last-child { border-right: 0; }
+    .user-card b { color: var(--accent); font: 700 11px/1 var(--mono); }
+    .user-card h4 { margin: 18px 0 12px; font: 700 18px/1.25 var(--mono); }
+    .user-card p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.6; }
+    .question-stack { display: grid; grid-template-columns: repeat(3, 1fr); }
+    .question { padding: 24px; border-right: 1px solid var(--line); }
+    .question:last-child { border-right: 0; }
+    .question span { display: grid; place-items: center; width: 32px; height: 32px; margin-bottom: 18px; color: #fff; background: var(--accent); font: 700 11px/1 var(--mono); }
+    .question strong { display: block; font: 700 17px/1.3 var(--mono); }
+    .question p { margin: 10px 0 0; color: var(--muted); font-size: 13px; line-height: 1.55; }
+    .comparison { display: grid; grid-template-columns: 1fr 1fr; }
+    .comparison article { padding: 27px; }
+    .comparison article + article { border-left: 1px solid var(--line-strong); background: #fff; }
+    .comparison h4 { margin: 0 0 20px; font: 700 20px/1.2 var(--mono); }
+    .comparison dl { margin: 0; }
+    .comparison dl div { display: grid; grid-template-columns: 108px 1fr; gap: 14px; padding: 11px 0; border-top: 1px solid var(--line); }
+    .comparison dt { color: var(--muted); font: 700 11px/1.5 var(--mono); text-transform: uppercase; }
+    .comparison dd { margin: 0; font-size: 14px; line-height: 1.5; }
+    .data-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+    .data-item { padding: 22px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .data-item:nth-child(3n) { border-right: 0; }
+    .data-item:nth-last-child(-n + 3) { border-bottom: 0; }
+    .data-item b { color: var(--accent); font: 700 11px/1 var(--mono); }
+    .data-item h4 { margin: 16px 0 8px; font: 700 16px/1.25 var(--mono); }
+    .data-item p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.55; }
+    .open-list { max-width: 920px; margin: 24px 0 0; border-top: 1px solid var(--line-strong); }
+    .open-row { display: grid; grid-template-columns: 52px 1fr; gap: 20px; padding: 19px 0; border-bottom: 1px solid var(--line); }
+    .open-row b { color: var(--accent); font: 700 11px/1.5 var(--mono); }
+    .open-row p { margin: 0; font-size: 15px; line-height: 1.65; }
+    .schedule { display: grid; grid-template-columns: repeat(4, 1fr); }
+    .schedule-step { min-height: 150px; padding: 22px; border-right: 1px solid var(--line); }
+    .schedule-step:last-child { border-right: 0; }
+    .schedule-step b { color: var(--accent); font: 700 11px/1 var(--mono); }
+    .schedule-step strong { display: block; margin-top: 18px; font: 700 16px/1.3 var(--mono); }
+    .schedule-step small { display: block; margin-top: 8px; color: var(--muted); line-height: 1.45; }
+    @media (max-width: 920px) {
+      .visual { margin-left: 0; }
+      .model-flow { grid-template-columns: repeat(2, 1fr); }
+      .flow-node { border-bottom: 1px solid var(--line); }
+      .flow-node::after { display: none; }
+      .flow-node:nth-child(2n) { border-right: 0; }
+      .data-grid { grid-template-columns: 1fr 1fr; }
+      .data-item:nth-child(3n) { border-right: 1px solid var(--line); }
+      .data-item:nth-child(2n) { border-right: 0; }
+      .data-item:nth-last-child(-n + 3) { border-bottom: 1px solid var(--line); }
+      .data-item:nth-last-child(-n + 2) { border-bottom: 0; }
+    }
+    @media (max-width: 680px) {
+      .section-head { grid-template-columns: 1fr; gap: 8px; }
+      .hero-panel--project { min-height: 280px; }
+      .model-flow, .user-grid, .question-stack, .comparison, .data-grid, .schedule { grid-template-columns: 1fr; }
+      .flow-node, .user-card, .question, .data-item, .schedule-step { min-height: 0; border-right: 0; border-bottom: 1px solid var(--line); }
+      .comparison article + article { border-top: 1px solid var(--line-strong); border-left: 0; }
+      .data-item:nth-child(3n), .data-item:nth-child(2n) { border-right: 0; }
+      .data-item:nth-last-child(-n + 2) { border-bottom: 1px solid var(--line); }
+      .data-item:last-child { border-bottom: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <header>
+      <div class="utility-bar">
+        <div class="utility-left"><span class="index-chip">#07</span><a class="home-link" href="../index.html">Sherrie’s Notes</a></div>
+        <div class="utility-right"><span class="status-dot"></span><span>D2D Project</span></div>
+      </div>
+      <div class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">PROJECT / KICKOFF NOTES</p>
+          <h1><span>D2D Feminine<br>Prediction<br>Project</span></h1>
+          <p class="hero-note">SMART · Food-crisis early warning · Fall 2026</p>
+        </div>
+        <div class="hero-panel hero-panel--project" aria-hidden="true">
+          <strong>3–6<br>MONTHS</strong>
+          <span>Potential warning lead time</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="layout">
+      <aside class="sidebar" aria-label="章节目录">
+        <nav class="toc">
+          <p class="toc-title">Contents / 目录</p>
+          <a href="#background"><span>01</span><span>项目背景</span></a>
+          <a href="#model"><span>02</span><span>SMART 模型</span></a>
+          <a href="#users"><span>03</span><span>三类用户</span></a>
+          <a href="#existing"><span>04</span><span>SMART 与 FEWS NET</span></a>
+          <a href="#data"><span>05</span><span>数据与限制</span></a>
+          <a href="#design"><span>06</span><span>设计研究范围</span></a>
+          <a href="#next"><span>07</span><span>下一步</span></a>
+        </nav>
+      </aside>
+
+      <main>
+        <article class="doc-content">
+          <p class="notes-intro">这是 D2D 项目的第一次 kickoff。项目方介绍了 NASA 的 SMART 模型：它用卫星土壤湿度等数据，提前识别农业系统可能出现的 food crash，也尝试判断系统何时恢复。团队这学期的任务不是重新训练模型，而是了解真实用户怎样判断、解释和使用这些预测。</p>
+
+          <section class="notes-section" id="background">
+            <div class="section-head"><span class="section-no">01 / CONTEXT</span><h2>从研究模型走向真实决策</h2></div>
+            <div class="key-point">
+              <h3>模型可以提前看到 food crash 和 recovery</h3>
+              <p>研究团队表示，SMART 在历史记录中能够提前三个月识别 food crash，有些案例可以提前到六个月。恢复时间同样重要：如果能判断一个地区何时走出危机，有限的援助资源就可以转移到下一个更紧急的地区。</p>
+              <blockquote class="source-quote">“We developed a system that basically can predict every single food crash within the record three months before it occurred, sometimes up to six months… And also the recovery.”</blockquote>
+            </div>
+            <div class="key-point">
+              <h3>现在的问题不是论文，而是能不能真正使用</h3>
+              <p>原始成果来自博士研究，并发表在 Nature Sustainability。研究代码还不是稳定产品。项目要把它改造成可以自动获取数据、在云端运行、持续更新，也能被援助机构用于关键决策的系统。</p>
+            </div>
+            <div class="visual" role="img" aria-label="从研究模型到实际使用的项目链路">
+              <div class="visual-label">Research to operation</div>
+              <div class="model-flow">
+                <div class="flow-node"><b>01</b><strong>Satellite data</strong><small>持续获取土壤湿度等输入</small></div>
+                <div class="flow-node"><b>02</b><strong>SMART model</strong><small>识别接近临界点的变化</small></div>
+                <div class="flow-node"><b>03</b><strong>Operational system</strong><small>把研究代码转成稳定服务</small></div>
+                <div class="flow-node"><b>04</b><strong>End-user decision</strong><small>判断是否、何时以及向哪里调配援助</small></div>
+                <div class="flow-node"><b>05</b><strong>Impact assessment</strong><small>量化节省的生命、资金、粮食和水</small></div>
+              </div>
+            </div>
+            <div class="key-point">
+              <h3>Science、software engineering 和 HCD 同时进行</h3>
+              <p>项目方强调，这三部分不能先后分开完成。模型能力、工程系统和用户界面需要一起设计；最终还要让用户能独立使用，让科学家和工程师逐渐退出日常操作。</p>
+            </div>
+          </section>
+
+          <section class="notes-section" id="model">
+            <div class="section-head"><span class="section-no">02 / SMART</span><h2>模型在寻找系统接近临界点的信号</h2></div>
+            <div class="key-point">
+              <h3>SMART 的全称</h3>
+              <p>SMART 指 Soil Moisture Auto-Regressive Threshold System。它把 tipping point statistics 用在农业系统：不是只看一个地方现在有多严重，而是看这个系统是否将从一个状态转到另一个状态。</p>
+            </div>
+            <div class="key-point">
+              <h3>课堂里的类比：给地球戴上 wearable</h3>
+              <p>穿戴设备会从心脏电信号的变化中寻找心脏病发作前的异常。SMART 的思路类似：卫星像给地球戴上的监测设备，持续观察土壤湿度信号的波动，并判断农业系统是否接近一次“心脏病发作”。</p>
+              <blockquote class="source-quote">“We have a wearable monitor on planet Earth called the satellite data.”</blockquote>
+            </div>
+            <div class="key-point">
+              <h3>模型输出的不是单一 famine 等级</h3>
+              <p>SMART 主要预测是否会发生状态变化、变化方向是变好还是变坏，以及变化幅度。演示中的触发点通常早于 IPC 变化约三个月；恢复也可能提前三到六个月出现信号。</p>
+            </div>
+          </section>
+
+          <section class="notes-section" id="users">
+            <div class="section-head"><span class="section-no">03 / USERS</span><h2>项目方明确提到三类用户</h2></div>
+            <div class="visual" role="img" aria-label="项目的三类用户">
+              <div class="visual-label">Confirmed user groups</div>
+              <div class="user-grid">
+                <div class="user-card"><b>01 / LOCAL</b><h4>WFP country teams</h4><p>位于 Guatemala、Myanmar、Ethiopia 等国家的一线团队。关注本国或具体地区哪里可能发生危机、预测有多可信。</p></div>
+                <div class="user-card"><b>02 / CENTRAL</b><h4>WFP central team</h4><p>位于 Rome 的全球协调者。需要在多个国家同时请求援助时，比较优先级并决定资源分配。</p></div>
+                <div class="user-card"><b>03 / INDUSTRY</b><h4>Micro / reinsurance</h4><p>参与援助资金与风险管理的商业用户。项目方提到他们看待和使用数据的方式可能与 WFP 不同。</p></div>
+              </div>
+            </div>
+            <div class="visual" role="img" aria-label="用户需要回答的三层问题">
+              <div class="visual-label">Questions the system may need to support</div>
+              <div class="question-stack">
+                <div class="question"><span>01</span><strong>发生在哪里？</strong><p>哪些地区可能出现 food crash，预测的 confidence 是多少？</p></div>
+                <div class="question"><span>02</span><strong>为什么相信？</strong><p>模型为什么发出这个信号？用户能否理解并向他人解释？</p></div>
+                <div class="question"><span>03</span><strong>采取什么行动？</strong><p>如果把粮食全部送往一个地区，或分配到多个地区，可能分别产生什么后果？</p></div>
+              </div>
+            </div>
+            <div class="key-point">
+              <h3>不同用户不一定需要同一个 dashboard</h3>
+              <p>会后复盘特别提到：国家团队需要本地视角，全球协调者需要跨地区比较，保险用户又有自己的判断方式。项目目前还没有决定是否同时服务全部用户，也可能让不同团队分别研究不同用户。</p>
+            </div>
+          </section>
+
+          <section class="notes-section" id="existing">
+            <div class="section-head"><span class="section-no">04 / EXISTING</span><h2>SMART 不取代 FEWS NET</h2></div>
+            <div class="visual" role="img" aria-label="FEWS NET 与 SMART 的课堂比较">
+              <div class="visual-label">Two systems discussed in the kickoff</div>
+              <div class="comparison">
+                <article><h4>FEWS NET</h4><dl><div><dt>Focus</dt><dd>预测 IPC 1–5 的 food-security 等级</dd></div><div><dt>Horizon</dt><dd>短期约三个月，中期约六个月</dd></div><div><dt>Drivers</dt><dd>较依赖天气数据</dd></div><div><dt>Update</dt><dd>一年更新数次，存在时间间隔</dd></div><div><dt>Audience</dt><dd>面向更广泛的公开使用者</dd></div></dl></article>
+                <article><h4>SMART</h4><dl><div><dt>Focus</dt><dd>预测状态何时改变、方向和幅度</dd></div><div><dt>Signal</dt><dd>寻找临界点前的异常波动</dd></div><div><dt>Drivers</dt><dd>以土壤湿度为主要输入，食物价格为辅助</dd></div><div><dt>Update</dt><dd>目标是建立连续学习与持续预测管线</dd></div><div><dt>Audience</dt><dd>WFP 与 reinsurance 等特定决策者</dd></div></dl></article>
+              </div>
+            </div>
+            <div class="key-point">
+              <h3>两套信息可能并行出现</h3>
+              <p>项目方明确表示，SMART 是给管理者增加一个工具，不是替换 FEWS NET。现有数据包已经包含 FEWS NET 数据，部分原因就是便于比较两套算法的输出。两者以后如何组合，需要观察用户现在怎样工作。</p>
+            </div>
+          </section>
+
+          <section class="notes-section" id="data">
+            <div class="section-head"><span class="section-no">05 / DATA</span><h2>目前提供的数据与已知限制</h2></div>
+            <div class="visual" role="img" aria-label="项目数据的六个组成部分">
+              <div class="visual-label">Data discussed</div>
+              <div class="data-grid">
+                <div class="data-item"><b>01</b><h4>SMAP soil moisture</h4><p>按地区平均的原始土壤湿度，是模型的主要输入。</p></div>
+                <div class="data-item"><b>02</b><h4>Food prices</h4><p>包含原始价格和通胀调整后的价格；通常是辅助信号。</p></div>
+                <div class="data-item"><b>03</b><h4>IPC</h4><p>Integrated Food Security Phase Classification，1–5 级，是项目使用的 ground truth。</p></div>
+                <div class="data-item"><b>04</b><h4>SMART outputs</h4><p>每天的预测值、可能发生的变化、方向与幅度。</p></div>
+                <div class="data-item"><b>05</b><h4>FEWS NET outputs</h4><p>用于了解现有预警系统，并与 SMART 的结果比较。</p></div>
+                <div class="data-item"><b>06</b><h4>Conflict index</h4><p>目前没有进入 SMART 算法，只作为非干旱型危机的背景解释。</p></div>
+              </div>
+            </div>
+            <div class="key-point">
+              <h3>食物价格有时会把信号推过临界点</h3>
+              <p>价格并不是多数时间里最强的模型信号，但它能反映贸易、供应和经济系统带来的影响。例如发生干旱却没有涨价，可能意味着当地仍有其他地区的食物进入。项目方还没有确定用户希望怎样查看这些价格数据。</p>
+            </div>
+            <div class="key-point">
+              <h3>模型验证受到事件数量限制</h3>
+              <p>历史样本约有 212 次 food-crisis events。团队没有做标准的 out-of-sample holdout，因为可用事件不够多。项目方表示模型使用统一规则，不针对每个国家单独校准，但真实生产环境中的可靠性仍需要继续了解。</p>
+            </div>
+            <div class="key-point">
+              <h3>国家平均值与地区决策之间还有差距</h3>
+              <p>IPC 原始数据按国家内的地区记录，但当前示例把它们平均到国家层级。用户实际是在国家还是地区层级做决定，是之后访谈要确认的问题。</p>
+            </div>
+          </section>
+
+          <section class="notes-section" id="design">
+            <div class="section-head"><span class="section-no">06 / DESIGN</span><h2>这次设计研究要弄清楚什么</h2></div>
+            <div class="key-point">
+              <h3>现有科学图表主要服务科学家</h3>
+              <p>当前 dashboard 把土壤湿度、IPC、食物价格、SMART coefficient、threshold 和 trigger 画在同一张时间序列图上。科学家靠它检查数据和模型是否正常，但项目方也承认，真正分配援助的人可能不需要这么复杂的信息。</p>
+            </div>
+            <div class="key-point">
+              <h3>Explainability 与 traceability 都必须保留</h3>
+              <p>用户需要知道预测为什么出现，才可能相信并为援助决定辩护。另一方面，涉及资金、援助和责任时，系统也需要保存完整的模型依据，方便后续审查或法律追踪。</p>
+            </div>
+            <div class="key-point">
+              <h3>Sherrie 在会上提出的问题</h3>
+              <p>食物价格可能带有很强的社会与情绪含义。需要确认这些数据与要交付给 stakeholder 的信息有什么直接关系，以及在视觉呈现中的范围应该多大。项目方回答：这个问题值得进一步研究，目前他们也还在熟悉数据；价格对模型的贡献有限，但在某些临界案例中会很重要。</p>
+            </div>
+            <div class="open-list" aria-label="尚待用户研究确认的问题">
+              <div class="open-row"><b>Q01</b><p>每类用户现在使用哪些预警来源？他们已经习惯怎样比较多个信号？</p></div>
+              <div class="open-row"><b>Q02</b><p>SMART 与 FEWS NET 的信息应该分开显示、放在一起比较，还是进入同一工作流？</p></div>
+              <div class="open-row"><b>Q03</b><p>用户需要看到哪些输入和模型细节，才能理解并信任一个预警？</p></div>
+              <div class="open-row"><b>Q04</b><p>决策层级是国家还是地区？不同层级分别需要多细的数据？</p></div>
+              <div class="open-row"><b>Q05</b><p>用户拿到预警后可以采取哪些行动？他们怎样比较不同资源分配方案？</p></div>
+            </div>
+          </section>
+
+          <section class="notes-section" id="next">
+            <div class="section-head"><span class="section-no">07 / NEXT</span><h2>团队确认的下一步</h2></div>
+            <div class="visual" role="img" aria-label="项目下一步时间顺序">
+              <div class="visual-label">Confirmed next steps</div>
+              <div class="schedule">
+                <div class="schedule-step"><b>NOW</b><strong>先打开数据</strong><small>查看字段和基本结构，做最简单的初步浏览。</small></div>
+                <div class="schedule-step"><b>WORKSHOP</b><strong>Contextual inquiry</strong><small>学习怎样整理问题、访谈并观察现有工作方式。</small></div>
+                <div class="schedule-step"><b>OCT 02</b><strong>Follow-up meeting</strong><small>学生与 science partners 继续问问题，并请对方展示当前的数据可视化。</small></div>
+                <div class="schedule-step"><b>AFTER</b><strong>Interview and iterate</strong><small>补充用户信息，之后再进入原型和每两周一次的反馈节奏。</small></div>
+              </div>
+            </div>
+            <div class="key-point">
+              <h3>会后共识：现在还不需要急着定方案</h3>
+              <p>团队会先理解现有数据、FEWS NET、SMART 输出和不同用户的工作方式。第二份 transcript 中提出的可视化想法都停留在探索阶段，没有被确定为项目方向。</p>
+            </div>
+          </section>
+        </article>
+      </main>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Blockchain as a Coordination Technology class notes">
+  <title>Blockchain as a Coordination Technology</title>
+  <link rel="stylesheet" href="../../component-repo/css/style.css">
+  <style>
+    .home-link { color: inherit; text-decoration: none; }
+    .home-link:hover, .home-link:focus-visible { color: var(--accent); outline: 0; }
+    .hero-note { color: var(--muted); font: 13px/1.5 var(--mono); text-transform: uppercase; }
+    .hero-panel--notes { display: grid; align-content: end; padding: clamp(30px, 5vw, 70px); }
+    .hero-panel--notes strong { display: block; font: 700 clamp(43px, 5.5vw, 82px)/.9 var(--mono); letter-spacing: -.08em; }
+    .hero-panel--notes span { margin-top: 22px; color: var(--muted); font: 12px/1.5 var(--mono); text-transform: uppercase; }
+    .notes-intro { max-width: 860px; margin: 0 0 64px; font-size: 19px; line-height: 1.7; }
+    .notes-section { margin: 0 0 86px; scroll-margin-top: 24px; }
+    .section-head { display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--line-strong); }
+    .section-no { color: var(--accent); font: 700 13px/1.4 var(--mono); }
+    .notes-section h2 { display: block; margin: 0; max-width: 850px; font-size: clamp(30px, 4vw, 54px); }
+    .notes-section h2::before { content: none; }
+    .note-block { max-width: 920px; padding: 28px 0; border-bottom: 1px solid var(--line); }
+    .note-block:last-child { border-bottom: 0; }
+    .note-block h3 { margin: 0 0 14px; font: 700 21px/1.3 var(--mono); }
+    .note-list { margin: 0; padding-left: 1.25em; }
+    .note-list li { margin: 10px 0; color: var(--muted); font-size: 16px; line-height: 1.65; }
+    .note-list ul { margin: 7px 0 14px; }
+    .note-list strong { color: var(--ink); }
+    .coordination { max-width: 960px; display: grid; grid-template-columns: 1fr 1fr 1fr; margin: 28px 0 0 154px; border: 1px solid var(--line-strong); background: #f8f8f5; }
+    .coordination div { min-height: 160px; padding: 24px; border-right: 1px solid var(--line); }
+    .coordination div:last-child { border-right: 0; }
+    .coordination b { color: var(--accent); font: 700 11px/1 var(--mono); }
+    .coordination strong { display: block; margin-top: 18px; font: 700 18px/1.25 var(--mono); }
+    .coordination p { margin: 9px 0 0; font-size: 13px; line-height: 1.55; }
+    .slide { max-width: 960px; margin: 28px 0 0 154px; }
+    .slide img { display: block; width: 100%; border: 1px solid var(--line-strong); background: #111; }
+    .slide figcaption { padding: 10px 0; color: var(--muted); font: 11px/1.5 var(--mono); text-transform: uppercase; }
+    .slide-grid { max-width: 960px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 28px 0 0 154px; }
+    .slide-grid figure { margin: 0; }
+    .slide-grid img { display: block; width: 100%; height: 100%; max-height: 620px; object-fit: cover; border: 1px solid var(--line-strong); }
+    .slide-grid figcaption { padding-top: 9px; color: var(--muted); font: 11px/1.5 var(--mono); text-transform: uppercase; }
+    .originals { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 28px; }
+    .originals img { display: block; width: 100%; border: 1px solid var(--line-strong); }
+    @media (max-width: 920px) { .coordination, .slide, .slide-grid { margin-left: 0; } }
+    @media (max-width: 680px) {
+      .section-head, .coordination, .slide-grid, .originals { grid-template-columns: 1fr; }
+      .coordination div { min-height: 0; border-right: 0; border-bottom: 1px solid var(--line); }
+      .coordination div:last-child { border-bottom: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <header>
+      <div class="utility-bar">
+        <div class="utility-left"><span class="index-chip">#03.06</span><a class="home-link" href="../index.html">Three Technologies</a></div>
+        <div class="utility-right"><span class="status-dot"></span><span>Fall 2026</span></div>
+      </div>
+      <div class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">HBS / CLASS NOTES</p>
+          <h1><span>Blockchain as a<br>Coordination<br>Technology</span></h1>
+          <p class="hero-note">Original notes · October 20, 2026</p>
+        </div>
+        <div class="hero-panel hero-panel--notes" aria-hidden="true"><strong>SHARED RULES</strong><span>People · Firms · Agents</span></div>
+      </div>
+    </header>
+
+    <div class="layout">
+      <aside class="sidebar"><nav class="toc">
+        <p class="toc-title">Contents / 目录</p>
+        <a href="#coordination"><span>01</span><span>Coordination</span></a>
+        <a href="#mechanics"><span>02</span><span>Mechanics</span></a>
+        <a href="#software"><span>03</span><span>Rules become software</span></a>
+        <a href="#cases"><span>04</span><span>Cases</span></a>
+        <a href="#platforms"><span>05</span><span>Platforms</span></a>
+        <a href="#original"><span>06</span><span>Original notes</span></a>
+      </nav></aside>
+
+      <main><article class="doc-content">
+        <p class="notes-intro">Blockchain as a coordination technology: how strangers work together. The text below follows the handwritten notes, and the classroom slide photographs are inserted directly.</p>
+
+        <section class="notes-section" id="coordination">
+          <div class="section-head"><span class="section-no">01 / COORDINATION</span><h2>How strangers work together</h2></div>
+          <div class="coordination">
+            <div><b>01</b><strong>People</strong><p>Participants act under a common set of rules.</p></div>
+            <div><b>02</b><strong>Firms</strong><p>Organizations coordinate activity through shared rules.</p></div>
+            <div><b>03</b><strong>Agents</strong><p>Agents also operate through the same shared rules.</p></div>
+          </div>
+          <div class="note-block"><ul class="note-list">
+            <li>Every great leap in civilization has been a coordination upgrade: language, writing, contracts, corporations, the internet. Blockchain is the next.</li>
+            <li>Collective intelligence of species is much greater than individual mind.</li>
+            <li>Every existing form won evolution in its niche field, e.g. hand’s shape / movement, animals, etc.</li>
+            <li>Blockchain is a way to get people together → harness with individual action.</li>
+            <li>Example: flood in Nepal → harness every individual for warning and evacuation.</li>
+            <li>Coordination is civilization.</li>
+            <li>Currencies → legal contracts → property rights → corporations → central banks.</li>
+            <li>Humans scaled from tribes to state / nation.</li>
+            <li>AI does the work → blockchain coordinates it.</li>
+          </ul></div>
+          <figure class="slide"><img src="../assets/blockchain-coordination/slide-coordination.jpg" alt="Class slide: Blockchain as a coordination technology"><figcaption>Classroom slide · Blockchain as a coordination technology</figcaption></figure>
+        </section>
+
+        <section class="notes-section" id="mechanics">
+          <div class="section-head"><span class="section-no">02 / MECHANICS</span><h2>Mechanics recorded in the notes</h2></div>
+          <div class="note-block"><h3>Hashing</h3><ul class="note-list">
+            <li>A blockchain process of taking any data and converting it to a fixed-length string of characters with a hash function, a math function.</li>
+          </ul></div>
+          <div class="note-block"><h3>Transaction example</h3><ul class="note-list">
+            <li>User 1 → private key → public address → BTC → public address → private key → User 2.</li>
+            <li>Ajay enters Shikhar’s public address to signal where to send the Bitcoin.</li>
+            <li>The system checks that Ajay is indeed Ajay and has enough BTC.</li>
+            <li>Shikhar accesses the BTC in his wallet with his private key.</li>
+          </ul></div>
+          <figure class="slide"><img src="../assets/blockchain-coordination/slide-transaction.jpg" alt="Class slide: Simple transaction Ajay sends Shikhar 1 BTC"><figcaption>Classroom slide · Simple transaction: Ajay sends Shikhar 1 BTC</figcaption></figure>
+          <div class="note-block"><ul class="note-list">
+            <li>Quantum computing as danger for blockchain → stealing private key.</li>
+            <li><strong>Immutability</strong>: once a transaction is made, it can’t be changed.</li>
+            <li>Cons: mistakes can’t be reversed, e.g. a bank transaction can be reversed.</li>
+            <li>Pros: prevents corrupt systems. In parts of Africa and India, people don’t trust governments that can change records; banks and medical systems may want to adopt blockchain.</li>
+          </ul></div>
+          <div class="note-block"><h3>An expensive pizza</h3><ul class="note-list">
+            <li>Laszlo Hanyecz wanted to buy two large pizzas from Papa John’s: one cheese, one supreme.</li>
+            <li>Paid with Bitcoin, approximately $41.</li>
+            <li>Question on slide: how much at today’s BTC price did he pay for the pizza?</li>
+          </ul></div>
+          <figure class="slide"><img src="../assets/blockchain-coordination/slide-pizza.jpg" alt="Class slide: An expensive Pizza"><figcaption>Classroom slide · An expensive Pizza</figcaption></figure>
+        </section>
+
+        <section class="notes-section" id="software">
+          <div class="section-head"><span class="section-no">03 / SOFTWARE</span><h2>Rules become software</h2></div>
+          <div class="note-block"><ul class="note-list">
+            <li>Contract → smart contract.</li>
+            <li>Organization → DAO.</li>
+            <li>Marketplace → protocol.</li>
+            <li>Ethereum changes rules of money to transactions with anything under contract.</li>
+            <li><strong>Open code, shared control.</strong></li>
+            <li>Open source: individuals can access and modify code.</li>
+            <li>Decentralized: individuals control and operate the system.</li>
+          </ul></div>
+        </section>
+
+        <section class="notes-section" id="cases">
+          <div class="section-head"><span class="section-no">04 / CASES</span><h2>Cases recorded in class</h2></div>
+          <div class="note-block"><h3>Robinhood</h3><ul class="note-list">
+            <li>A centralized company built off blockchain.</li>
+            <li>Changed stock exchange: previously had a bank as “middleman,” charging exchange cost; Robinhood makes it free.</li>
+            <li>Tokenize stocks, bonds, etc. → cost of trading goes to 0.</li>
+            <li>Stock Tokens: 24/7, trade stock tokens in Robinhood Wallet.</li>
+            <li>Earn: ~7%, lend dollars through Morpho.</li>
+            <li>Robinhood Chain: open network; apps share trading and settlement.</li>
+          </ul></div>
+          <figure class="slide"><img src="../assets/blockchain-coordination/slide-robinhood.jpg" alt="Class slide: Robinhood is building on blockchain"><figcaption>Classroom slide · Robinhood is building on blockchain</figcaption></figure>
+          <div class="note-block"><h3>Zcash</h3><ul class="note-list"><li>Money with privacy coin → can be used by criminals.</li><li>Sender → private transfer → receiver.</li></ul></div>
+          <div class="note-block"><h3>Praxis</h3><ul class="note-list">
+            <li>A community can build a city, literally.</li>
+            <li>Online community → shared capital → physical city.</li>
+            <li>First city chosen to build in Europe → people are planning to move there, and it’s driven by blockchain.</li>
+          </ul></div>
+          <div class="note-block"><h3>Grass</h3><ul class="note-list">
+            <li>A crowd supplies data for AI.</li>
+            <li>Users scrape data → sold to companies; biggest client = Anthropic.</li>
+            <li>Gray area: companies can’t web scrape, but individuals can → buy from them.</li>
+          </ul></div>
+          <div class="note-block"><h3>Preflop</h3><ul class="note-list"><li>Investing in a person’s career.</li><li>Backer → tokenized contract → person building career.</li></ul></div>
+          <div class="note-block"><h3>Pros of blockchain</h3><ul class="note-list"><li>Dramatically lower corruption.</li><li>Everything transparent.</li></ul></div>
+        </section>
+
+        <section class="notes-section" id="platforms">
+          <div class="section-head"><span class="section-no">05 / PLATFORMS</span><h2>Software doesn’t eat the world, it enshittifies it</h2></div>
+          <div class="note-block"><ul class="note-list">
+            <li>Here is how platforms die:</li>
+            <li>First, they are good to their users.</li>
+            <li>Then they abuse their users to make things better for their business customers.</li>
+            <li>Finally, they abuse those business customers to claw back all the value for themselves.</li>
+            <li>Cory Doctorow.</li>
+          </ul></div>
+          <figure class="slide"><img src="../assets/blockchain-coordination/slide-enshittification.jpg" alt="Class slide: Software does not eat the world, it enshittifies it"><figcaption>Classroom slide · Cory Doctorow quote and platform relationships</figcaption></figure>
+        </section>
+
+        <section class="notes-section" id="original">
+          <div class="section-head"><span class="section-no">06 / SOURCE</span><h2>Original handwritten notes</h2></div>
+          <div class="originals">
+            <img src="../assets/blockchain-coordination/notes-01.jpg" alt="Original blockchain notes page 1">
+            <img src="../assets/blockchain-coordination/notes-02.jpg" alt="Original blockchain notes page 2">
+          </div>
+        </section>
+      </article></main>
+    </div>
+  </div>
+</body>
+</html>

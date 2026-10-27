@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Elon Musk's ecosystem, concentration of power and geopolitical competition class notes">
+  <title>Elon Musk's Ecosystem</title>
+  <link rel="stylesheet" href="../../component-repo/css/style.css">
+  <style>
+    .home-link { color: inherit; text-decoration: none; }
+    .home-link:hover, .home-link:focus-visible { color: var(--accent); outline: 0; }
+    .hero-note { color: var(--muted); font: 13px/1.5 var(--mono); text-transform: uppercase; }
+    .hero-panel--notes { display: grid; align-content: end; padding: clamp(30px, 5vw, 70px); }
+    .hero-panel--notes strong { display: block; font: 700 clamp(43px, 5.5vw, 82px)/.9 var(--mono); letter-spacing: -.08em; }
+    .hero-panel--notes span { margin-top: 22px; color: var(--muted); font: 12px/1.5 var(--mono); text-transform: uppercase; }
+    .notes-intro { max-width: 860px; margin: 0 0 64px; font-size: 19px; line-height: 1.7; }
+    .notes-section { margin: 0 0 86px; scroll-margin-top: 24px; }
+    .section-head { display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--line-strong); }
+    .section-no { color: var(--accent); font: 700 13px/1.4 var(--mono); }
+    .notes-section h2 { display: block; margin: 0; max-width: 850px; font-size: clamp(30px, 4vw, 54px); }
+    .notes-section h2::before { content: none; }
+    .note-block { max-width: 920px; padding: 28px 0; border-bottom: 1px solid var(--line); }
+    .note-block:last-child { border-bottom: 0; }
+    .note-block h3 { margin: 0 0 14px; font: 700 21px/1.3 var(--mono); }
+    .note-list { margin: 0; padding-left: 1.25em; }
+    .note-list li { margin: 10px 0; color: var(--muted); font-size: 16px; line-height: 1.65; }
+    .note-list ul { margin: 7px 0 14px; }
+    .note-list strong { color: var(--ink); }
+    .matrix { max-width: 960px; display: grid; grid-template-columns: 1fr 1fr 1fr; margin: 28px 0 0 154px; border: 1px solid var(--line-strong); background: #f8f8f5; }
+    .matrix div { min-height: 160px; padding: 24px; border-right: 1px solid var(--line); }
+    .matrix div:last-child { border-right: 0; }
+    .matrix b { color: var(--accent); font: 700 11px/1 var(--mono); }
+    .matrix strong { display: block; margin-top: 18px; font: 700 18px/1.25 var(--mono); }
+    .matrix p { margin: 9px 0 0; font-size: 13px; line-height: 1.55; }
+    .slide { max-width: 960px; margin: 28px 0 0 154px; }
+    .slide img { display: block; width: 100%; border: 1px solid var(--line-strong); background: #111; }
+    .slide figcaption { padding: 10px 0; color: var(--muted); font: 11px/1.5 var(--mono); text-transform: uppercase; }
+    .slide-grid { max-width: 960px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 28px 0 0 154px; }
+    .slide-grid figure { margin: 0; }
+    .slide-grid img { display: block; width: 100%; height: 100%; max-height: 620px; object-fit: cover; border: 1px solid var(--line-strong); }
+    .slide-grid figcaption { padding-top: 9px; color: var(--muted); font: 11px/1.5 var(--mono); text-transform: uppercase; }
+    @media (max-width: 920px) { .matrix, .slide, .slide-grid { margin-left: 0; } }
+    @media (max-width: 680px) {
+      .section-head, .matrix, .slide-grid { grid-template-columns: 1fr; }
+      .matrix div { min-height: 0; border-right: 0; border-bottom: 1px solid var(--line); }
+      .matrix div:last-child { border-bottom: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <header>
+      <div class="utility-bar">
+        <div class="utility-left"><span class="index-chip">#03.07</span><a class="home-link" href="../index.html">Three Technologies</a></div>
+        <div class="utility-right"><span class="status-dot"></span><span>Fall 2026</span></div>
+      </div>
+      <div class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">HBS / CLASS NOTES</p>
+          <h1><span>Elon Musk’s<br>Ecosystem &amp;<br>Concentrated Power</span></h1>
+          <p class="hero-note">Class transcript · October 27, 2026</p>
+        </div>
+        <div class="hero-panel hero-panel--notes" aria-hidden="true"><strong>SpaceX × xAI × Tesla</strong><span>Power · Bottlenecks · Great power competition</span></div>
+      </div>
+    </header>
+
+    <div class="layout">
+      <aside class="sidebar"><nav class="toc">
+        <p class="toc-title">Contents / 目录</p>
+        <a href="#centralization"><span>01</span><span>Centralization</span></a>
+        <a href="#s1"><span>02</span><span>Anthropic S-1</span></a>
+        <a href="#approach"><span>03</span><span>Musk’s approach</span></a>
+        <a href="#bets"><span>04</span><span>Asset / Bet / Payoff</span></a>
+        <a href="#merger"><span>05</span><span>The combination</span></a>
+        <a href="#power"><span>06</span><span>Power &amp; sovereignty</span></a>
+        <a href="#guest"><span>07</span><span>Guest: Shaun Maguire</span></a>
+        <a href="#qa"><span>08</span><span>Q&amp;A</span></a>
+      </nav></aside>
+
+      <main><article class="doc-content">
+        <p class="notes-intro">Oct 27: Elon Musk’s companies, concentration of power and geopolitical competition. Guest: Shaun Maguire (Sequoia). The text below organizes points raised in class without adding outside interpretation.</p>
+
+        <section class="notes-section" id="centralization">
+          <div class="section-head"><span class="section-no">01 / CONTEXT</span><h2>From decentralization to centralization</h2></div>
+          <div class="note-block"><ul class="note-list">
+            <li>Last class: blockchain as a way of decentralizing. But the world is moving much more towards the central.</li>
+            <li>AI supply chain: <strong>ASML</strong> (Holland) → <strong>TSMC</strong> (Taiwan) → <strong>Nvidia</strong> → a handful of foundation model companies. One company, one company, one company.</li>
+            <li>Behind each company you can point to an individual. The number of people driving this whole ecosystem can be counted on two hands.</li>
+            <li>A very small number of people have unusual influence on the way the world gets shaped going forward. What does one do in that situation?</li>
+          </ul></div>
+          <div class="note-block"><h3>Today’s NYT: Starlink in Ukraine</h3><ul class="note-list">
+            <li>Over the last few weeks in Ukraine: Starlink service degraded → drones falling out of the sky, inability to defend themselves.</li>
+            <li>Musk admitted SpaceX had slowed the service, accusing Ukraine’s military of violating Starlink’s terms of service by using it for offensive drone strikes. Ukraine said it is physically impossible for them to do that.</li>
+            <li>Calls from both parties for Musk to be investigated; Robert Reich argued Democrats should “defund Musk” and lay the groundwork for nationalizing Starlink and SpaceX.</li>
+            <li>Point: the level of power one person holds.</li>
+          </ul></div>
+          <figure class="slide"><img src="../assets/elon-musk-ecosystem/slide-nyt-starlink.jpg" alt="Class slide: Today's NYT on Starlink slowdown in Ukraine"><figcaption>Classroom slide · Today’s NYT</figcaption></figure>
+        </section>
+
+        <section class="notes-section" id="s1">
+          <div class="section-head"><span class="section-no">02 / S-1</span><h2>Anthropic S-1 risk factors</h2></div>
+          <div class="note-block"><ul class="note-list">
+            <li>Anthropic S-1 filed October 26, 2026: 94 pages of risk factors out of a 335-page filing (28%).</li>
+            <li>Quiz: which of the 7 listed risks is <em>not</em> in the filing?</li>
+            <li>Answer: <strong>#4</strong> (religious leaders designating models as false gods / incarnations of the devil) and <strong>#7</strong> (AI creating a new biological species that dominates humans) are not in the document. All the others are.</li>
+            <li>All of them are plausible in a broad sense. There’s no cost to putting risks in, but we’ve never seen an S-1 quite like this in terms of the scope of possible risks.</li>
+          </ul></div>
+          <figure class="slide"><img src="../assets/elon-musk-ecosystem/slide-anthropic-s1.jpg" alt="Class slide: Anthropic S1 filed yesterday, which of these is not in the filing"><figcaption>Classroom slide · Anthropic S-1: which of these is not in the filing?</figcaption></figure>
+        </section>
+
+        <section class="notes-section" id="approach">
+          <div class="section-head"><span class="section-no">03 / APPROACH</span><h2>Science at the limit</h2></div>
+          <div class="note-block"><h3>Video: Falcon 9 lands on drone ship</h3><ul class="note-list">
+            <li>SpaceX landed Falcon 9 on a floating drone ship at sea — second landing post-launch, first ocean landing (first landing on ground was in December).</li>
+            <li>Push people to the limit, push science to the limit → achieve amazing things.</li>
+          </ul></div>
+          <div class="note-block"><h3>Sam Altman: possible long-term future</h3><ul class="note-list">
+            <li>AI as a “giant computer in the sky” that will do anything you ask.</li>
+            <li>But in that world some humans will be a billion times more capable than the most capable humans of today; inequality at a level hard to fathom — one person could own most of the economy.</li>
+            <li>An inequality we never had before; a world quite different from what we’ve had.</li>
+          </ul></div>
+          <figure class="slide"><img src="../assets/elon-musk-ecosystem/slide-altman.jpg" alt="Class slide: Sam Altman possible long-term future"><figcaption>Classroom slide · Sam Altman: possible long-term future</figcaption></figure>
+          <div class="note-block"><h3>Management approach: aggressive targets</h3><ul class="note-list">
+            <li>Priced at $6.9M for 1,400 lb payload vs. $30M for 550 lb payload.</li>
+            <li>Engineer told to develop an actuator for $5,000 vs. a quote of $120,000 — “why should this cost anything?”</li>
+            <li>Computing system for Falcon 1 budgeted at $10K vs. $10M vendor price.</li>
+            <li>SpaceX started July 2002 with a target to build all components internally AND launch by November 2003. Target: get to Mars by 2010.</li>
+            <li>Ability to get engineers to make things that seem impossible.</li>
+            <li>Not always successful: in 2008 he was about one day away from bankruptcy for both companies. Takes incredible risks, goes to the edge — and tolerates being there for months.</li>
+          </ul></div>
+          <figure class="slide"><img src="../assets/elon-musk-ecosystem/slide-aggressive-targets.jpg" alt="Class slide: Management approach aggressive targets"><figcaption>Classroom slide · Management approach: aggressive targets</figcaption></figure>
+        </section>
+
+        <section class="notes-section" id="bets">
+          <div class="section-head"><span class="section-no">04 / BETS</span><h2>Three companies: Asset / Bet / Payoff</h2></div>
+          <div class="matrix">
+            <div><b>SPACEX</b><strong>Launch</strong><p>Asset: launch satellites / orbital compute. Bet: demand for compute + launch. Payoff: if you solve this → ∞ return. Unknowns: heat, energy, interconnection.</p></div>
+            <div><b>XAI</b><strong>Data</strong><p>Asset: data (unique corpus from Twitter). Bet: distribution → better model.</p></div>
+            <div><b>TESLA</b><strong>Deployment</strong><p>Asset: deployment + data. Bet: robotics.</p></div>
+          </div>
+          <figure class="slide"><img src="../assets/elon-musk-ecosystem/board-asset-bet-payoff.jpg" alt="Blackboard: SpaceX, xAI, Tesla asset bet payoff"><figcaption>Blackboard · Asset / Bet / Payoff; Low cost + durable → monopoly on launch → compute</figcaption></figure>
+          <div class="note-block"><h3>SpaceX</h3><ul class="note-list">
+            <li>Best businesses of all time = <strong>low-cost producers of something durable</strong>: low cost → higher volume → lower cost, a flywheel.</li>
+            <li>SpaceX effectively has a monopoly on launch. Starship aims to drive $/kg to orbit down multiple orders of magnitude.</li>
+            <li>With that monopoly, they can do things infeasible for other space companies: first Starlink, then the option of <strong>orbital compute</strong> at a dramatically lower total cost of ownership.</li>
+            <li>Most effective at building data centers with lowest TCO and bringing them online quickly; said they could possibly bring online 20 GW next year.</li>
+            <li>Skepticism: taking all the science risk; some areas where you don’t know the physics will work. Cheap satellites = making them almost an appliance; data centers in space must deal with cooling in vacuum, continuous energy — several unknowns (heat first).</li>
+            <li>Musk also claimed civilizations on Mars — big risk and projection.</li>
+          </ul></div>
+          <div class="note-block"><h3>xAI</h3><ul class="note-list">
+            <li>Biggest advantage: a unique corpus of data (Twitter) that other LLM providers don’t have.</li>
+            <li>Everyone else is buying data or scraping the internet — commodities anyone who can pay can get.</li>
+          </ul></div>
+          <div class="note-block"><h3>Tesla</h3><ul class="note-list">
+            <li>For: Waymo uses lidar, cameras, many sensors; Tesla trained on how human drivers see the road — more like how humans biologically evolved: just see and drive.</li>
+            <li>Same analogy in robotics: they have data and deployment (robots deployed in their own factories) → data flywheel → stronger model.</li>
+            <li>Bet: robotics is the next frontier. So far models do mental work; combine with physical work (Optimus) → unlimited.</li>
+            <li>Against: many robotics companies (Boston Dynamics, Chinese companies). Like comparing Tesla to BYD — many would prefer BYD now. Would invest in robotics, maybe not Tesla.</li>
+            <li>Response: in any single piece you can find a better company (e.g. Figure on models), but Tesla has all parts of the value chain — talent, data, model, deployment — giving stronger leverage. America attracts Chinese talent; unclear if the reverse happens.</li>
+          </ul></div>
+          <div class="note-block"><ul class="note-list">
+            <li>All of these reasons have significant uncertainties — some competitive, some physics. You have to make a bet.</li>
+          </ul></div>
+        </section>
+
+        <section class="notes-section" id="merger">
+          <div class="section-head"><span class="section-no">05 / COMBINATION</span><h2>Merging the ecosystem</h2></div>
+          <div class="note-block"><ul class="note-list">
+            <li>Question: if running xAI, merge with SpaceX or Tesla? Student: SpaceX.</li>
+            <li>xAI has merged with SpaceX; committees on both boards are now looking at merging with Tesla. Given Elon gets what he wants in almost all of these, it’s very likely.</li>
+            <li>Result: a ~$3.5 trillion market cap “monster.” What don’t they have?</li>
+          </ul></div>
+          <div class="note-block"><h3>What’s missing?</h3><ul class="note-list">
+            <li>Trust / hegemony / global power — even in this room support is ~50/50.</li>
+            <li>Raw materials — must source from China, Congo or other nations; physical bottlenecks (e.g. cobalt).</li>
+            <li>Public support. Musk has been so successful building an empire where he doesn’t need anyone — that is almost his biggest flaw.</li>
+            <li>What the government has that Musk doesn’t: support of a large population.</li>
+            <li>Historical comparison: the East India Company in the 18th century built its own army, bigger than the British army, and conquered large parts of India — “a Bible in one hand, a gun in the other, and financial concessions in both pockets.”</li>
+          </ul></div>
+          <div class="note-block"><h3>The scale of a trillion</h3><ul class="note-list">
+            <li>Spending $1 a second: a billion takes ~30 years; a trillion ~30,000 years — back to when humans had just come out of the Neanderthal era.</li>
+            <li>Elon’s package is $1.7 trillion: spending $1M every day since the birth of Christ, he would still have over a trillion left.</li>
+            <li>We have never seen numbers at this scale with one person or one entity controlling that much.</li>
+          </ul></div>
+          <div class="note-block"><h3>Would you short Anthropic?</h3><ul class="note-list">
+            <li>Anthropic is going after a ~$2 trillion IPO.</li>
+            <li>Against the combination: very different companies and skills (social media, frontier model, space); one person doing all of that may make all of them worse. Cash from SpaceX / Tesla can fund xAI, but it’s screwing over the minority shareholders.</li>
+            <li>For: whole vertical stack integrated; we assume compute becomes a commodity, and this is the company that makes it a commodity. Energy for compute is a bottleneck; SpaceX promises to solve it via data centers in space.</li>
+            <li>Anthropic’s strategic advantage is positioning on <strong>trust</strong> — “you can trust us with your data” — building the infrastructure on which others want to build the future.</li>
+            <li>Combining creates more power as capital and vertical integration, but not in winning over the majority. (Tesla panels falling off cars; SpaceX launches didn’t go well until they did.)</li>
+          </ul></div>
+          <div class="note-block"><h3>If you are China?</h3><ul class="note-list">
+            <li>How would China respond to this collection of companies? One view: decentralization — different players working on different things — as the way to innovate.</li>
+          </ul></div>
+        </section>
+
+        <section class="notes-section" id="power">
+          <div class="section-head"><span class="section-no">06 / POWER</span><h2>Power, governance &amp; sovereignty</h2></div>
+          <div class="note-block"><ul class="note-list">
+            <li>Assumption: this combination gives an unusual amount of power to one individual. Should a sovereign government allow that? Politicians are looking at whether things should be broken up.</li>
+            <li>Show of hands: big Elon fans vs. skeptics — pretty polarizing. Regardless of whether we like him: how much power do you want to give somebody? As a society, how do you control that power?</li>
+          </ul></div>
+          <div class="note-block"><h3>Questions students would ask Musk</h3><ul class="note-list">
+            <li><strong>Governance:</strong> when the combined entity makes decisions and board members disagree, what controls exist? Can the majority of shareholders veto? You don’t want it all in one individual; there should be a collective way.</li>
+            <li><strong>Value of utopia:</strong> a trillion dollars is far less than the quadrillions of value from a utopia these dreamers could create (stars, robotics, markets expanding). Why is everyone against capturing / creating utopia? What is the utopia you are trying to get to?</li>
+            <li><strong>National sovereignty:</strong> what is its role in the future? E.g. Próspera in Honduras — technocrats creating their own semi-autonomous cities — extremely dangerous. The US government’s only real power over these companies is regulation.</li>
+            <li>Professor: asking a business “would you accept the sovereignty of countries?” is unusual — the obvious answer is yes — but it becomes relevant given the level of power. The real question is intent: “it’s utopia, so let him go” — who’s against utopia?</li>
+          </ul></div>
+        </section>
+
+        <section class="notes-section" id="guest">
+          <div class="section-head"><span class="section-no">07 / GUEST</span><h2>Shaun Maguire, Sequoia</h2></div>
+          <div class="note-block"><h3>Background</h3><ul class="note-list">
+            <li>Partner at Sequoia; early investor in SpaceX and xAI.</li>
+            <li>Studied mathematics at USC; PhD at Caltech in quantum computing; started career in advanced defense research.</li>
+            <li>Co-founded a cybersecurity company sold to Palo Alto Networks for almost $800M.</li>
+            <li>Long-time champion / supporter of Elon and his companies.</li>
+          </ul></div>
+          <div class="slide-grid">
+            <figure><img src="../assets/elon-musk-ecosystem/guest-shaun-maguire.jpg" alt="Shaun Maguire joining class by video"><figcaption>Shaun Maguire joins by video</figcaption></figure>
+            <figure><img src="../assets/elon-musk-ecosystem/classroom-zoom.jpg" alt="Classroom view on Zoom"><figcaption>Classroom view</figcaption></figure>
+          </div>
+          <div class="note-block"><h3>Thought experiment: Xi Jinping vs. Elon Musk</h3><ul class="note-list">
+            <li>Hands: who has more power — Xi or Musk? Who do you trust more?</li>
+            <li>Are America and China in a great power competition? Not necessarily a bad thing — at least a giant economic competition.</li>
+            <li>Lived in China in 2009, worked at a Chinese startup. Chinese government has been very rational, pursuing strategies in its own interest.</li>
+            <li><strong>EV example:</strong> batteries are the hardest component to bootstrap. 20 years of R&amp;D in Chinese labs (ATL); IP and subsidies passed to <strong>CATL</strong>, which became the dominant battery company and core infrastructure for China’s EV industry. Government secured rare earth deals worldwide and built refineries → supply chain from raw materials to batteries at much lower cost.</li>
+            <li>Seen in EVs, now in pharma: it’s individual American companies competing against a very well-coordinated country.</li>
+            <li>Reframe: whatever you think of Elon, how do you feel about a world where China wins every industry because they play a different game, and America’s economic and political power declines to almost nothing?</li>
+          </ul></div>
+          <div class="note-block"><h3>SpaceX vs. Tesla</h3><ul class="note-list">
+            <li>Personally thinks SpaceX is a vastly better company than Tesla. Tesla was probably better for some period early on, but SpaceX’s culture has been maintained longer.</li>
+            <li>The ultimate superpower: the culture of Elon’s companies is different from any other company.</li>
+          </ul></div>
+          <div class="note-block"><h3>Inputs to the culture</h3><ul class="note-list">
+            <li><strong>1. Talent identification.</strong> Example: ~first 30 employees (2003), someone interviewing for a business role; Elon found they built race cars as a hobby, asked engineering questions, and pivoted the economics undergrad into mechanical engineering — now one of the most senior engineers at SpaceX. 20+ examples like that.</li>
+            <li><strong>2. Pain tolerance.</strong> Works 16–18 hours a day, 7 days a week, no vacation, flying a dozen times a week — engineering stand-ups in Texas at 8 PM, then Colossus data center in Tennessee until 2 AM. Others (Google, Microsoft founders, Bezos) slow down after a decade or 15 years; Elon doesn’t. “I’ve won five marathons without training and I can’t keep up with him.”</li>
+            <li><strong>3. More rope to young people.</strong> Constantly asks people to volunteer to lead projects regardless of background. Succeed → move up two levels instantly; fail → probably fired. Not punished for not volunteering or saying “I can’t do it.”</li>
+            <li>Meritocracy + talent identification + leading from the front with extreme pain tolerance → a compounding culture with speed and intensity you otherwise only see in China (China maybe a little less intense than 10 years ago / 2009 gold rush).</li>
+          </ul></div>
+          <div class="note-block"><h3>Distance traveled</h3><ul class="note-list">
+            <li>First-generation founders raised with nothing build with unprecedented intensity — e.g. Jack Ma, an English teacher who grew up with nothing.</li>
+            <li>Elon couldn’t have been Elon without growing up in South Africa amid extreme adversity.</li>
+            <li>Sequoia lesson: look for founders with very high pain tolerance, very high grit, big distance traveled in life — the #1 correlate with building a generational company.</li>
+            <li>Jensen Huang: Sequoia led Nvidia’s seed round in 1993 at ~$7M valuation; ~15 years of sheer grind when nobody cared.</li>
+            <li>SpaceX culture lasted longer than Tesla’s partly because it went public later and the mission (building rockets) is so clear and unifying — the whole company watches launches together.</li>
+          </ul></div>
+        </section>
+
+        <section class="notes-section" id="qa">
+          <div class="section-head"><span class="section-no">08 / Q&amp;A</span><h2>Q&amp;A with Shaun</h2></div>
+          <div class="note-block"><h3>What happens to the empire after Elon?</h3><ul class="note-list">
+            <li>Best mental model: <strong>Apple</strong>. Steve Jobs and Elon have a lot in common (Sequoia led Apple’s Series A).</li>
+            <li>Apple was lucky Steve passed after the iPhone and App Store were out; five years earlier, they probably wouldn’t have been built. It compounded for 20 years without huge innovations — like a rocket in orbit, drifting.</li>
+            <li>If Steve had lived 20 more years: either something politically offensive hurt them, or Apple would be 10x bigger — leading-edge fabs, autonomous vehicles, maybe a rocket program.</li>
+            <li>Same with SpaceX: projects past the threshold will work (Starship, orbital compute), but a Mars base might never happen. Every decade with Elon pushes an order of magnitude further up the tech tree.</li>
+          </ul></div>
+          <div class="note-block"><h3>Biggest risks?</h3><ul class="note-list">
+            <li>By far the biggest risk is <strong>political risk</strong>. Heavily regulating SpaceX → America loses space to China — “the greatest gift ever to China.”</li>
+            <li>Real chance of some crazy nationalization of his businesses — would be a disaster.</li>
+            <li>Humanity benefits when China has competition; American companies can’t compete against a whole country if hamstrung.</li>
+            <li>AI is moving at breakneck pace — OpenAI’s math, physics and CS results last night: “the three biggest scientific results I’ve seen in my life, all in one day.”</li>
+            <li>Genuinely worried about people getting / feeling left behind and the political upheaval from that. Feelings that you’re unlikely to live as well as your grandparents are legitimate; must address today’s concerns to be optimistic.</li>
+          </ul></div>
+          <div class="note-block"><h3>Terafab</h3><ul class="note-list">
+            <li>Sure Elon thought about building a fab 20 years ago.</li>
+            <li>Levels: silicon wafers → wafers + solar panels (solar feature sizes ~100x bigger than leading-edge logic) → advanced logic / memory.</li>
+            <li>Even only wafers + solar panels as input to orbital compute satellites gives SpaceX a lot of supply chain leverage.</li>
+            <li>Odds SpaceX makes high-purity wafers and photovoltaics: ~99%. Advanced logic / memory: lower, but still quite high.</li>
+            <li>Not all-or-nothing: a continuous ladder up the complexity stack; almost guaranteed SpaceX goes at least a few steps up.</li>
+          </ul></div>
+        </section>
+      </article></main>
+    </div>
+  </div>
+</body>
+</html>

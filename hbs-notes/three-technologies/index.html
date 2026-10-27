@@ -23,6 +23,11 @@
     .key-point:last-child { border-bottom: 0; }
     .key-point h3 { margin: 0 0 12px; font: 700 22px/1.25 var(--mono); letter-spacing: -.025em; }
     .key-point > p { margin: 0; font-size: 17px; line-height: 1.75; }
+    .key-point > .context-note { margin-top: 10px; color: #999994; font: 12px/1.55 var(--mono); }
+    .context-note a { color: inherit; text-underline-offset: 3px; }
+    .context-note a:hover, .context-note a:focus-visible { color: var(--accent); }
+    .case-visual { max-width: 900px; margin: 24px 0 30px 154px; overflow: hidden; background: #000; }
+    .case-visual img { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
     .source-quote { display: block; grid-template-columns: none; margin: 20px 0 0; padding: 18px 20px; border: 0; color: #8a8a86; background: #eeeeeb; font: 14px/1.65 var(--sans); }
     .source-quote::before { content: none; display: none; border: 0; }
     .takeaway { max-width: 900px; margin: 0 0 80px; padding: 28px; color: #fff; background: #151515; }
@@ -31,6 +36,7 @@
     @media (max-width: 760px) {
       .notes-section__head { grid-template-columns: 1fr; gap: 8px; }
       .hero-panel--notes { min-height: 300px; }
+      .case-visual { margin-left: 0; }
     }
   </style>
 </head>
@@ -70,11 +76,6 @@
         <article class="doc-content">
           <p class="notes-intro">这节课从 AlphaGo 的演进讲起，介绍一种新的技术范式：只要目标、数据和反馈足够清楚，机器就不必依赖人类总结的规则，也能自行发现超越既有经验的策略。课程围绕三条主线展开——智能、协作与生命——并追问它们将如何改变商业、社会和我们的日常生活。</p>
 
-          <div class="takeaway">
-            <span>Core takeaway</span>
-            <p>未来的竞争优势，可能不在于“用了哪个模型”，而在于能否定义正确的问题、建立有效的评估机制，并围绕技术重新设计组织。</p>
-          </div>
-
           <section class="notes-section" id="course">
             <div class="notes-section__head"><span class="notes-section__no">01 / COURSE</span><h2>课程的核心问题与三项技术</h2></div>
             <div class="key-point">
@@ -100,12 +101,14 @@
             <div class="key-point">
               <h3>生物技术将把 DNA 变成代码</h3>
               <p>CRISPR 只是起点。课程提出的核心假设是：未来，人类可能像修改软件代码一样修改 DNA。这不仅会改变疾病治疗，也会带来能力增强、资源分配不公和社会制度等伦理问题。</p>
+              <p class="context-note">概念背景：CRISPR-Cas9 是可按目标序列切割 DNA 的基因编辑工具；“DNA 是代码”是课堂用来帮助理解可编程性的类比，并不表示生物系统与软件完全相同。</p>
               <blockquote class="source-quote">“For the first time, treat our DNAs as code. And in the same way we can manipulate code right now, we'll be able to manipulate that.”</blockquote>
             </div>
           </section>
 
           <section class="notes-section" id="alpha-go">
             <div class="notes-section__head"><span class="notes-section__no">02 / ALPHAGO</span><h2>AlphaGo：新智能如何诞生</h2></div>
+            <figure class="case-visual"><img src="../assets/alphago-halftone.png" alt="黑白网点风格的围棋棋盘与神经网络" loading="lazy"></figure>
             <div class="key-point">
               <h3>围棋无法靠传统暴力搜索解决</h3>
               <p>围棋的可能局面远超可穷举范围，而且优秀棋手依赖模式识别、直觉与整体判断。它因此成为测试“智能”而非单纯计算速度的理想问题。</p>
@@ -119,11 +122,13 @@
             <div class="key-point">
               <h3>Move 37 展示了非人类式的策略发现</h3>
               <p>第 37 手在人类棋谱中出现的概率约为万分之一，现场专家起初甚至认为它下错了。但大约一百步后，这一步却成为获胜的关键。AlphaGo 并不是简单模仿人类，而是找到了传统经验之外的新策略。</p>
+              <p class="context-note">比赛背景：2016 年 AlphaGo 以 4:1 战胜李世石；第二局的 Move 37 被估计只有万分之一的人类落子概率，并帮助 AlphaGo 获胜。<a href="https://deepmind.google/research/alphago/" target="_blank" rel="noreferrer">DeepMind 回顾 ↗</a></p>
               <blockquote class="source-quote">“The probability was that a human would say this move, it was one in 10000… 100 moves later, that move was pivotal in AlphaGo winning that game.”</blockquote>
             </div>
             <div class="key-point">
               <h3>不要用人的思维方式解释机器</h3>
-              <p>机器处理信息的方式，可能与人类完全不同。如果总用人的动机、性格和思考过程去解释 AI，我们反而更难看清它真正的能力与局限。</p>
+              <p>课堂用“潜艇能否游泳”的类比说明，机器处理信息的方式可能与人类不同，不能仅以人类的思考过程定义机器是否具有智能。</p>
+              <p class="context-note">引语背景：“机器能否思考”与“潜艇能否游泳”的类比通常归于计算机科学家 Edsger W. Dijkstra；该类比区分了功能表现与实现机制。</p>
               <blockquote class="source-quote">“Thinking about whether a computer can think is like asking whether a submarine can swim. These are just two different modes of being in the water.”</blockquote>
             </div>
             <div class="key-point">
@@ -142,7 +147,7 @@
             </div>
             <div class="key-point">
               <h3>“什么是好”比选哪个模型更重要</h3>
-              <p>使用 AI 时，真正拉开差距的能力，是建立一套好的评估机制：把抽象的“质量”拆成可以判断和反馈的小问题，再持续比较结果。模型和提示词都很重要，但如果不知道什么叫“好”，系统就无法稳定进步。</p>
+              <p>课堂强调评估机制的重要性：把抽象的“质量”拆成可以判断和反馈的小问题，再持续比较结果。如果没有明确的评价标准，系统便缺少稳定改进的反馈。</p>
               <blockquote class="source-quote">“Probably the thing that's going to distinguish you the most is how you structure your evaluation… At the core of all of these systems is this notion of, do you know what good is?”</blockquote>
             </div>
             <div class="key-point">
@@ -156,17 +161,19 @@
             <div class="notes-section__head"><span class="notes-section__no">04 / HUMAN × AI</span><h2>何时交给人，何时交给 AI</h2></div>
             <div class="key-point">
               <h3>“人 + AI”并不在所有情况下都最好</h3>
-              <p>如果问题有明确的目标和评价标准，机器独立完成可能更好；如果问题涉及模糊目标、审美、价值冲突或隐含语境，就仍然需要人的判断。关键不是争论“人还是 AI”，而是先判断问题属于哪一种。</p>
+              <p>课堂区分了三类任务：适合人完成、适合 AI 独立完成，以及需要人机组合完成。组合方式取决于问题的目标、评价标准和所需判断。</p>
               <blockquote class="source-quote">“Which problems are suitable for humans to do? Which problems are suitable for Ash by himself to do, and which ones really need some combination of them?”</blockquote>
             </div>
             <div class="key-point">
               <h3>AlphaGo Zero：移除人类经验后反而更强</h3>
               <p>AlphaGo Zero 不再学习人类棋谱，而是只靠自我对弈学习，最终以 100:0 击败了此前战胜世界冠军的 AlphaGo。它重新发现了人类数千年积累的围棋知识，也舍弃了其中一些只是习惯、并非最优解的规则。</p>
+              <p class="context-note">研究背景：AlphaGo Zero 从零开始自我对弈，不使用人类棋局数据；Nature 论文报告它以 100:0 战胜此前击败冠军的 AlphaGo 版本。<a href="https://www.nature.com/articles/nature24270" target="_blank" rel="noreferrer">Nature 论文 ↗</a></p>
               <blockquote class="source-quote">“They decided that they were going to take away all human knowledge from the system… AlphaGo Zero beat AlphaGo 100 to 0.”</blockquote>
             </div>
             <div class="key-point">
               <h3>“苦涩教训”：规模化学习常胜过手工编码经验</h3>
               <p>当问题有明确的评价标准时，让系统依靠更多算力、数据和自我探索持续学习，往往比直接把专家经验写进系统更有效。不过，这并不是适用于所有问题的定律，是否有效仍取决于问题本身。</p>
+              <p class="context-note">概念背景：“The Bitter Lesson”是强化学习研究者 Rich Sutton 2019 年总结的观点：能随计算规模扩展的搜索与学习方法，长期往往胜过手工注入领域知识。</p>
               <blockquote class="source-quote">“Don't tell the computer anything, give it function, give it the data.”</blockquote>
             </div>
             <div class="key-point">
@@ -181,11 +188,13 @@
             <div class="key-point">
               <h3>通用方法：把现实问题转化为可评估的游戏</h3>
               <p>MuZero 进一步拿掉了预先给定的规则，并把类似方法应用到网络带宽、视频压缩和数据中心优化。只要目标足够明确，系统就可以通过反复尝试，自己找到更好的解决方案。</p>
+              <p class="context-note">研究背景：MuZero 不预先获得环境的完整规则，而是学习对规划有用的内部模型；“把现实当作游戏”是课堂的概括，应用仍需要可观测状态、行动与评估信号。</p>
               <blockquote class="source-quote">“Take this objective, find a way to do it. And if we treat it as a game, it will itself… come up with optimizations.”</blockquote>
             </div>
             <div class="key-point">
               <h3>科学发现的速度可能发生数量级变化</h3>
               <p>蛋白质折叠的案例说明，AI 不只是让现有流程更高效，还可能突破困扰科学界多年的难题，并进一步加快生物技术等领域的发展。</p>
+              <p class="context-note">案例背景：AlphaFold 在 2020 年 CASP14 蛋白质结构预测评测中取得突破，相关方法于 2021 年发表于 Nature；它预测结构，但不等于解决全部蛋白质生物学问题。<a href="https://deepmind.google/science/alphafold/" target="_blank" rel="noreferrer">项目说明 ↗</a></p>
               <blockquote class="source-quote">“The protein folding was one of the core problems. If you can solve that, you then have made progress on a whole variety of biology.”</blockquote>
             </div>
             <div class="key-point">
@@ -195,7 +204,7 @@
             </div>
             <div class="key-point">
               <h3>伦理问题的核心是权力与分配</h3>
-              <p>当 AI、财富集中和基因编辑同时发生时，我们要问的不只是“技术安全吗”，还要问：谁有资格使用它？谁会被排除在外？民主和社会公平又该如何维持？</p>
+              <p>课堂把 AI、财富集中与基因编辑放在一起讨论，并提出技术使用权、受益者范围、民主制度和社会公平等问题。</p>
               <blockquote class="source-quote">“When you can change the baby that you have… and that privilege is only given to a few people, what does that mean to society?”</blockquote>
             </div>
           </section>

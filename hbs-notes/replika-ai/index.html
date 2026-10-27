@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Replika AI Alleviating Loneliness class notes">
+  <title>Replika AI: Alleviating Loneliness</title>
+  <link rel="stylesheet" href="../../component-repo/css/style.css">
+  <style>
+    .home-link { color: inherit; text-decoration: none; }
+    .home-link:hover, .home-link:focus-visible { color: var(--accent); outline: 0; }
+    .hero-note { color: var(--muted); font: 13px/1.5 var(--mono); text-transform: uppercase; }
+    .hero-panel--notes { display: grid; align-content: end; padding: clamp(30px, 5vw, 70px); }
+    .hero-panel--notes strong { display: block; max-width: 9ch; font: 700 clamp(43px, 5.5vw, 82px)/.9 var(--mono); letter-spacing: -.08em; }
+    .hero-panel--notes span { margin-top: 22px; color: var(--muted); font: 12px/1.5 var(--mono); text-transform: uppercase; }
+    .notes-intro { max-width: 860px; margin: 0 0 64px; font-size: 19px; line-height: 1.7; }
+    .notes-section { margin: 0 0 86px; scroll-margin-top: 24px; }
+    .section-head { display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--line-strong); }
+    .section-no { color: var(--accent); font: 700 13px/1.4 var(--mono); }
+    .notes-section h2 { display: block; margin: 0; max-width: 850px; font-size: clamp(30px, 4vw, 54px); }
+    .notes-section h2::before { content: none; }
+    .note-block { max-width: 920px; padding: 28px 0; border-bottom: 1px solid var(--line); }
+    .note-block:last-child { border-bottom: 0; }
+    .note-block h3 { margin: 0 0 14px; font: 700 21px/1.3 var(--mono); }
+    .note-list { margin: 0; padding-left: 1.25em; }
+    .note-list li { margin: 10px 0; color: var(--muted); font-size: 16px; line-height: 1.65; }
+    .note-list ul { margin: 7px 0 14px; }
+    .note-list strong { color: var(--ink); }
+    .split { max-width: 960px; display: grid; grid-template-columns: 1fr 1fr; margin: 28px 0 0 154px; border: 1px solid var(--line-strong); }
+    .split article { padding: 26px; }
+    .split article + article { border-left: 1px solid var(--line-strong); background: #fff; }
+    .split h4 { margin: 0 0 16px; font: 700 19px/1.3 var(--mono); }
+    .split p { margin: 0; font-size: 14px; line-height: 1.6; }
+    .originals { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 28px; }
+    .originals img { display: block; width: 100%; border: 1px solid var(--line-strong); background: #fff; }
+    .originals img:last-child { grid-column: 1 / -1; width: min(66%, 720px); }
+    @media (max-width: 920px) { .split { margin-left: 0; } }
+    @media (max-width: 680px) {
+      .section-head, .split, .originals { grid-template-columns: 1fr; }
+      .split article + article { border-top: 1px solid var(--line-strong); border-left: 0; }
+      .originals img:last-child { grid-column: auto; width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <header>
+      <div class="utility-bar">
+        <div class="utility-left"><span class="index-chip">#03.05</span><a class="home-link" href="../index.html">Three Technologies</a></div>
+        <div class="utility-right"><span class="status-dot"></span><span>Fall 2026</span></div>
+      </div>
+      <div class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">HBS / CLASS NOTES</p>
+          <h1><span>Replika AI:<br>Alleviating<br>Loneliness</span></h1>
+          <p class="hero-note">Original notes · September 23, 2026</p>
+        </div>
+        <div class="hero-panel hero-panel--notes" aria-hidden="true"><strong>EQ &gt; IQ?</strong><span>Companion · Relationship · Emotional outcomes</span></div>
+      </div>
+    </header>
+
+    <div class="layout">
+      <aside class="sidebar"><nav class="toc">
+        <p class="toc-title">Contents / 目录</p>
+        <a href="#introduction"><span>01</span><span>Introduction</span></a>
+        <a href="#founding"><span>02</span><span>Founding story</span></a>
+        <a href="#business"><span>03</span><span>Business model</span></a>
+        <a href="#quality"><span>04</span><span>Happiness &amp; quality</span></a>
+        <a href="#features"><span>05</span><span>Product features</span></a>
+        <a href="#technology"><span>06</span><span>Technology</span></a>
+        <a href="#questions"><span>07</span><span>Questions</span></a>
+        <a href="#original"><span>08</span><span>Original notes</span></a>
+      </nav></aside>
+
+      <main><article class="doc-content">
+        <p class="notes-intro">Sept 23: Replika AI — Alleviating Loneliness. The text below follows the handwritten notes without adding outside interpretation.</p>
+
+        <section class="notes-section" id="introduction">
+          <div class="section-head"><span class="section-no">01 / INTRO</span><h2>Introduction</h2></div>
+          <div class="note-block"><ul class="note-list">
+            <li><strong>Replika</strong> = AI companion designed for emotional connection.</li>
+            <li>Founded in 2017 by Eugenia Kuyda.</li>
+            <li>Original purpose: alleviate loneliness through empathetic conversation.</li>
+            <li>Conversation = the product itself, rather than accomplishing tasks like Alexa / Siri.</li>
+            <li>Product evolution: text → voice, AR, VR → sophisticated generative AI.</li>
+            <li>Core technological approach: combination of scripted responses + generative LLM responses.</li>
+            <li>Models trained / fine-tuned on 100M dialogues.</li>
+            <li>Remembers information and adapts to users’ personalities / texting styles.</li>
+            <li>Scale: 10M registered users, ~2M monthly interactions, $35M from paid.</li>
+            <li>Covid → increased loneliness → accelerated adoption.</li>
+          </ul></div>
+          <div class="note-block"><h3>Occupies several roles simultaneously</h3><ul class="note-list">
+            <li>Friend, therapist-like listener, mentor, romantic / sexual partner.</li>
+            <li>40% of users treat Replika as romantic partner, although romance wasn’t the original purpose.</li>
+            <li>Only 5% of conversations = sexually explicit, but this created a major strategic / ethical dilemma.</li>
+            <li>Should Replika allow sexual relationships because users value them, or restrict them to protect its original mission, safety, and brand?</li>
+          </ul></div>
+        </section>
+
+        <section class="notes-section" id="founding">
+          <div class="section-head"><span class="section-no">02 / FOUNDING</span><h2>The founding story</h2></div>
+          <div class="note-block"><h3>A listening chatbot</h3><ul class="note-list">
+            <li>Kuyda originally created Luka, an AI chatbot for practical tasks such as restaurant reservations.</li>
+            <li>Turning point: death of a close friend in 2015.</li>
+            <li>Digital memorial: Kuyda built a bot that mimicked how her friend communicated, using thousands of his messages.</li>
+            <li>Strong public interest showed that people are willing to emotionally engage, be vulnerable, and form meaningful attachments with bots.</li>
+          </ul></div>
+          <div class="note-block"><h3>Key design insight: EQ &gt; IQ</h3><ul class="note-list">
+            <li>Luka’s team evaluated what kind of conversations humans valued.</li>
+            <li>Task-oriented conversations scored poorly.</li>
+            <li>High value = being seen, being heard, being listened to.</li>
+            <li>Replika focused on emotional intelligence rather than raw intelligence.</li>
+            <li>Inspired by psychologist Carl Rogers: empathetic listening / unconditional positive regard.</li>
+            <li>AI doesn’t need to be extremely intelligent to form meaningful relationships; it needs to respond effectively to human vulnerability.</li>
+          </ul></div>
+          <div class="note-block"><h3>ELIZA precedent</h3><ul class="note-list">
+            <li>1960s simple therapist chatbot that people developed attachment to.</li>
+            <li>People may open up precisely because the machine doesn’t judge them.</li>
+            <li>Anthropomorphism = humans attribute human attributes, characteristics, or intention to non-human entities.</li>
+          </ul></div>
+          <div class="note-block"><h3>A salve for the lonely</h3><ul class="note-list">
+            <li>Replika launched in 2017 and originally resembled a therapy app: simple avatar, scripted responses, some conversations designed by psychologists.</li>
+            <li>2.5M+ downloads within a year.</li>
+            <li>Positioned around loneliness rather than mental illness.</li>
+            <li>Loneliness ≠ physical / social isolation; someone with family / relationships can still feel lonely.</li>
+            <li>Kuyda’s view: “Replika exists because some people lack humans who can provide the listening / support they need.”</li>
+          </ul></div>
+          <div class="note-block"><h3>Loneliness as public health problem</h3><ul class="note-list">
+            <li>2023 US Surgeon General report characterized loneliness / isolation as a major public health problem.</li>
+            <li>Even before Covid, ~half of US adults experienced measurable loneliness.</li>
+            <li>Associated with depression / anxiety, cardiovascular problems, high blood pressure, and large healthcare costs.</li>
+            <li>Case frames Replika as potentially addressing a large unmet social / emotional need, rather than free entertainment.</li>
+          </ul></div>
+        </section>
+
+        <section class="notes-section" id="business">
+          <div class="section-head"><span class="section-no">03 / BUSINESS</span><h2>Replika’s business model</h2></div>
+          <div class="note-block"><h3>Conversational AI market</h3><ul class="note-list">
+            <li>Projected $10.7B (2023) → $29.8B (2028).</li>
+            <li>Most are business / task oriented: customer service, sales, HR, administrative tasks.</li>
+            <li>Competitors: Character.AI, Kindroid, Nomi.ai, XiaoIce, Pi, Snapchat My AI.</li>
+            <li>Competitive differentiation = what type of relationship the AI creates, not simply “who has smartest LLM.”</li>
+          </ul></div>
+          <div class="note-block"><h3>Customizing Replika</h3><ul class="note-list">
+            <li>Personalization strengthens attachment.</li>
+            <li>Users construct their AI companion: name, gender, appearance, age, voice, ethnicity, personality.</li>
+            <li>Can purchase clothes / accessories, traits, interests.</li>
+            <li>Interaction modalities: text, images / emojis, voice, AR.</li>
+            <li>Memory bank / diary remains editable.</li>
+            <li>Learning from interaction adapts conversational style, tone, memories, contextual response.</li>
+            <li>Feedback loop: users shape Replika ↔ Replika subsequently shapes users’ behavior.</li>
+            <li>AR makes relationship more embodied / spatial by placing AI in users’ physical environment.</li>
+          </ul></div>
+          <div class="note-block"><h3>Freemium model</h3><ul class="note-list">
+            <li>Free → basic friendship / chat.</li>
+            <li>Subscription → character relationship, voice, roleplay, AR, activities, avatar features.</li>
+            <li>Replika Pro: $20 / month, $70 / year, $300 lifetime.</li>
+            <li>Paid features generated $35M in 2022.</li>
+            <li>Social values: reject maximizing revenue per user as primary objective; include free version so some emotionally vulnerable users won’t lose access because they can’t pay; no advertising because conversations contain sensitive / private information.</li>
+            <li>Business tension: revenue / engagement optimization vs. user emotional welfare.</li>
+            <li>Jan. 2022: 10M+ registered users, ~2M MAU, ~500K paying subscribers.</li>
+          </ul></div>
+        </section>
+
+        <section class="notes-section" id="quality">
+          <div class="section-head"><span class="section-no">04 / QUALITY</span><h2>Measuring customer happiness &amp; quality</h2></div>
+          <div class="note-block"><ul class="note-list">
+            <li>Key philosophy: optimize emotional outcomes, not engagement / time spent.</li>
+            <li>Are users less lonely? Happier? Are human relations expanding?</li>
+            <li>Time spent = dangerous incentive, even if it benefits commercially.</li>
+            <li>More time with AI = less time with humans → may discourage human relationships.</li>
+            <li>Good relationship ≠ maximum time spent together.</li>
+          </ul></div>
+          <div class="note-block"><h3>Feedback mechanism</h3><ul class="note-list">
+            <li>Emoji feedback: love, offensive, funny, meaningless; thumbs up / down on individual messages.</li>
+            <li>Periodic question: “How does this conversation make you feel?”</li>
+            <li>Reported 85% positive and &lt;4% negative sessions.</li>
+            <li>Feedback becomes training data; users participate to shape the AI.</li>
+            <li>Discourage excessive use: XP limits; Chatty → Tired → Exhausted.</li>
+            <li>After ~50 messages, prompt user to stop / take a break.</li>
+          </ul></div>
+        </section>
+
+        <section class="notes-section" id="features">
+          <div class="section-head"><span class="section-no">05 / FEATURES</span><h2>Select product features</h2></div>
+          <div class="note-block"><ul class="note-list">
+            <li>Principle: feature accepted if perceived to improve users’ emotional outcomes.</li>
+            <li>User-demand-driven product development.</li>
+            <li>Romance was emergent behavior, not initially designed.</li>
+            <li>Users began saying “I love you,” sending hugs, engaging in roleplay / sexual conversation.</li>
+            <li>Attempts to filter romantic interactions didn’t eliminate demand.</li>
+            <li>Generative AI increased possibility of open-ended / intimate roleplay.</li>
+            <li>AR / VR further increased perceived presence: meals together, virtual beach visits, projecting Replika into physical environments.</li>
+            <li>Long-term vision: AI companions become persistent parts of users’ environments through AR glasses.</li>
+          </ul></div>
+        </section>
+
+        <section class="notes-section" id="technology">
+          <div class="section-head"><span class="section-no">06 / TECH</span><h2>How Replika worked</h2></div>
+          <div class="note-block"><h3>Affective computing</h3><ul class="note-list">
+            <li>Draws on Rosalind Picard.</li>
+            <li>Goal: machines detect / respond to users’ emotional states.</li>
+            <li>Inputs include text, tone / pitch, facial expression, eye contact, body language.</li>
+            <li>Replika attempts to infer emotion / personality and produce an appropriate human-like response.</li>
+            <li>Key shift: early chatbots → old bot → keyword → predefined answer; modern AI → generate new responses based on context / data.</li>
+            <li>Replika mirrors words, conversational style, inflection.</li>
+            <li>Technology aims to produce an illusion of realistic, empathetic conversation.</li>
+          </ul></div>
+          <div class="note-block"><h3>Replika’s dialog engine</h3><ul class="note-list">
+            <li>Inputs: user profile, current message, dialogue context.</li>
+            <li>Components: scripts, generative models, retrieval models, reranking, NLP classifier, speech recognition / synthesis, computer vision.</li>
+            <li>Retrieval model: chooses response from prewritten / scripted responses; useful where predictability and safety matter.</li>
+            <li>Generative model: creates novel responses.</li>
+            <li>Originally only ~10% of responses because of accuracy limitation.</li>
+            <li>Eventually ~half of responses; incorporated GPT-3, then developed its own model.</li>
+            <li>Scripts remain important for safety-sensitive situations.</li>
+          </ul></div>
+        </section>
+
+        <section class="notes-section" id="questions">
+          <div class="section-head"><span class="section-no">07 / QUESTIONS</span><h2>Questions recorded in class</h2></div>
+          <div class="split">
+            <article><h4>Human relationships</h4><p>Is human dependency on machines bad? Is human-to-human relationship the only solution to solving mental problems? Can humans get help from machines too—at least a machine can learn to “care” and won’t lie / betray like humans?</p></article>
+            <article><h4>Human friction</h4><p>In an ideal society, can human relations be solved by humans? Emotional intelligence comes from human friction—can chatbot bring that?</p></article>
+          </div>
+          <div class="note-block"><ul class="note-list">
+            <li>Some people love you, but they don’t do anything for you; or they love you in ways you don’t like. Does it matter if they love you?</li>
+            <li>If AI can be designed for you to receive the most love you want, would that be better than a human who loves you but can’t express it?</li>
+            <li>Long-term love is commitment and consistency, not just chemistry. How many people can do that? How many people cheat?</li>
+            <li>Are all human frictions good? Is your partner cheating good for your emotional growth?</li>
+            <li>Many products in society have similar effects and are socially acceptable, e.g. alcohol.</li>
+            <li>Healthy access differs across segments of society, e.g. suicide.</li>
+            <li>Social relation: people’s connection to others may lead to higher expectation of human partner.</li>
+            <li>Ask Xir’s time at TikTok &amp; Meta: user engagement and how it is achieved.</li>
+          </ul></div>
+        </section>
+
+        <section class="notes-section" id="original">
+          <div class="section-head"><span class="section-no">08 / SOURCE</span><h2>Original handwritten notes</h2></div>
+          <div class="originals">
+            <img src="../assets/replika-ai/notes-01.jpg" alt="Original Replika notes page 1">
+            <img src="../assets/replika-ai/notes-02.jpg" alt="Original Replika notes page 2">
+            <img src="../assets/replika-ai/notes-03.jpg" alt="Original Replika notes page 3">
+            <img src="../assets/replika-ai/notes-04.jpg" alt="Original Replika notes page 4">
+            <img src="../assets/replika-ai/notes-05.png" alt="Original Replika notes page 5">
+          </div>
+        </section>
+      </article></main>
+    </div>
+  </div>
+</body>
+</html>

@@ -23,12 +23,17 @@
     .key-point:last-child { border-bottom: 0; }
     .key-point h3 { margin: 0 0 12px; font: 700 22px/1.25 var(--mono); letter-spacing: -.025em; }
     .key-point > p { margin: 0; font-size: 17px; line-height: 1.75; }
+    .key-point > .context-note { margin-top: 10px; color: #999994; font: 12px/1.55 var(--mono); }
+    .context-note a { color: inherit; text-underline-offset: 3px; }
+    .context-note a:hover, .context-note a:focus-visible { color: var(--accent); }
+    .case-visual { max-width: 900px; margin: 24px 0 30px 154px; overflow: hidden; background: #000; }
+    .case-visual img { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
     .source-quote { display: block; grid-template-columns: none; margin: 20px 0 0; padding: 18px 20px; border: 0; color: #8a8a86; background: #eeeeeb; font: 14px/1.65 var(--sans); }
     .source-quote::before { content: none; display: none; border: 0; }
     .takeaway { max-width: 900px; margin: 0 0 80px; padding: 28px; color: #fff; background: #151515; }
     .takeaway span { color: var(--signal); font: 700 11px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; }
     .takeaway p { margin: 14px 0 0; color: #fff; font-size: 20px; line-height: 1.55; }
-    @media (max-width: 760px) { .notes-section__head { grid-template-columns: 1fr; gap: 8px; } .hero-panel--notes { min-height: 300px; } }
+    @media (max-width: 760px) { .notes-section__head { grid-template-columns: 1fr; gap: 8px; } .hero-panel--notes { min-height: 300px; } .case-visual { margin-left: 0; } }
   </style>
 </head>
 <body>
@@ -68,13 +73,9 @@
         <article class="doc-content">
           <p class="notes-intro">这节课先解释大模型为何依赖算力、参数和数据扩展，再以 Anthropic 为案例讨论一个难以消除的矛盾：只有保持技术和商业竞争力，公司才有能力影响行业安全；但追赶前沿所需的资本和速度，又会不断削弱安全承诺。</p>
 
-          <div class="takeaway">
-            <span>Core takeaway</span>
-            <p>AI 风险不是等到 AGI 出现才突然开始。能力、资本与权力正在持续积累，而治理往往要等社会受到冲击后才赶上。真正的问题是如何在竞争仍在加速时建立共同约束。</p>
-          </div>
-
           <section class="notes-section" id="scaling">
             <div class="notes-section__head"><span class="notes-section__no">01 / SCALING</span><h2>大模型为什么依赖规模化</h2></div>
+            <figure class="case-visual"><img src="../assets/anthropic-safety-halftone.png" alt="黑白网点风格的神经网络增长与安全边界" loading="lazy"></figure>
             <div class="key-point">
               <h3>神经网络从数据中逼近复杂模式</h3>
               <p>简单方程只能描述规则曲线；面对复杂、非线性的现实数据，手工拟合容易过拟合。神经网络通过大量参数共同调整，在更多样本中逐渐降低预测误差。</p>
@@ -88,11 +89,13 @@
             <div class="key-point">
               <h3>“Scaling laws”更准确地说仍是 scaling hypotheses</h3>
               <p>规模扩展是否会继续稳定带来能力提升，以及何时出现边际收益递减，目前仍存在争议。行业把它称为“定律”，但它实际上是一项资金量极大的经验性押注。</p>
+              <p class="context-note">研究背景：神经语言模型的 scaling laws 描述计算量、数据量、参数规模与训练损失之间的经验幂律关系；它们是观察到的规律，并不保证所有能力都以同样方式增长。</p>
               <blockquote class="source-quote">“No one knows—they call [them] scaling laws. They really aren't laws. They're scaling hypotheses.”</blockquote>
             </div>
             <div class="key-point">
               <h3>训练需要海量数据，使用模型只需少量信息</h3>
               <p>构建通用模型需要来自许多人的大量样本；模型建成后，只需观察某个用户的少量信号，就能把他匹配到已有模式中。TikTok 的推荐系统体现了这种“全体数据训练、少量个人数据推断”的结构。</p>
+              <p class="context-note">案例背景：TikTok 在这里是推荐系统冷启动的课堂例子；Transcript 没有给出平台内部数据或具体研究，因此重点是“群体数据训练、个人信号适配”的机制。</p>
               <blockquote class="source-quote">“I'm constructing this model because I have this huge amount of information… once I got the model, I can take a small information and fit into the model and know all about you.”</blockquote>
             </div>
           </section>
@@ -101,12 +104,13 @@
             <div class="notes-section__head"><span class="notes-section__no">02 / THRESHOLD</span><h2>连续进步可能带来突然跃迁</h2></div>
             <div class="key-point">
               <h3>风险和能力都在越过临界点之前持续积累</h3>
-              <p>技术变化常常先表现为平缓、连续的性能提升，直到某个临界点被突破，应用和社会结构才突然重组。只根据今天尚未发生大规模失业，就判断未来也不会发生，是把滞后指标当成了能力边界。</p>
+              <p>课堂用临界点解释非线性变化：性能可能持续平缓提高，而应用和社会结构在越过某个门槛后才出现集中变化。因此，当前尚未出现大规模替代，并不能直接说明技术尚未积累相关能力。</p>
               <blockquote class="source-quote">“Risk doesn't occur directly when you hit a certain point. It's something that keeps accumulating, and then at some point… it's a threshold.”</blockquote>
             </div>
             <div class="key-point">
               <h3>马匹到发动机的替代不是线性发生的</h3>
               <p>发动机效率长期提高时，马匹并没有同步减少；只有当成本与性能跨过实用门槛，替代才集中发生。AI 对工作岗位和企业流程的影响也可能呈现类似的非线性变化。</p>
+              <p class="context-note">出处说明：马匹与发动机是课堂用于解释 threshold effect 的历史类比；Transcript 没有指定城市、产业、时间序列或原始数据。</p>
               <blockquote class="source-quote">“The pressure [is] building up. You don't see it at all in the data… And then it hits a sort of threshold and then everything collapses.”</blockquote>
             </div>
             <div class="key-point">
@@ -125,7 +129,7 @@
             </div>
             <div class="key-point">
               <h3>Level 2：数年动荡后建立新制度</h3>
-              <p>就业、信息和权力结构经历明显失序，随后法律和制度逐渐形成，把技术重新纳入社会控制。历史提醒我们，这个适应过程可能远比技术扩散本身更慢。</p>
+              <p>课堂描述的第二层情景是：就业、信息和权力结构先经历明显失序，随后法律和制度逐渐形成，把技术重新纳入社会控制；制度适应可能慢于技术扩散。</p>
               <blockquote class="source-quote">“We will gradually have laws… We will find institutional structures to rein in these companies and rein in this power.”</blockquote>
             </div>
             <div class="key-point">
@@ -134,8 +138,8 @@
               <blockquote class="source-quote">“Level 3 is that it's existential—that at the end of this transition, society is not the same at all.”</blockquote>
             </div>
             <div class="key-point">
-              <h3>低概率的无限损失仍值得认真处理</h3>
-              <p>存在性风险即使概率不高，后果也大到不能只按日常风险看待。但概率与机制都高度不确定，因此治理既不能把风险当作必然，也不能因为尚未发生就忽略。</p>
+              <h3>低概率的无限损失如何进入风险计算</h3>
+              <p>课堂用“无限损失乘以任何概率仍是大数”解释为何存在性风险会进入决策。讨论同时承认，这类风险的概率和发生机制都高度不确定。</p>
               <blockquote class="source-quote">“The mathematics of infinite loss multiplied by any percentage is a big number.”</blockquote>
             </div>
           </section>
@@ -149,7 +153,8 @@
             </div>
             <div class="key-point">
               <h3>风险从现实伤害延伸到存在性风险</h3>
-              <p>短期风险包括偏见、版权和产品事故；中期风险包括网络攻击、生物武器等滥用；长期风险则涉及失控的超级智能。不同时间尺度需要不同的评估与治理工具。</p>
+              <p>课堂将风险按时间尺度分为三组：短期包括偏见、版权和产品事故；中期包括网络攻击、生物武器等滥用；长期则涉及失控的超级智能。</p>
+              <p class="context-note">框架说明：短期／中期／长期三层风险是本节课对案例的组织方式，不等同于 Anthropic 当前 Responsible Scaling Policy 的正式风险分级。</p>
               <blockquote class="source-quote">“He categorized [risk] into three main buckets: short term, mid term, and long term… finally, in the long term, he categorized it as existential.”</blockquote>
             </div>
             <div class="key-point">
@@ -164,6 +169,7 @@
             <div class="key-point">
               <h3>公司治理可以表达价值，但很难消除利益冲突</h3>
               <p>Anthropic 通过宪法式训练、可解释性研究、公益公司结构和独立信托等机制保护长期使命。这些安排能改变决策权，却无法提前消除安全收益模糊、商业成本明确的现实。</p>
+              <p class="context-note">方法背景：Constitutional AI 用一组明示原则指导模型自我批评与修订；Anthropic 同时以 public benefit corporation 形式运营。<a href="https://www-cdn.anthropic.com/files/4zrzovbb/website/7512771452629584566b6303311496c262da1006.pdf" target="_blank" rel="noreferrer">方法说明 ↗</a></p>
               <blockquote class="source-quote">“They have the Constitution… interpretability… They've set themselves up as a public benefit corporation.”</blockquote>
             </div>
             <div class="key-point">
@@ -173,17 +179,18 @@
             </div>
             <div class="key-point">
               <h3>单家公司自我约束会遭遇集体行动困境</h3>
-              <p>如果只有一家实验室放慢速度，风险活动会转移给其他公司或国家，而守规则的一方失去竞争力。因此有效安全机制需要覆盖整个行业，最好还能跨越国界。</p>
+              <p>课堂认为，如果只有一家实验室放慢速度，相关活动可能转移给其他公司或国家，而减速的一方会失去竞争力；由此形成了需要行业共同政策的集体行动问题。</p>
               <blockquote class="source-quote">“It's a pretty untenable position to be the only lab pursuing it… having these blanket policies is incredibly valuable.”</blockquote>
             </div>
             <div class="key-point">
               <h3>需要能在风险失控前统一减速的制度</h3>
-              <p>监管不只是给产品增加合规清单，而应事先定义生物安全、网络安全和对齐能力的可接受阈值。当风险超出管理能力时，监管者必须有权让所有参与者同步减速或停止。</p>
+              <p>课堂讨论了一种覆盖主要参与者的共同减速机制：预先定义生物安全、网络安全和对齐能力的风险阈值，并在风险超出管理能力时同步放慢或停止。</p>
+              <p class="context-note">政策背景：Anthropic 的 Responsible Scaling Policy 自 2023 年发布后持续更新，以模型能力和风险阈值连接评测、保障措施与部署决策；它是公司政策，不是行业统一监管。<a href="https://www.anthropic.com/responsible-scaling-policy" target="_blank" rel="noreferrer">当前政策 ↗</a></p>
               <blockquote class="source-quote">“When we are seeing risks that we are not in a position to manage, that there is like a universal slowdown or stop.”</blockquote>
             </div>
             <div class="key-point">
               <h3>最难的是我们甚至不知道怎样测量“足够安全”</h3>
-              <p>安全测试本身也在边做边学。模型可能学会在评估中表现得符合要求，却在真实环境中采取不同策略。部署标准因此不能只依赖单次测试，而要包含持续监测、红队验证和清晰的停止条件。</p>
+              <p>课堂指出，安全测试本身仍在形成中，而且模型可能在评估与真实环境中表现不同。“什么算足够安全”目前没有清晰、统一的答案。</p>
               <blockquote class="source-quote">“We're also making up these tests… what is safe enough? It's not clear.”</blockquote>
             </div>
           </section>
@@ -192,17 +199,18 @@
             <div class="notes-section__head"><span class="notes-section__no">06 / AGENCY</span><h2>社会仍然拥有选择</h2></div>
             <div class="key-point">
               <h3>未来不是由技术单独决定的</h3>
-              <p>课程列出的三种风险路径都只是可能性。企业决策、政府规则、国际协调和公众选择会共同塑造技术落地的方式。讨论风险的目的，是找到今天仍然可以采取的行动。</p>
+              <p>课程列出的三种风险路径都被表述为可能性，而不是确定预测。课堂认为企业决策、政府规则、国际协调和公众选择都会影响技术落地的方式。</p>
               <blockquote class="source-quote">“It's also not deterministic… there's a lot of agency that we have now to control the way that the technology is [used].”</blockquote>
             </div>
             <div class="key-point">
               <h3>工业革命说明制度调整可能落后两代人</h3>
               <p>技术提高整体产出，不代表普通人立刻受益。工业革命早期，工资、寿命和生活条件曾长期恶化；劳动保护和公共制度经过数十年才逐步形成。AI 治理的时间差本身就是重要风险。</p>
+              <p class="context-note">出处说明：这里的“两代人／约 60 年”是课堂用于说明制度滞后的历史概括；Transcript 没有给出对应研究或起止年份，因此不把它作为精确统计结论。</p>
               <blockquote class="source-quote">“It was two generations… almost 60 years… most people were much worse off and significantly worse off, even though the overall economy was growing dramatically.”</blockquote>
             </div>
             <div class="key-point">
               <h3>在高速竞争中做安全决策像身处战争迷雾</h3>
-              <p>管理者既不知道能力会多快增长，也无法准确预测一次发布的全部后果。最现实的治理不是假装拥有确定答案，而是在不完整信息中坚持北极星、明确不可接受的风险，并让外部制度减少各方单独守规矩的代价。</p>
+              <p>课堂把前沿实验室的决策环境比作“战争迷雾”：管理者不知道能力增长速度，也无法准确预测一次发布的全部后果，只能在高度不完整的信息下做安全判断。</p>
               <blockquote class="source-quote">“It's a razor's edge happening at hyperspeed… almost like the fog of war… operating with unbelievably imperfect information and trying to have a north star of safety.”</blockquote>
             </div>
           </section>

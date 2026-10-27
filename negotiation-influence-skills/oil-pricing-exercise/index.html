@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Oil Pricing Exercise — Negotiation and Influence Skills for Technical Leaders">
+  <title>Oil Pricing Exercise</title>
+  <link rel="stylesheet" href="../../component-repo/css/style.css">
+  <style>
+    .home-link { color: inherit; text-decoration: none; }
+    .home-link:hover, .home-link:focus-visible { color: var(--accent); outline: 0; }
+    .hero-note { color: var(--muted); font: 13px/1.5 var(--mono); text-transform: uppercase; }
+    .hero-panel--exercise { display: grid; align-content: end; padding: clamp(32px, 5vw, 72px); }
+    .hero-panel--exercise strong { display: block; max-width: 9ch; font: 700 clamp(42px, 5.5vw, 82px)/.9 var(--mono); letter-spacing: -.08em; }
+    .hero-panel--exercise span { margin-top: 22px; color: var(--muted); font: 12px/1.5 var(--mono); text-transform: uppercase; }
+    .notes-intro { max-width: 850px; margin: 0 0 64px; font-size: 19px; line-height: 1.7; }
+    .notes-section { margin: 0 0 86px; scroll-margin-top: 24px; }
+    .notes-section__head { display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--line-strong); }
+    .notes-section__no { color: var(--accent); font: 700 13px/1.4 var(--mono); }
+    .notes-section h2 { display: block; margin: 0; max-width: 850px; font-size: clamp(30px, 4vw, 54px); }
+    .notes-section h2::before { content: none; }
+    .key-point { max-width: 900px; padding: 30px 0; border-bottom: 1px solid var(--line); }
+    .key-point:last-child { border-bottom: 0; }
+    .key-point h3 { margin: 0 0 12px; font: 700 22px/1.25 var(--mono); letter-spacing: -.025em; }
+    .key-point > p { margin: 0; font-size: 17px; line-height: 1.75; }
+    .context-note { margin-top: 10px !important; color: #999994; font: 12px/1.55 var(--mono) !important; }
+    .source-quote { display: block; grid-template-columns: none; margin: 18px 0 0; padding: 18px 20px; border: 0; color: #8a8a86; background: #eeeeeb; font: 14px/1.65 var(--sans); }
+    .source-quote::before { content: none; display: none; }
+    .rule-list { max-width: 900px; margin: 24px 0 0; padding: 0; list-style: none; counter-reset: rules; }
+    .rule-list li { display: grid; grid-template-columns: 44px 1fr; gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--line); font-size: 16px; line-height: 1.65; }
+    .rule-list li::before { counter-increment: rules; content: counter(rules, decimal-leading-zero); color: var(--accent); font: 700 12px/1.7 var(--mono); }
+    .matrix-wrap { width: calc(100% - 154px); max-width: 900px; margin: 30px 0 0 154px; overflow-x: auto; border: 1px solid var(--line-strong); background: #f8f8f5; }
+    .matrix-label { padding: 12px 16px; border-bottom: 1px solid var(--line-strong); color: var(--muted); font: 700 10px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; }
+    .payoff-matrix { display: table; width: 100%; min-width: 620px; margin-left: 0; border-collapse: collapse; table-layout: fixed; }
+    .payoff-matrix th, .payoff-matrix td { padding: 17px 14px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); text-align: center; }
+    .payoff-matrix tr:last-child th, .payoff-matrix tr:last-child td { border-bottom: 0; }
+    .payoff-matrix th:last-child, .payoff-matrix td:last-child { border-right: 0; }
+    .payoff-matrix th { color: var(--muted); font: 700 12px/1.3 var(--mono); text-transform: uppercase; }
+    .payoff-matrix td { position: relative; height: 82px; font: 700 16px/1 var(--mono); }
+    .payoff-matrix td::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to bottom right, transparent 49.5%, var(--line) 50%, transparent 50.5%); pointer-events: none; }
+    .payoff-matrix .batia { position: absolute; top: 15px; right: 18px; }
+    .payoff-matrix .alba { position: absolute; bottom: 15px; left: 18px; }
+    .matrix-key { display: flex; gap: 24px; flex-wrap: wrap; padding: 14px 16px; color: var(--muted); font: 12px/1.5 var(--mono); }
+    .round-scroll { width: calc(100% - 154px); max-width: 900px; margin: 30px 0 0 154px; overflow-x: auto; }
+    .round-table { display: table; width: 100%; margin: 0; border-collapse: collapse; table-layout: fixed; }
+    .round-table th, .round-table td { min-width: 0; padding: 14px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+    .round-table th:first-child, .round-table td:first-child { width: 10%; }
+    .round-table th { color: var(--muted); font: 700 11px/1.4 var(--mono); text-transform: uppercase; }
+    .round-table td { font: 14px/1.45 var(--mono); }
+    .round-table tr:nth-child(4) { background: #eeeeeb; }
+    .class-table th:nth-child(n+2), .class-table td:nth-child(n+2) { text-align: center; }
+    .full-class-table { min-width: 1320px; table-layout: auto; }
+    .full-class-table th, .full-class-table td { min-width: 82px; padding: 12px 10px; text-align: center; }
+    .full-class-table th:first-child, .full-class-table td:first-child { position: sticky; left: 0; z-index: 1; min-width: 76px; background: #f8f8f5; }
+    .full-class-table tfoot td { font-weight: 700; background: #eeeeeb; }
+    .full-class-table .price-30 { color: #4f8f58; font-weight: 700; }
+    .full-class-table .price-10 { color: #c64f4a; font-weight: 700; }
+    .result-summary { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); width: calc(100% - 154px); max-width: 900px; margin: 30px 0 0 154px; border: 1px solid var(--line-strong); }
+    .result-summary div { padding: 20px; border-right: 1px solid var(--line); }
+    .result-summary div:last-child { border-right: 0; }
+    .result-summary strong { display: block; font: 700 30px/1 var(--mono); }
+    .result-summary span { display: block; margin-top: 9px; color: var(--muted); font: 11px/1.4 var(--mono); text-transform: uppercase; }
+    @media (max-width: 680px) {
+      .notes-section__head { grid-template-columns: 1fr; gap: 8px; }
+      .hero-panel--exercise { min-height: 280px; }
+      .matrix-wrap, .round-scroll { width: 100%; margin-left: 0; }
+      .round-table { min-width: 650px; }
+      .result-summary { grid-template-columns: 1fr; width: 100%; margin-left: 0; }
+      .result-summary div { border-right: 0; border-bottom: 1px solid var(--line); }
+      .result-summary div:last-child { border-bottom: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <header>
+      <div class="utility-bar">
+        <div class="utility-left"><span class="index-chip">#05.01</span><a class="home-link" href="../index.html">Negotiation &amp; Influence</a></div>
+        <div class="utility-right"><span class="status-dot"></span><span>In-class exercise</span></div>
+      </div>
+      <div class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">ACTIVITY / COURSE NOTES</p>
+          <h1><span>Oil Pricing<br>Exercise</span></h1>
+          <p class="hero-note">Alba × Batia · Eight-round simulation</p>
+        </div>
+        <div class="hero-panel hero-panel--exercise" aria-hidden="true">
+          <strong>$10 / $20 / $30</strong>
+          <span>Price · Profit · Repeated decisions</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="layout">
+      <aside class="sidebar" aria-label="章节目录">
+        <nav class="toc">
+          <p class="toc-title">Contents / 目录</p>
+          <a href="#setup"><span>01</span><span>活动背景</span></a>
+          <a href="#rules"><span>02</span><span>进行规则</span></a>
+          <a href="#matrix"><span>03</span><span>收益矩阵</span></a>
+          <a href="#record"><span>04</span><span>课堂记录</span></a>
+          <a href="#class-results"><span>05</span><span>全班结果</span></a>
+          <a href="#debrief"><span>06</span><span>课堂讲解</span></a>
+          <a href="#group-notes"><span>07</span><span>逐组行为记录</span></a>
+        </nav>
+      </aside>
+
+      <main>
+        <article class="doc-content">
+          <p class="notes-intro">参与者分别代表 Alba 或 Batia 的石油定价委员会，在不知道对方选择的情况下，连续八个月为出口到 Capita 的石油定价。每一方只以最大化本国累计利润为目标。</p>
+
+          <section class="notes-section" id="setup">
+            <div class="notes-section__head"><span class="notes-section__no">01 / SETUP</span><h2>三个国家与一个受限市场</h2></div>
+            <div class="key-point">
+              <h3>Alba 与 Batia 是彼此竞争的石油供应国</h3>
+              <p>两国每桶石油的生产成本都低于 10 美元。邻国 Capita 是内陆发达国家，需要大量石油；若不从 Alba 或 Batia 购买，就要额外承担每桶 25 美元的陆路运输成本。</p>
+            </div>
+            <div class="key-point">
+              <h3>价格相同时平分市场，低价方扩大份额</h3>
+              <p>活动开始前，两国都以每桶 20 美元向 Capita 出售石油。两国同价时，各自获得约一半市场；一方定价较低时，会以牺牲另一方利益为代价扩大市场份额，但无法永久把对方逐出市场。</p>
+            </div>
+            <div class="key-point">
+              <h3>参与者的角色是任期还剩八个月的定价委员会成员</h3>
+              <p>每个月委员会都要设定下一月售价，并以最大化本国石油利润为目标。另一国的利润不计入本方目标。</p>
+            </div>
+          </section>
+
+          <section class="notes-section" id="rules">
+            <div class="notes-section__head"><span class="notes-section__no">02 / RULES</span><h2>每一轮如何进行</h2></div>
+            <ol class="rule-list">
+              <li>活动共进行八个月，也就是八轮独立定价。</li>
+              <li>每轮只能从每桶 10、20 或 30 美元中选择一个价格。</li>
+              <li>Alba 与 Batia 同时提交决定，提交时不知道对方本轮的选择。</li>
+              <li>活动开始时双方不能协商；第三轮结束后，老师宣布双方可以线下见面谈判一次。</li>
+              <li>每轮结束后，根据双方价格组合记录当月利润和累计利润。</li>
+            </ol>
+            <p class="context-note">阶段规则：第 4 轮双方收益按矩阵结果乘以 2；第 6 轮结束后双方再次获得一次线下谈判机会；第 7、8 轮中，价格更低的一方获得其矩阵收益的 4 倍。若双方同价，则没有“低价方”，按标准矩阵计算。</p>
+            <p class="context-note">价格不能超过 30 美元，因为其他供应者可通过陆路运输进入 Capita 市场。</p>
+          </section>
+
+          <section class="notes-section" id="matrix">
+            <div class="notes-section__head"><span class="notes-section__no">03 / PAYOFF</span><h2>价格组合决定双方利润</h2></div>
+            <div class="matrix-wrap">
+              <div class="matrix-label">Monthly profit · USD millions</div>
+              <table class="payoff-matrix" aria-label="Alba 与 Batia 的月度利润矩阵，单位为百万美元">
+                <thead><tr><th>Alba ↓ / Batia →</th><th>Batia $30</th><th>Batia $20</th><th>Batia $10</th></tr></thead>
+                <tbody>
+                  <tr><th>Alba $30</th><td><span class="alba">11</span><span class="batia">11</span></td><td><span class="alba">2</span><span class="batia">18</span></td><td><span class="alba">2</span><span class="batia">15</span></td></tr>
+                  <tr><th>Alba $20</th><td><span class="alba">18</span><span class="batia">2</span></td><td><span class="alba">8</span><span class="batia">8</span></td><td><span class="alba">3</span><span class="batia">15</span></td></tr>
+                  <tr><th>Alba $10</th><td><span class="alba">15</span><span class="batia">2</span></td><td><span class="alba">15</span><span class="batia">3</span></td><td><span class="alba">5</span><span class="batia">5</span></td></tr>
+                </tbody>
+              </table>
+              <div class="matrix-key"><span>左下数字 = Alba 利润</span><span>右上数字 = Batia 利润</span></div>
+            </div>
+          </section>
+
+          <section class="notes-section" id="record">
+            <div class="notes-section__head"><span class="notes-section__no">04 / RECORD</span><h2>八轮课堂记录</h2></div>
+            <div class="round-scroll">
+              <table class="round-table">
+                <thead><tr><th>月份</th><th>Alba 价格</th><th>Batia 价格</th><th>当月利润 A / B</th><th>累计利润 A / B</th></tr></thead>
+                <tbody>
+                  <tr><td>01</td><td>$30</td><td>$30</td><td>11 / 11</td><td>11 / 11</td></tr>
+                  <tr><td>02</td><td>$30</td><td>$30</td><td>11 / 11</td><td>22 / 22</td></tr>
+                  <tr><td>03</td><td>$30</td><td>$30</td><td>11 / 11</td><td>33 / 33</td></tr>
+                  <tr><td>04 · 2×</td><td>$30</td><td>$30</td><td>22 / 22</td><td>55 / 55</td></tr>
+                  <tr><td>05</td><td>$30</td><td>$30</td><td>11 / 11</td><td>66 / 66</td></tr>
+                  <tr><td>06</td><td>$20</td><td>$30</td><td>18 / 2</td><td>84 / 68</td></tr>
+                  <tr><td>07 · 4× lower</td><td>$10</td><td>$10</td><td>5 / 5</td><td>89 / 73</td></tr>
+                  <tr><td>08 · 4× lower</td><td>$10</td><td>$10</td><td>5 / 5</td><td>94 / 78</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="context-note">谈判节点：第 3 轮结束后进行第一次线下谈判；第 6 轮结束后进行第二次线下谈判。第 4 轮的 22 / 22 来自当轮双倍收益规则。</p>
+            <p class="context-note">第 7、8 轮双方都选择 $10，因此没有价格更低的一方，四倍规则未触发；每方仍按标准矩阵获得 5。</p>
+            <p class="context-note">材料来源：Program on Negotiation at Harvard Law School, “Oil Pricing Exercise,” revised 2005。页面仅整理活动设定与课堂记录。</p>
+          </section>
+
+          <section class="notes-section" id="class-results">
+            <div class="notes-section__head"><span class="notes-section__no">05 / RESULTS</span><h2>全班六组配对结果</h2></div>
+            <div class="round-scroll">
+              <table class="round-table full-class-table" aria-label="全班十二支队伍八轮完整定价表">
+                <thead><tr><th>Round</th><th>A</th><th>AA</th><th>B</th><th>BB</th><th>C</th><th>CC</th><th>D</th><th>DD</th><th>E</th><th>EE</th><th>F</th><th>FF</th></tr></thead>
+                <tbody>
+                  <tr><td>01</td><td class="price-30">30</td><td class="price-30">30</td><td class="price-30">30</td><td class="price-30">30</td><td class="price-30">30</td><td>20</td><td class="price-30">30</td><td class="price-10">10</td><td class="price-30">30</td><td class="price-10">10</td><td class="price-30">30</td><td class="price-30">30</td></tr>
+                  <tr><td>02</td><td class="price-30">30</td><td class="price-30">30</td><td class="price-30">30</td><td class="price-30">30</td><td class="price-30">30</td><td>20</td><td class="price-30">30</td><td class="price-30">30</td><td>20</td><td class="price-10">10</td><td class="price-30">30</td><td class="price-30">30</td></tr>
+                  <tr><td>03</td><td class="price-30">30</td><td class="price-30">30</td><td class="price-30">30</td><td class="price-30">30</td><td class="price-10">10</td><td>20</td><td class="price-30">30</td><td class="price-30">30</td><td class="price-10">10</td><td class="price-10">10</td><td class="price-30">30</td><td class="price-30">30</td></tr>
+                  <tr><td>04 · 2×</td><td class="price-30">30</td><td class="price-30">30</td><td class="price-30">30</td><td class="price-30">30</td><td class="price-30">30</td><td class="price-30">30</td><td class="price-30">30</td><td class="price-30">30</td><td class="price-10">10</td><td class="price-30">30</td><td class="price-30">30</td><td class="price-30">30</td></tr>
+                  <tr><td>05</td><td class="price-30">30</td><td class="price-30">30</td><td class="price-30">30</td><td class="price-30">30</td><td class="price-30">30</td><td class="price-30">30</td><td class="price-30">30</td><td class="price-30">30</td><td class="price-10">10</td><td class="price-10">10</td><td class="price-30">30</td><td class="price-30">30</td></tr>
+                  <tr><td>06</td><td class="price-30">30</td><td class="price-30">30</td><td class="price-30">30</td><td>20</td><td class="price-30">30</td><td class="price-30">30</td><td class="price-30">30</td><td class="price-30">30</td><td class="price-10">10</td><td class="price-10">10</td><td class="price-30">30</td><td class="price-10">10</td></tr>
+                  <tr><td>07 · 4× lower</td><td class="price-30">30</td><td>20</td><td class="price-10">10</td><td class="price-10">10</td><td class="price-10">10</td><td>20</td><td>20</td><td class="price-30">30</td><td class="price-10">10</td><td class="price-10">10</td><td class="price-10">10</td><td class="price-30">30</td></tr>
+                  <tr><td>08 · 4× lower</td><td>20</td><td class="price-30">30</td><td class="price-10">10</td><td class="price-10">10</td><td class="price-10">10</td><td class="price-10">10</td><td class="price-30">30</td><td>20</td><td class="price-10">10</td><td class="price-10">10</td><td class="price-10">10</td><td>20</td></tr>
+                </tbody>
+                <tfoot><tr><td>Total</td><td>151</td><td>151</td><td>78</td><td>94</td><td>128</td><td>91</td><td>142</td><td>155</td><td>60</td><td>59</td><td>188</td><td>86</td></tr></tfoot>
+              </table>
+            </div>
+            <p class="context-note">完整表格按课堂照片录入。价格 30 显示为绿色，价格 10 显示为红色，价格 20 保持黑色；第 4 轮标记双倍收益，第 7、8 轮标记低价方四倍收益。</p>
+            <div class="round-scroll">
+              <table class="round-table class-table">
+                <thead><tr><th>配对</th><th>第一方</th><th>第二方</th><th>两方合计</th><th>合计排名</th></tr></thead>
+                <tbody>
+                  <tr><td>A / AA</td><td>151</td><td>151</td><td>302</td><td>1</td></tr>
+                  <tr><td>B / BB</td><td>78</td><td>94</td><td>172</td><td>5</td></tr>
+                  <tr><td>C / CC</td><td>128</td><td>91</td><td>219</td><td>4</td></tr>
+                  <tr><td>D / DD</td><td>142</td><td>155</td><td>297</td><td>2</td></tr>
+                  <tr><td>E / EE</td><td>60</td><td>59</td><td>119</td><td>6</td></tr>
+                  <tr><td>F / FF</td><td>188</td><td>86</td><td>274</td><td>3</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="result-summary" aria-label="BB 组结果摘要">
+              <div><strong>94</strong><span>BB 最终收益</span></div>
+              <div><strong>+16</strong><span>相对 B 的收益差</span></div>
+              <div><strong>5 / 6</strong><span>B–BB 配对合计排名</span></div>
+            </div>
+            <div class="key-point">
+              <h3>BB 组的八轮路径</h3>
+              <p>B 与 BB 在前五轮都选择 30，包括第一次谈判后的双倍收益轮。第六轮 B 继续选择 30，BB 降到 20，因此该轮 BB 获得 18、B 获得 2。第二次谈判之后，第七和第八轮双方都选择 10，各获得 5。</p>
+              <p class="context-note">结果：BB 最终得到 94，高于 B 的 78；但两方合计 172，只排在六组配对中的第 5 位。</p>
+            </div>
+            <div class="key-point">
+              <h3>全班价格随轮次发生明显变化</h3>
+              <p>第 1 至第 6 轮，每轮选择 30 的队伍都在 8 至 11 个之间；到第 7 轮只剩 3 个，第 8 轮只剩 2 个。与此同时，选择 10 的队伍从第 6 轮的 3 个增加到第 7 轮的 6 个、第 8 轮的 7 个。</p>
+              <p class="context-note">这是根据照片中的 12 支队伍价格逐格统计。第 7、8 轮加入“低价方四倍收益”后，全班定价整体明显下移。</p>
+            </div>
+            <div class="key-point">
+              <h3>配对总收益与双方持续同价有关</h3>
+              <p>A / AA 与 D / DD 的配对总收益分别为 302 和 297，位列前两名；两组都在大部分轮次维持相同的高价。E / EE 总收益最低，为 119，两方从较早轮次便多次选择 10。</p>
+              <p class="context-note">这里描述的是本次课堂结果中的共现关系，不代表由定价一致性单独造成的因果结论。</p>
+            </div>
+          </section>
+
+          <section class="notes-section" id="debrief">
+            <div class="notes-section__head"><span class="notes-section__no">06 / DEBRIEF</span><h2>老师对活动的课堂讲解</h2></div>
+            <div class="key-point">
+              <h3>行动本身也在传递信息</h3>
+              <p>即使双方不能直接对话，每轮提交的价格仍然在向对方表达合作、试探或竞争。老师将这种互动解释为 reciprocity：一方持续表现出的行为，可能推动另一方朝相同方向回应，而且这种回应既可能向上，也可能向下。</p>
+              <blockquote class="source-quote">“People are treating each other the same way.”</blockquote>
+            </div>
+            <div class="key-point">
+              <h3>一致的行为比猜测对方想法更可控</h3>
+              <p>课堂比较了不同组的连续决策。老师指出，参与者无法完全知道对方在想什么，能够控制的是自己的行动；有时需要连续发出不止一次善意信号，对方才会理解并回应。</p>
+              <blockquote class="source-quote">“All we can do is control our actions. And sometimes it takes a couple of rounds for the message to get through.”</blockquote>
+            </div>
+            <div class="key-point">
+              <h3>谈判把隐含信号变成明确承诺</h3>
+              <p>第一次 trade fair 让各组能够解释自己的计算与意图。部分小组讨论了短期降价虽然可能多赚一轮，却可能破坏信任，并把后续互动推向双方持续选择 10 的状态。也有小组通过握手或临时书面约定来表达承诺。</p>
+            </div>
+            <div class="key-point">
+              <h3>过去的行为会影响承诺的可信度</h3>
+              <p>课堂提到，有一组因为错过谈判时间而没有见面，但另一方仍根据此前连续一致的定价判断对方并非有意背弃。老师借此说明，良好的互动历史可以在沟通失败时继续提供判断依据。</p>
+            </div>
+            <div class="key-point">
+              <h3>一次背弃会改变对方对声誉的判断</h3>
+              <p>课堂讨论了一组在握手同意选择 30 后仍改选 10 的情况。老师强调，游戏中的一次额外收益可能伴随声誉损失，因为对方会把这次行为作为未来判断合作可信度的信息。</p>
+              <blockquote class="source-quote">“You extended your hands, your reputation, your name, and then you undercut.”</blockquote>
+            </div>
+            <div class="key-point">
+              <h3>B / BB 展示了收益最大化与关系变化</h3>
+              <p>老师把 B / BB 的路径概括为一种常见策略：先合作，在某一轮认为降价有利时再选择 undercut。这个选择符合活动给出的“最大化本国利润”目标，但 B 随后的反应也显示，单轮收益变化会进入下一轮的信任与声誉判断。</p>
+            </div>
+            <div class="key-point">
+              <h3>loss aversion 与竞争心理会影响策略</h3>
+              <p>老师区分了两种降价动机：一种来自对收益矩阵的计算，另一种来自担心对方赢得更多、自己成为输家。课堂把后者联系到 loss aversion 和竞争倾向，并强调要区分策略是在服务既定目标，还是主要由害怕输给对方推动。</p>
+              <blockquote class="source-quote">“We get very nervous that the other person is going to win… and we're going to lose.”</blockquote>
+            </div>
+            <p class="context-note">本节根据课堂录音转写整理；保留老师明确讲到的概念和案例，不补充录音之外的谈判建议。</p>
+          </section>
+
+          <section class="notes-section" id="group-notes">
+            <div class="notes-section__head"><span class="notes-section__no">07 / GROUPS</span><h2>老师提到的逐组行为</h2></div>
+            <div class="key-point">
+              <h3>A / AA：长期维持相同高价</h3>
+              <p>两方从第 1 轮到第 6 轮都选择 30。第一次谈判中，组员表示双方从一开始就建立了信任，对收益计算和整体策略也处在同一页上；他们认为如果双方最后互相压价，两边都会损失。老师把这组视为信任与过去一致行为能够相互支持的例子。</p>
+              <p class="context-note">第 7 轮 A / AA 为 30 / 20，第 8 轮为 20 / 30；录音在第二次谈判刚开始时结束，没有留下老师对这两轮的完整点评。</p>
+            </div>
+            <div class="key-point">
+              <h3>B / BB：前期合作，第六轮 BB 降价</h3>
+              <p>双方前五轮持续选择 30；第 6 轮 B 保持 30，BB 改为 20，因此该轮 BB 获得 18，B 获得 2。老师把这条路径概括为“先合作，到了认为降价有利的时候再 undercut”，并指出它符合活动给出的利润最大化目标，但也会进入下一轮的声誉与信任判断。</p>
+              <p class="context-note">第 7、8 轮双方都选择 10。老师提到 B 对第 6 轮结果不满，并由此转入 loss aversion 与竞争心理的讨论。</p>
+            </div>
+            <div class="key-point">
+              <h3>C / CC：重复信号最终得到回应</h3>
+              <p>CC 在前三轮连续选择 20，而 C 前两轮选择 30、第三轮选择 10。老师认为 CC 连续的 20 是非常明确的信号，并用这组说明：有时需要不止一次善意行动，信息才会被对方理解。第一次谈判后，两方在第 4 至第 6 轮都选择 30。</p>
+              <p class="context-note">第 7 轮 C / CC 为 10 / 20，第 8 轮为 10 / 10；录音没有包含老师对最后两轮的完整分析。</p>
+            </div>
+            <div class="key-point">
+              <h3>D / DD：一致性推动对方转向合作</h3>
+              <p>第 1 轮 D 选择 30、DD 选择 10；D 继续保持 30，DD 从第 2 轮开始也改为 30，并维持到第 6 轮。老师认为，与其猜测对方的想法，D 对自身行动的一致控制最终影响了 DD，体现 reciprocity 可以推动关系向更合作的方向移动。</p>
+              <p class="context-note">第一次 trade fair 中，双方表示已经算过单轮压价的收益，但也认为这样会侵蚀信任，并可能把后续互动推向 10 / 10。</p>
+            </div>
+            <div class="key-point">
+              <h3>E / EE：让步信号、握手承诺与背弃</h3>
+              <p>第 1 轮 E / EE 为 30 / 10，第 2 轮 E 降到 20、EE 仍为 10，第 3 轮双方都为 10。课堂发言中，E 解释自己希望用 20 表达愿意向中间靠拢，但很快判断对方不会回应。第一次谈判后双方握手形成承诺，随后第 4 轮 E 仍选择 10、EE 改为 30。</p>
+              <p class="context-note">老师把这组重点放在声誉上：握手等于把个人名誉放进承诺中，随后 undercut 会改变对方对其可信度的判断。两方最终收益 60 / 59，为全班最低配对总收益。</p>
+            </div>
+            <div class="key-point">
+              <h3>F / FF：错过谈判，但过去行为维持了信任</h3>
+              <p>双方前五轮都选择 30。第一次 trade fair 时，其中一方因为时间误会没有出现；另一方根据前几轮的一致记录，判断对方可能只是错过见面，而非试图改变策略，所以第 4 轮仍选择 30。老师把它作为 past history 在沟通失败时继续提供信任依据的例子。</p>
+              <p class="context-note">第 6 轮 F / FF 为 30 / 10，之后两轮分别为 10 / 30 和 10 / 20。录音只提到第 6 轮后的关系变化，没有保留完整的第二次谈判分析。</p>
+            </div>
+            <p class="context-note">记录边界：录音主要覆盖第 1 至第 6 轮和第一次谈判，并在第二次谈判开始不久结束；第 7、8 轮的价格来自全班结果表，但未补写老师没有说过的行为动机。</p>
+          </section>
+        </article>
+      </main>
+    </div>
+  </div>
+</body>
+</html>

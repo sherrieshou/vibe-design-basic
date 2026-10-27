@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Segmentation, Targeting and Positioning — Marketing Innovation 课程笔记">
+  <title>Segmentation, Targeting &amp; Positioning</title>
+  <link rel="stylesheet" href="../../component-repo/css/style.css">
+  <style>
+    .home-link { color: inherit; text-decoration: none; }
+    .home-link:hover, .home-link:focus-visible { color: var(--accent); outline: 0; }
+    .hero-note { color: var(--muted); font: 13px/1.5 var(--mono); text-transform: uppercase; }
+    .hero-panel--notes { display: grid; align-content: end; padding: clamp(30px, 5vw, 70px); }
+    .hero-panel--notes strong { display: block; font: 700 clamp(48px, 7vw, 104px)/.82 var(--mono); letter-spacing: -.1em; }
+    .hero-panel--notes span { margin-top: 24px; color: var(--muted); font: 12px/1.5 var(--mono); text-transform: uppercase; }
+    .notes-intro { max-width: 880px; margin: 0 0 64px; font-size: 19px; line-height: 1.7; }
+    .notes-section { margin: 0 0 86px; scroll-margin-top: 24px; }
+    .section-head { display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--line-strong); }
+    .section-no { color: var(--accent); font: 700 13px/1.4 var(--mono); }
+    .notes-section h2 { display: block; margin: 0; max-width: 850px; font-size: clamp(30px, 4vw, 54px); }
+    .notes-section h2::before { content: none; }
+    .key-point { max-width: 920px; padding: 30px 0; border-bottom: 1px solid var(--line); }
+    .key-point:last-child { border-bottom: 0; }
+    .key-point h3 { margin: 0 0 12px; font: 700 22px/1.25 var(--mono); letter-spacing: -.025em; }
+    .key-point > p { margin: 0; font-size: 17px; line-height: 1.75; }
+    .source-quote { display: block; margin: 20px 0 0; padding: 18px 20px; border: 0; color: #858580; background: #eeeeeb; font: 14px/1.65 var(--sans); }
+    .source-quote::before { content: none; display: none; }
+    .visual { max-width: 980px; margin: 30px 0 18px 154px; border: 1px solid var(--line-strong); background: #f8f8f5; }
+    .visual-label { padding: 11px 16px; border-bottom: 1px solid var(--line-strong); color: var(--muted); font: 700 10px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; }
+    .stp-flow { display: grid; grid-template-columns: repeat(3, 1fr); }
+    .flow-node { position: relative; min-height: 150px; padding: 22px 18px; border-right: 1px solid var(--line); }
+    .flow-node:last-child { border-right: 0; }
+    .flow-node b { display: block; margin-bottom: 20px; color: var(--accent); font: 700 11px/1 var(--mono); }
+    .flow-node strong { display: block; font: 700 17px/1.2 var(--mono); }
+    .flow-node small { display: block; margin-top: 9px; color: var(--muted); line-height: 1.45; }
+    .flow-node:not(:last-child)::after { content: "→"; position: absolute; right: -9px; top: 67px; z-index: 1; color: var(--accent); background: #f8f8f5; font: 700 16px/1 var(--mono); }
+    .fork { display: grid; grid-template-columns: 1fr 1fr; }
+    .fork article { padding: 26px; }
+    .fork article + article { border-left: 1px solid var(--line-strong); background: #fff; }
+    .fork h4 { margin: 0 0 20px; font: 700 20px/1.2 var(--mono); }
+    .fork dl { margin: 0; }
+    .fork dl div { display: grid; grid-template-columns: 110px 1fr; gap: 14px; padding: 10px 0; border-top: 1px solid var(--line); }
+    .fork dt { color: var(--muted); font: 700 11px/1.5 var(--mono); text-transform: uppercase; }
+    .fork dd { margin: 0; font-size: 14px; line-height: 1.5; }
+    .lens-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+    .lens { min-height: 200px; padding: 24px 19px; border-right: 1px solid var(--line); }
+    .lens:last-child { border-right: 0; }
+    .lens b { color: var(--accent); font: 700 11px/1 var(--mono); }
+    .lens h4 { margin: 18px 0 10px; font: 700 18px/1.2 var(--mono); }
+    .lens p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.55; }
+    .tradeoff { display: grid; grid-template-columns: 1fr 86px 1fr; align-items: stretch; }
+    .tradeoff-side { padding: 28px; }
+    .tradeoff-side:last-child { color: #fff; background: #151515; }
+    .tradeoff-side h4 { margin: 0 0 14px; color: inherit; font: 700 20px/1.2 var(--mono); }
+    .tradeoff-side p { margin: 0; color: var(--muted); line-height: 1.55; }
+    .tradeoff-side:last-child p { color: #aaa; }
+    .tradeoff-mid { display: grid; place-items: center; border-right: 1px solid var(--line); border-left: 1px solid var(--line); color: var(--accent); font: 700 22px/1 var(--mono); }
+    .three-c { display: grid; grid-template-columns: repeat(3, 1fr); }
+    .c-card { padding: 25px; border-right: 1px solid var(--line); }
+    .c-card:last-child { border-right: 0; }
+    .c-card span { color: var(--accent); font: 700 11px/1 var(--mono); }
+    .c-card h4 { margin: 15px 0 10px; font: 700 19px/1.2 var(--mono); }
+    .c-card p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.55; }
+    .intersection { padding: 15px; border-top: 1px solid var(--line-strong); color: #fff; background: #151515; text-align: center; font: 700 13px/1.4 var(--mono); }
+    .map-wrap { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(220px, .85fr); }
+    .perceptual-map { position: relative; min-height: 350px; margin: 34px 44px 50px 58px; border-left: 2px solid #151515; border-bottom: 2px solid #151515; background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size: 25% 25%; }
+    .axis-x, .axis-y { position: absolute; color: var(--muted); font: 10px/1 var(--mono); text-transform: uppercase; }
+    .axis-x { left: 50%; bottom: -32px; transform: translateX(-50%); }
+    .axis-y { left: -42px; top: 50%; transform: rotate(-90deg) translateX(-50%); transform-origin: left top; }
+    .dot { position: absolute; transform: translate(-50%, -50%); padding: 7px 9px; border: 1px solid var(--line-strong); background: #fff; font: 700 10px/1 var(--mono); white-space: nowrap; }
+    .dot--idea { left: 82%; top: 17%; color: #fff; border-color: var(--accent); background: var(--accent); }
+    .dot--starbucks { left: 45%; top: 53%; }
+    .dot--machine { left: 67%; top: 78%; }
+    .map-notes { padding: 30px 25px; border-left: 1px solid var(--line-strong); background: #fff; }
+    .map-notes h4 { margin: 0 0 18px; font: 700 18px/1.25 var(--mono); }
+    .map-notes ol { margin: 0; padding-left: 20px; color: var(--muted); font-size: 14px; line-height: 1.6; }
+    .positioning { display: grid; grid-template-columns: repeat(3, 1fr); }
+    .positioning div { padding: 23px; border-right: 1px solid var(--line); }
+    .positioning div:last-child { border-right: 0; }
+    .positioning b { display: block; color: var(--accent); font: 700 11px/1 var(--mono); }
+    .positioning strong { display: block; margin-top: 16px; font: 700 17px/1.3 var(--mono); }
+    .deliver { padding: 15px; border-top: 1px solid var(--line-strong); text-align: center; font: 700 13px/1.4 var(--mono); }
+    .memo { max-width: 920px; margin: 20px 0 0; padding: 24px 26px; border: 1px solid var(--line-strong); border-left: 5px solid var(--accent); background: #fff; }
+    .memo-label { display: block; margin-bottom: 14px; color: var(--accent); font: 700 11px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; }
+    .memo p { margin: 0; font-size: 15px; line-height: 1.72; }
+    .memo p + p { margin-top: 11px; }
+    .table-visual { overflow-x: auto; }
+    .comparison-table { display: table; width: 100%; max-width: none; margin: 0; table-layout: fixed; border-collapse: collapse; font-size: 14px; line-height: 1.5; }
+    .comparison-table th, .comparison-table td { min-width: 0; padding: 16px 18px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+    .comparison-table th:last-child, .comparison-table td:last-child { border-right: 0; }
+    .comparison-table tr:last-child td, .comparison-table tr:last-child th { border-bottom: 0; }
+    .comparison-table thead th { color: #fff; background: #151515; font: 700 13px/1.3 var(--mono); }
+    .comparison-table thead th:first-child { color: var(--muted); background: #f8f8f5; }
+    .comparison-table tbody th { width: 22%; min-width: 0; color: var(--muted); background: #f8f8f5; font: 700 11px/1.5 var(--mono); text-transform: uppercase; }
+    .comparison-table td { min-width: 0; overflow-wrap: anywhere; }
+    .reading-card { max-width: 920px; display: grid; grid-template-columns: 86px 1fr; gap: 24px; padding: 28px; border: 1px solid var(--line-strong); background: #151515; color: #fff; }
+    .reading-mark { display: grid; place-items: center; width: 72px; height: 96px; border: 1px solid #777; color: var(--signal); font: 700 12px/1.2 var(--mono); text-align: center; }
+    .reading-card h3 { margin: 0; color: #fff; font: 700 24px/1.2 var(--mono); }
+    .reading-card p { margin: 10px 0 0; color: #aaa; line-height: 1.65; }
+    .promise-grid { max-width: 920px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 18px; border: 1px solid var(--line-strong); background: #f8f8f5; }
+    .promise { min-height: 190px; padding: 21px 17px; border-right: 1px solid var(--line); }
+    .promise:nth-child(3n) { border-right: 0; }
+    .promise:nth-child(-n + 3) { border-bottom: 1px solid var(--line); }
+    .promise b { color: var(--accent); font: 700 11px/1 var(--mono); }
+    .promise h4 { margin: 18px 0 10px; font: 700 17px/1.2 var(--mono); }
+    .promise p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.55; }
+    @media (max-width: 920px) {
+      .visual { margin-left: 0; }
+      .lens-grid { grid-template-columns: 1fr 1fr; }
+      .lens:nth-child(2) { border-right: 0; }
+      .lens { border-bottom: 1px solid var(--line); }
+      .promise-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .promise { border-bottom: 1px solid var(--line); }
+      .promise:nth-child(3n) { border-right: 1px solid var(--line); }
+      .promise:nth-child(2n) { border-right: 0; }
+      .promise:nth-last-child(-n + 2) { border-bottom: 0; }
+    }
+    @media (max-width: 680px) {
+      .section-head { grid-template-columns: 1fr; gap: 8px; }
+      .hero-panel--notes { min-height: 280px; }
+      .stp-flow, .fork, .lens-grid, .tradeoff, .three-c, .map-wrap, .positioning { grid-template-columns: 1fr; }
+      .flow-node, .lens, .c-card, .positioning div { min-height: 0; border-right: 0; border-bottom: 1px solid var(--line); }
+      .flow-node::after { display: none; }
+      .promise-grid { grid-template-columns: 1fr; }
+      .promise, .promise:nth-child(3n), .promise:nth-child(2n) { min-height: 0; border-right: 0; border-bottom: 1px solid var(--line); }
+      .promise:last-child { border-bottom: 0; }
+      .fork article + article, .map-notes { border-top: 1px solid var(--line-strong); border-left: 0; }
+      .tradeoff-mid { min-height: 52px; border: 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <header>
+      <div class="utility-bar">
+        <div class="utility-left"><span class="index-chip">#04.01</span><a class="home-link" href="../index.html">Marketing Innovation</a></div>
+        <div class="utility-right"><span class="status-dot"></span><span>Fall 2026</span></div>
+      </div>
+      <div class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">CLASS 01 / COURSE NOTES</p>
+          <h1><span>Segmentation,<br>Targeting &amp;<br>Positioning</span></h1>
+          <p class="hero-note">Class transcript · September 16, 2026</p>
+        </div>
+        <div class="hero-panel hero-panel--notes" aria-hidden="true">
+          <strong>STP</strong>
+          <span>Who · Why · When · What to promise</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="layout">
+      <aside class="sidebar" aria-label="章节目录">
+        <nav class="toc">
+          <p class="toc-title">Contents / 目录</p>
+          <a href="#stp"><span>01</span><span>STP 的完整链路</span></a>
+          <a href="#segmentation"><span>02</span><span>如何做细分</span></a>
+          <a href="#personalization"><span>03</span><span>个性化与选择</span></a>
+          <a href="#targeting"><span>04</span><span>选择目标市场</span></a>
+          <a href="#positioning"><span>05</span><span>定位与感知地图</span></a>
+          <a href="#application"><span>06</span><span>从定位落到 4Ps</span></a>
+          <a href="#reading"><span>07</span><span>补充阅读</span></a>
+        </nav>
+      </aside>
+
+      <main>
+        <article class="doc-content">
+          <p class="notes-intro">这节课围绕 STP 展开：先把市场划分成有共同需求的人群，再选择值得且有能力服务的目标市场，最后在顾客心智中建立清晰定位。课堂将数据、AI 和个性化放进这条链路中，强调工具必须服务于明确的营销目标。</p>
+
+          <div class="visual" role="img" aria-label="市场细分、目标选择与定位流程">
+            <div class="visual-label">Marketing strategy sequence</div>
+            <div class="stp-flow">
+              <div class="flow-node"><b>01 / S</b><strong>Segmentation</strong><small>识别具有不同需求、行为或情境的人群</small></div>
+              <div class="flow-node"><b>02 / T</b><strong>Targeting</strong><small>决定哪些细分市场值得且适合被服务</small></div>
+              <div class="flow-node"><b>03 / P</b><strong>Positioning</strong><small>决定品牌希望在目标顾客心中占据的位置</small></div>
+            </div>
+          </div>
+
+          <section class="notes-section" id="stp">
+            <div class="section-head"><span class="section-no">01 / STP</span><h2>先决定服务谁，再决定如何被理解</h2></div>
+            <div class="key-point">
+              <h3>细分的目的，是对不同需求作出不同回应</h3>
+              <p>消费者并不完全相同。细分先找出需求、行为或情境相近的群体，让公司能够更准确地设计产品与沟通方式；目标选择和定位都建立在这一步之上。</p>
+              <blockquote class="source-quote">“Segmentation allows us to serve different consumers more precisely.”</blockquote>
+            </div>
+            <div class="key-point">
+              <h3>定位发生在顾客的心理与感知空间</h3>
+              <p>产品拥有很多物理特征，但顾客需要的是一个容易理解和记忆的理由。定位的任务是让目标顾客知道：这个品牌为谁服务、解决什么重要需求，以及为什么与替代方案不同。</p>
+              <blockquote class="source-quote">“Positioning is more perceptual… more like a brain communication with our consumers beyond the physical elements.”</blockquote>
+            </div>
+          </section>
+
+          <section class="notes-section" id="segmentation">
+            <div class="section-head"><span class="section-no">02 / SEGMENT</span><h2>先问分析目标，再选择数据和方法</h2></div>
+            <div class="visual" role="img" aria-label="两类市场细分分析目标的比较">
+              <div class="visual-label">Objective determines method</div>
+              <div class="fork">
+                <article><h4>描述市场 / 看见结构</h4><dl><div><dt>问题</dt><dd>市场中自然存在什么群体？</dd></div><div><dt>方法</dt><dd>Unsupervised learning / clustering</dd></div><div><dt>结果</dt><dd>按相似性形成群组，再解释每一组的特征</dd></div></dl></article>
+                <article><h4>指导行动 / 改变结果</h4><dl><div><dt>问题</dt><dd>谁更可能带来某个 KPI？</dd></div><div><dt>方法</dt><dd>Supervised learning / regression</dd></div><div><dt>结果</dt><dd>用输入变量解释或预测购买、留存等结果</dd></div></dl></article>
+              </div>
+            </div>
+            <div class="key-point">
+              <h3>不要从“有什么数据”开始</h3>
+              <p>同一批顾客可以被分成完全不同的组。课堂反复追问分析的 KPI 和行动目的：如果只是理解市场，可以观察数据中的自然聚类；如果要决定资源投放，就要把细分变量与具体结果连接起来。手写笔记特别记录了 supervised learning 需要 KPI 数据，可用 XGBoost 等模型 fine-tune；没有 KPI 数据时，则以 summary statistics 和 clustering analysis 做 unsupervised learning。</p>
+              <blockquote class="source-quote">“What is the KPI here? Why, what is your objective?”</blockquote>
+            </div>
+            <div class="visual" role="img" aria-label="四类市场细分变量">
+              <div class="visual-label">Four segmentation lenses</div>
+              <div class="lens-grid">
+                <div class="lens"><b>01</b><h4>Geographic</h4><p>地区、城市、密度、气候；同一个人在不同地点也可能产生不同需要。</p></div>
+                <div class="lens"><b>02</b><h4>Demographic</h4><p>年龄、性别、职业、家庭、社会阶层；B2B 也要理解决策者与使用者。</p></div>
+                <div class="lens"><b>03</b><h4>Psychographic</h4><p>价值观、生活方式、个性；可通过问卷、社交媒体和品牌互动观察。</p></div>
+                <div class="lens"><b>04</b><h4>Behavioral</h4><p>购买历史、使用频率、购买阶段和使用 occasion；行为常比自我描述更有信息量。</p></div>
+              </div>
+            </div>
+            <div class="key-point">
+              <h3>如果只能买一个变量，行为历史很有力量</h3>
+              <p>在 Starbucks / Kendall Square 的 persona 练习中，课堂比较了人口统计、心理特征与购买记录。购买历史直接记录了人过去做过什么，往往比口头偏好更接近真实选择。行为变量还可以继续拆成 occasion、readiness、usage history 与 usage rate。</p>
+              <blockquote class="source-quote">“Actions speak louder… purchase history [is] very powerful.”</blockquote>
+            </div>
+            <div class="key-point">
+              <h3>“谁”必须和“什么时候”一起看</h3>
+              <p>同一个人会随着地点、时间和情境改变需求。当目标对象处于特定 moment，原本普通的信息会突然变得格外有吸引力。</p>
+              <aside class="memo" aria-label="波士顿暴风雪招聘故事">
+                <span class="memo-label">Memo / Who × When</span>
+                <p>大约 11 年前，老师已经在 MIT 任职，同时收到 Stanford 的招聘邀请。对方知道她毕业于 UC Berkeley，邀请她回到阳光充足的加州，但没有电话催促或强势推销，只让她自己慢慢考虑；这个过程持续了大约半年。</p>
+                <p>2015 年 2 月 4 日，波士顿遭遇严重暴风雪。老师一早收到 Stanford 教授 Jonathan Levav 的邮件，对方先问她在暴风雪中过得如何，随后轻描淡写地说自己在加州“今天穿着长袖衬衫”。同一个决策者，在这个特定时刻对天气的重视突然上升，她一度几乎决定搬走。她最后没有离开 MIT——不久后又收到 MIT 的通知：因为 snow day，所有课程取消。</p>
+                <p>课堂借这个故事说明：有效 targeting 不只取决于 who，也取决于 when。消费者面对大量营销信息时，应把沟通留给最相关的人和最相关的时刻。</p>
+              </aside>
+            </div>
+          </section>
+
+          <section class="notes-section" id="personalization">
+            <div class="section-head"><span class="section-no">03 / PERSONALIZE</span><h2>更细的个性化，也会制造新的选择成本</h2></div>
+            <div class="visual" role="img" aria-label="个性化的收益和成本">
+              <div class="visual-label">Personalization trade-off</div>
+              <div class="tradeoff">
+                <div class="tradeoff-side"><h4>更贴合个人需要</h4><p>数据、记忆与算法让“segment of one”成为可能，推荐会随着点击和互动继续更新。</p></div>
+                <div class="tradeoff-mid">↔</div>
+                <div class="tradeoff-side"><h4>更高的系统与决策成本</h4><p>企业要承担定制、生产和服务成本；顾客也可能面对过多选项而难以决定。</p></div>
+              </div>
+            </div>
+            <div class="key-point">
+              <h3>果酱实验：更多选择不一定带来更多购买</h3>
+              <p>课堂引用了 6 种与 30 种果酱的选择比较。更大的选择集能吸引注意，却也让人困惑、疲惫；较少的选项降低了决策负担，并带来更多购买。老师同时强调，不存在适用于所有品类的“最佳数量”。</p>
+              <blockquote class="source-quote">“Too many options. People are confused, people are tired… Six gives the clarity and the ease of decision.”</blockquote>
+            </div>
+            <div class="key-point">
+              <h3>低风险内容让人更愿意进入 autopilot</h3>
+              <p>短视频或几十秒内容的错误成本低，消费者更愿意进入 autopilot mode，让算法替自己选择；长期、高风险决策则会触发更谨慎的判断。因此，个性化与选择过载可以并存，关键在于选择复杂度、风险和时间跨度。</p>
+            </div>
+            <div class="key-point">
+              <h3>复杂选择集是 AI agent 更可能先发挥作用的地方</h3>
+              <p>课堂列举医疗、企业技术采购、法律服务、在线零售和机票购买：选项多、变量多且价格变化快时，agent 可以把复杂选择压缩成更简单的决定；若顾客本来只面对一个明显选项，自动代理的必要性较低。</p>
+              <blockquote class="source-quote">“When a choice set is complex… try to make choosing easy.”</blockquote>
+            </div>
+          </section>
+
+          <section class="notes-section" id="targeting">
+            <div class="section-head"><span class="section-no">04 / TARGET</span><h2>目标市场来自 3C 的交集</h2></div>
+            <div class="visual" role="img" aria-label="客户、竞争与公司能力三项目标市场判断">
+              <div class="visual-label">3C targeting test</div>
+              <div class="three-c">
+                <div class="c-card"><span>01 / CUSTOMER</span><h4>有吸引力的需求</h4><p>规模、增长、购买力、购买频率，以及是否能以合理成本触达。</p></div>
+                <div class="c-card"><span>02 / COMPETITION</span><h4>能以不同方式服务</h4><p>公司需要在某些顾客重视的维度上，提供竞争者没有提供的价值。</p></div>
+                <div class="c-card"><span>03 / COMPANY</span><h4>与自身能力相容</h4><p>选择必须符合公司的核心能力与难以复制的优势，而不只是市场看起来很大。</p></div>
+              </div>
+              <div class="intersection">PROMISING × DIFFERENTIATED × COMPATIBLE</div>
+            </div>
+            <div class="key-point">
+              <h3>AI 定价工具：Airbnb host 与长租公司</h3>
+              <p>课堂让同学在两类顾客之间选择。长租公司可能一次购买量大，但价格长期固定，甚至在试用后就学会定价；Airbnb host 的需求更波动，必须反复使用工具。对 AI 产品而言，高频互动不只提高复购，也为模型持续改进提供数据。</p>
+              <blockquote class="source-quote">“High frequency interaction with AI products makes real AI and live AI products.”</blockquote>
+            </div>
+            <div class="key-point">
+              <h3>产品需要一个让顾客持续回来的理由</h3>
+              <p>老师把这一点称为 evergreen feature，并追问产品是一锤子买卖，还是会成为“forever app”。持续变化的环境和可重复出现的需求，会提高顾客再次使用产品的必要性。手写笔记将目标市场判断进一步概括为：segment potential（promising demand、loyalty、是否能被更好服务）、相对于竞争者的 competitive advantage，以及与公司能力的 segment compatibility；最终战略还要保持 consistency。</p>
+            </div>
+          </section>
+
+          <section class="notes-section" id="positioning">
+            <div class="section-head"><span class="section-no">05 / POSITION</span><h2>感知地图要画顾客重视的差异</h2></div>
+            <div class="visual" role="img" aria-label="个性化咖啡杯案例的感知地图示意">
+              <div class="visual-label">Perceptual map · classroom coffee-cup example</div>
+              <div class="map-wrap">
+                <div class="perceptual-map">
+                  <span class="axis-x">Convenience →</span><span class="axis-y">Personalization →</span>
+                  <span class="dot dot--idea">Personalized campus cup</span>
+                  <span class="dot dot--starbucks">Starbucks</span>
+                  <span class="dot dot--machine">Vending / machine</span>
+                </div>
+                <div class="map-notes"><h4>课堂对地图的追问</h4><ol><li>目标顾客是否真的重视这两个维度？</li><li>图上的“空白”是否存在真实需求？</li><li>这个位置能否被持续占据？</li><li>数据是否同时覆盖 demand 与 supply？</li></ol></div>
+              </div>
+            </div>
+            <div class="key-point">
+              <h3>右上角不是自动成立的最佳位置</h3>
+              <p>个性化咖啡杯团队把自己放在“高个性化、高便利”的右上角，但老师追问 MIT 学生早晨真正需要的是展示个人品牌，还是快速得到咖啡。团队后来转向 Harvard Yard 的下午社交场景，也说明定位必须随目标顾客和 occasion 改变。</p>
+              <blockquote class="source-quote">“Make sure the axes represent important customer needs in your target segment.”</blockquote>
+            </div>
+            <div class="key-point">
+              <h3>市场空白不等于市场机会</h3>
+              <p>感知地图上的空白区域可能没有竞争者，也可能根本没有顾客。课堂用 blue ocean 的比喻提醒：不仅要看供给，还要确认那里“有没有鱼”——是否存在足够需求，以及这个位置能否持续。</p>
+              <blockquote class="source-quote">“Don’t only say we need more data. Be concrete. What kind of data do you need?”</blockquote>
+            </div>
+            <div class="key-point">
+              <h3>高维数据最终仍要被压缩成可行动的维度</h3>
+              <p>AI 可以找到大量潜在属性，但过多维度难以用于沟通与决策。课堂建议合并高度相关的变量，并借助 factor analysis 找到少数更有解释力的维度；感知地图通常保留两个关键轴。</p>
+            </div>
+            <div class="key-point">
+              <h3>定位可以用 3D 流程组织</h3>
+              <p><strong>Demonstrate</strong>：用 perceptual map 显示产品与竞争者的位置；<strong>Distill</strong>：将选择提炼为简洁的 positioning statement；<strong>Deliver</strong>：让产品、价格、渠道和传播持续兑现同一定位。AI 可以帮助降维和生成表达，但仍需要人确定应该聚焦的顾客需求与关键定位元素。</p>
+            </div>
+          </section>
+
+          <section class="notes-section" id="application">
+            <div class="section-head"><span class="section-no">06 / DELIVER</span><h2>定位要短、清楚，并贯穿 4Ps</h2></div>
+            <div class="visual" role="img" aria-label="定位陈述的三个组成部分及其对营销组合的影响">
+              <div class="visual-label">Positioning statement</div>
+              <div class="positioning">
+                <div><b>01</b><strong>Product / Brand<br>我是谁</strong></div>
+                <div><b>02</b><strong>Target Segment<br>我为谁服务</strong></div>
+                <div><b>03</b><strong>Main Benefit<br>最重要的承诺</strong></div>
+              </div>
+              <div class="deliver">POSITIONING → PRODUCT · PRICE · PLACE · PROMOTION</div>
+            </div>
+            <div class="key-point">
+              <h3>Less is more</h3>
+              <p>品牌很难让消费者记住自己“什么都擅长”。定位需要选择一个最重要的利益点，用一致、耐久的表达反复建立认知。AI 可以协助生成不同版本，但目标顾客、核心利益和战略取舍仍需要团队先决定。</p>
+              <blockquote class="source-quote">“Less is more.”</blockquote>
+            </div>
+            <div class="key-point">
+              <h3>验孕产品：技术相同，需求不同</h3>
+              <p>课堂将市场划分为 hopeful 与 fearful 两种状态，而不是只看年龄等人口变量。同一项检测技术面对不同心理需要时，会形成不同品牌、包装、沟通语气和价格参考点；这展示了 STP 如何具体决定 4Ps。</p>
+              <div class="visual table-visual" style="margin-left:0" aria-label="Hopeful 与 Fearful 两类验孕产品定位对照表">
+                <div class="visual-label">Home pregnancy test · classroom exercise</div>
+                <table class="comparison-table">
+                  <thead><tr><th></th><th>The Hopeful</th><th>The Fearful</th></tr></thead>
+                  <tbody>
+                    <tr><th>Brand</th><td>Conceive</td><td>Quick View · neutral</td></tr>
+                    <tr><th>Packaging</th><td>Baby face；使用能产生 positive affect 的元素</td><td>No baby face；保持平静、可靠，不营造恐惧感</td></tr>
+                    <tr><th>Promotion</th><td>围绕对家庭未来的想象</td><td>不要使用负面表达；客观地提供帮助与确定性</td></tr>
+                    <tr><th>Price reference</th><td>Baby-related purchase：家庭、住房、教育等计划性支出</td><td>Drug / functional test：解决当下不确定性的工具</td></tr>
+                    <tr><th>Recorded price</th><td>$9.61</td><td>$6.46</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="key-point">
+              <h3>4Ps 是定位的交付系统</h3>
+              <p>课堂最后强调顺序：不是先做出一组产品与推广动作，再替它们寻找解释；而是先确定要服务的群体和占据的位置，再让产品、价格、渠道与传播共同兑现这个承诺。</p>
+              <blockquote class="source-quote">“Positioning [determines] the four Ps.”</blockquote>
+            </div>
+          </section>
+
+          <section class="notes-section" id="reading">
+            <div class="section-head"><span class="section-no">07 / READING</span><h2>补充阅读</h2></div>
+            <div class="key-point">
+              <div class="reading-card">
+                <div class="reading-mark">OPTIONAL<br>READING</div>
+                <div><h3>Personalized: Customer Strategy in the Age of AI</h3><p>课堂开头推荐的补充读物。主题是企业如何借助数据与 AI 建立个性化顾客战略，和本节课讨论的 segment of one、记忆式交互、agent-based personalization 直接相关。</p></div>
+              </div>
+              <div class="promise-grid" aria-label="Five Promises of Personalization">
+                <div class="promise"><b>01</b><h4>Empower Me</h4><p>理解每位顾客的需要，并让顾客更快、更容易地完成自己的目标。</p></div>
+                <div class="promise"><b>02</b><h4>Know Me</h4><p>获得顾客的信任与数据使用许可，并在不同互动中真正记住顾客。</p></div>
+                <div class="promise"><b>03</b><h4>Reach Me</h4><p>在正确的时间，通过正确的渠道，主动接触正确的顾客。</p></div>
+                <div class="promise"><b>04</b><h4>Show Me</h4><p>结合顾客的个人情境展示相关内容，并借助生成式 AI 调整表达。</p></div>
+                <div class="promise"><b>05</b><h4>Delight Me</h4><p>持续学习和改进体验，让个性化不仅准确，而且自然、令人愉快。</p></div>
+                <div class="promise" aria-hidden="true"></div>
+              </div>
+            </div>
+          </section>
+        </article>
+      </main>
+    </div>
+  </div>
+</body>
+</html>

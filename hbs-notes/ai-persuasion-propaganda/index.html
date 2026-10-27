@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="AI Persuasion and Propaganda — HBS Fall 2026 课程笔记">
+  <title>AI Persuasion and Propaganda</title>
+  <link rel="stylesheet" href="../../component-repo/css/style.css">
+  <style>
+    .home-link { color: inherit; text-decoration: none; }
+    .home-link:hover, .home-link:focus-visible { color: var(--accent); outline: 0; }
+    .hero-note { color: var(--muted); font: 13px/1.5 var(--mono); text-transform: uppercase; }
+    .hero-panel--notes { display: grid; align-content: end; padding: clamp(32px, 5vw, 72px); }
+    .hero-panel--notes strong { display: block; max-width: 10ch; font: 700 clamp(42px, 5.5vw, 82px)/.9 var(--mono); letter-spacing: -.08em; }
+    .hero-panel--notes span { margin-top: 22px; color: var(--muted); font: 12px/1.5 var(--mono); text-transform: uppercase; }
+    .notes-intro { max-width: 850px; margin: 0 0 64px; font-size: 19px; line-height: 1.7; }
+    .notes-section { margin: 0 0 86px; scroll-margin-top: 24px; }
+    .notes-section__head { display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--line-strong); }
+    .notes-section__no { color: var(--accent); font: 700 13px/1.4 var(--mono); }
+    .notes-section h2 { display: block; margin: 0; max-width: 850px; font-size: clamp(30px, 4vw, 54px); }
+    .notes-section h2::before { content: none; }
+    .key-point { max-width: 900px; padding: 30px 0; border-bottom: 1px solid var(--line); }
+    .key-point:last-child { border-bottom: 0; }
+    .key-point h3 { margin: 0 0 12px; font: 700 22px/1.25 var(--mono); letter-spacing: -.025em; }
+    .key-point > p { margin: 0; font-size: 17px; line-height: 1.75; }
+    .key-point > .context-note { margin-top: 10px; color: #999994; font: 12px/1.55 var(--mono); }
+    .context-note a { color: inherit; text-underline-offset: 3px; }
+    .context-note a:hover, .context-note a:focus-visible { color: var(--accent); }
+    .case-visual { max-width: 900px; margin: 20px 0 0; overflow: hidden; background: #000; }
+    .case-visual img { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
+    .source-quote { display: block; grid-template-columns: none; margin: 20px 0 0; padding: 18px 20px; border: 0; color: #8a8a86; background: #eeeeeb; font: 14px/1.65 var(--sans); }
+    .source-quote::before { content: none; display: none; border: 0; }
+    .takeaway { max-width: 900px; margin: 0 0 80px; padding: 28px; color: #fff; background: #151515; }
+    .takeaway span { color: var(--signal); font: 700 11px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; }
+    .takeaway p { margin: 14px 0 0; color: #fff; font-size: 20px; line-height: 1.55; }
+
+    .visual { max-width: 960px; margin: 30px 0 18px 154px; border: 1px solid var(--line-strong); background: #f8f8f5; }
+    .visual__label { padding: 11px 16px; border-bottom: 1px solid var(--line-strong); color: var(--muted); font: 700 10px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; }
+    .persuasion-path { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); }
+    .persuasion-step { position: relative; min-height: 155px; padding: 20px 16px; border-right: 1px solid var(--line); }
+    .persuasion-step:last-child { border-right: 0; background: #151515; color: #fff; }
+    .persuasion-step b { display: block; margin-bottom: 22px; color: var(--accent); font: 700 11px/1 var(--mono); }
+    .persuasion-step strong { display: block; color: inherit; font: 700 17px/1.2 var(--mono); }
+    .persuasion-step small { display: block; margin-top: 10px; color: var(--muted); line-height: 1.45; }
+    .persuasion-step:last-child small { color: #aaa; }
+    .persuasion-step:not(:last-child)::after { content: "→"; position: absolute; z-index: 1; right: -9px; top: 68px; color: var(--accent); background: #f8f8f5; font: 700 16px/1 var(--mono); }
+
+    .incentive-map { display: grid; grid-template-columns: 1fr 68px 1fr; align-items: stretch; }
+    .incentive-side { padding: 25px; }
+    .incentive-side h4 { margin: 0 0 16px; font: 700 20px/1.2 var(--mono); }
+    .incentive-side ul { margin: 0; padding-left: 18px; color: var(--muted); }
+    .incentive-side--company { background: #151515; color: #fff; }
+    .incentive-side--company h4 { color: #fff; }
+    .incentive-side--company ul { color: #bdbdb8; }
+    .incentive-gap { display: grid; place-items: center; border-right: 1px solid var(--line); border-left: 1px solid var(--line); color: var(--accent); font: 700 24px/1 var(--mono); }
+
+    .agent-loop { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .agent-node { padding: 22px 18px; border-right: 1px solid var(--line); }
+    .agent-node:last-child { border-right: 0; }
+    .agent-node b { display: grid; place-items: center; width: 30px; height: 30px; margin-bottom: 17px; color: #fff; background: var(--accent); font: 700 11px/1 var(--mono); }
+    .agent-node strong { display: block; font: 700 16px/1.25 var(--mono); }
+    .agent-node small { display: block; margin-top: 8px; color: var(--muted); line-height: 1.45; }
+    .loop-return { padding: 12px 18px; border-top: 1px solid var(--line); color: var(--muted); text-align: center; font: 12px/1.4 var(--mono); }
+    .loop-return span { color: var(--accent); }
+
+    .comparison { display: grid; grid-template-columns: 1fr 1fr; }
+    .comparison article { padding: 26px; }
+    .comparison article + article { border-left: 1px solid var(--line-strong); background: #fff; }
+    .comparison h4 { margin: 0 0 20px; font: 700 20px/1.2 var(--mono); }
+    .comparison dl { margin: 0; }
+    .comparison dl div { display: grid; grid-template-columns: 100px 1fr; gap: 14px; padding: 10px 0; border-top: 1px solid var(--line); }
+    .comparison dt { color: var(--muted); font: 700 11px/1.5 var(--mono); text-transform: uppercase; }
+    .comparison dd { margin: 0; font-size: 14px; line-height: 1.5; }
+
+    .objective-stack { display: grid; gap: 0; padding: 26px; }
+    .objective-level { width: var(--width); margin: 0 auto; padding: 16px 22px; border: 1px solid var(--line-strong); border-bottom: 0; background: #fff; text-align: center; }
+    .objective-level:last-child { border-bottom: 1px solid var(--line-strong); background: #151515; color: #fff; }
+    .objective-level strong { color: inherit; font: 700 15px/1.2 var(--mono); }
+    .objective-level small { display: block; margin-top: 5px; color: var(--muted); }
+    .objective-level:last-child small { color: #aaa; }
+
+    @media (max-width: 920px) {
+      .visual { margin-left: 0; }
+      .persuasion-path, .agent-loop { grid-template-columns: 1fr 1fr; }
+      .persuasion-step { border-bottom: 1px solid var(--line); }
+      .persuasion-step::after { display: none; }
+      .persuasion-step:nth-child(2n) { border-right: 0; }
+    }
+    @media (max-width: 680px) {
+      .notes-section__head { grid-template-columns: 1fr; gap: 8px; }
+      .hero-panel--notes { min-height: 300px; }
+      .persuasion-path, .agent-loop, .comparison, .incentive-map { grid-template-columns: 1fr; }
+      .persuasion-step, .agent-node { min-height: 0; border-right: 0; border-bottom: 1px solid var(--line); }
+      .comparison article + article { border-top: 1px solid var(--line-strong); border-left: 0; }
+      .incentive-gap { min-height: 54px; border: 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+      .objective-level { width: 100% !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <header>
+      <div class="utility-bar">
+        <div class="utility-left"><span class="index-chip">#03.04</span><a class="home-link" href="../index.html">Three Technologies</a></div>
+        <div class="utility-right"><span class="status-dot"></span><span>Fall 2026</span></div>
+      </div>
+      <div class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">HBS / COURSE NOTES</p>
+          <h1><span>AI, Persuasion<br>&amp; Propaganda</span></h1>
+          <p class="hero-note">Class transcript · September 15, 2026</p>
+        </div>
+        <div class="hero-panel hero-panel--notes" aria-hidden="true">
+          <strong>INFO → INTIMACY</strong>
+          <span>Attention · Identity · Trust · Action</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="layout">
+      <aside class="sidebar" aria-label="章节目录">
+        <nav class="toc">
+          <p class="toc-title">Contents / 目录</p>
+          <a href="#intimacy"><span>01</span><span>从信息走向亲密感</span></a>
+          <a href="#incentives"><span>02</span><span>平台的激励错位</span></a>
+          <a href="#mechanism"><span>03</span><span>影响行动的路径</span></a>
+          <a href="#ai-scale"><span>04</span><span>AI 改变了什么</span></a>
+          <a href="#emotion"><span>05</span><span>情绪与目标函数</span></a>
+        </nav>
+      </aside>
+
+      <main>
+        <article class="doc-content">
+          <p class="notes-intro">这节课主要讲 AI 怎么影响人。老师用了社交平台和俄罗斯影响行动的案例，解释一条信息怎么从吸引注意开始，慢慢建立信任，最后影响现实中的行为。AI 没有发明这些方法，但让它们变得更快、更便宜，也更容易针对每个人调整。</p>
+
+          <div class="takeaway">
+            <span>Core takeaway</span>
+            <p>真正厉害的影响，可能不是让人相信一个错误事实，而是慢慢改变人在意什么、信任谁、想要什么。一旦目标变了，人反而会主动用理性去实现它。</p>
+          </div>
+
+          <section class="notes-section" id="intimacy">
+            <div class="notes-section__head"><span class="notes-section__no">01 / INTIMACY</span><h2>说服正在从信息走向亲密感</h2></div>
+            <div class="key-point">
+              <h3>信任关系比大众传播更能改变人</h3>
+              <p>大众媒体可以不断重复一条信息，但真正容易改变我们的，常常是父母、孩子或朋友说的话。技术如果能长期陪伴一个人、记住过去的对话，还表现得很关心，就会越来越像一种关系。到这个时候，重点不再只是“我看到了什么”，而是“这话是谁对我说的”。</p>
+              <blockquote class="source-quote">“The way that we all get truly convinced is when someone that we're very close to and trust… [expresses] that experience to you… what the technology [is] moving towards is from information to intimacy.”</blockquote>
+            </div>
+            <div class="key-point">
+              <h3>大量决策发生在意识之外</h3>
+              <p>咖啡诚信付款实验里，只是把墙上的花换成一双眼睛，人们付的钱就变多了。但被问到原因时，大家通常说不出来。很多情境线索会影响行为，只是人自己没有意识到。</p>
+              <figure class="case-visual"><img src="../assets/honesty-box-halftone.png" alt="黑白网点风格的注视双眼、花朵、咖啡杯与诚信付款箱" loading="lazy"></figure>
+              <p class="context-note">背景：这是 Bateson 等人 2006 年在纽卡斯尔大学心理系咖啡室进行的诚信箱实验；展示眼睛图片时，人均付款接近花朵图片周期的三倍。<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC1686213/" target="_blank" rel="noreferrer">原始论文 ↗</a></p>
+              <blockquote class="source-quote">“Why do people pay more when there are eyes in a poster watching them? No one could explain that.”</blockquote>
+            </div>
+            <div class="key-point">
+              <h3>亲密感使影响更难被识别和抵抗</h3>
+              <p>公开宣传很容易让人警觉，私人聊天却更像真实关系。聊天机器人可以先从日常陪伴开始，等信任建立起来，再慢慢进入价值判断。这种影响没有明显的广告边界，外人也很难看到。</p>
+              <blockquote class="source-quote">“You could, in today's technology, have something like chatbot companions… gradually, as you build intimacy, [you] can start to change that.”</blockquote>
+            </div>
+          </section>
+
+          <section class="notes-section" id="incentives">
+            <div class="notes-section__head"><span class="notes-section__no">02 / INCENTIVES</span><h2>平台的商业激励与社会成本并不一致</h2></div>
+            <div class="visual" role="img" aria-label="平台收益与社会成本的激励错位图">
+              <div class="visual__label">Incentive mismatch</div>
+              <div class="incentive-map">
+                <div class="incentive-side incentive-side--company"><h4>平台内部看见的收益</h4><ul><li>注意力与停留时间</li><li>互动和分享</li><li>广告收入</li><li>更精细的用户画像</li></ul></div>
+                <div class="incentive-gap">≠</div>
+                <div class="incentive-side"><h4>社会承担的外部成本</h4><ul><li>错误信息扩散</li><li>群体极化</li><li>信任下降</li><li>现实冲突与民主损耗</li></ul></div>
+              </div>
+            </div>
+            <div class="key-point">
+              <h3>算法不是中立的传送带</h3>
+              <p>平台不只是放内容，也在决定每个人会看到什么。如果算法追求的是互动量，冲突、惊讶和愤怒自然更容易被推到前面；准确、平衡但没那么刺激的内容反而容易被埋掉。</p>
+              <p class="context-note">法规背景：课堂提到的 Section 230 通常不把网络服务商视为第三方内容的发布者或发言者；课堂借此讨论平台责任与算法分发之间的张力。<a href="https://www.law.cornell.edu/uscode/text/47/230" target="_blank" rel="noreferrer">法条 ↗</a></p>
+              <blockquote class="source-quote">“They are shaping the information landscape. They're choosing for each of us to give us different kinds of information.”</blockquote>
+            </div>
+            <div class="key-point">
+              <h3>问题来自系统，而不只是个人道德</h3>
+              <p>产品经理可能知道某些内容有害，但绩效考核看的还是增长和互动。那些伤害通常不会出现在公司的报表里。所以这不只是个人道德问题，也和公司奖励什么、衡量什么有关。</p>
+              <blockquote class="source-quote">“The way that you measure things inside the company are different than the harm that are created outside the company. And there's no measurement of the harm.”</blockquote>
+            </div>
+            <div class="key-point">
+              <h3>制度会改变个体面对风险时的选择</h3>
+              <p>航空、药品和食品行业也有商业压力，但监管、责任制度和职业文化不一样，员工提出安全问题时面对的后果也不一样。老师用这个对比说明：一个人愿不愿意指出风险，很大程度上取决于所在的制度。</p>
+              <blockquote class="source-quote">“The task is… to change the incentives, to change the design of the system, that people acting rationally, acting in their own interest would… want that system to be oriented to be better.”</blockquote>
+            </div>
+          </section>
+
+          <section class="notes-section" id="mechanism">
+            <div class="notes-section__head"><span class="notes-section__no">03 / PATH</span><h2>从注意力到行动的影响路径</h2></div>
+            <div class="visual" role="img" aria-label="从吸引注意到推动现实行动的五步路径">
+              <div class="visual__label">Persuasion pathway</div>
+              <div class="persuasion-path">
+                <div class="persuasion-step"><b>01</b><strong>吸引注意</strong><small>用低门槛、好笑或无害的内容获得互动</small></div>
+                <div class="persuasion-step"><b>02</b><strong>识别分群</strong><small>从点赞、分享和评论推断身份与偏好</small></div>
+                <div class="persuasion-step"><b>03</b><strong>建立归属</strong><small>围绕共同兴趣与价值形成社区</small></div>
+                <div class="persuasion-step"><b>04</b><strong>制造对立</strong><small>强化“我们与他们”的边界和情绪</small></div>
+                <div class="persuasion-step"><b>05</b><strong>推动行动</strong><small>投票、弃权、集会或现实冲突</small></div>
+              </div>
+            </div>
+            <div class="key-point">
+              <h3>第一步不是宣传，而是学习受众</h3>
+              <p>这类行动一开始不急着谈政治，而是先发很多不同内容，测试大家喜欢什么笑话、兴趣和身份标签。点赞、分享和评论会告诉操作者谁属于哪一类人，之后再对不同群体说不同的话。</p>
+              <p class="context-note">案例背景：这里指俄罗斯 Internet Research Agency 围绕 2016 年美国大选开展的社交媒体影响行动；美国参议院情报委员会后来发布了跨平台调查报告。<a href="https://www.intelligence.senate.gov/2019/10/08/press-senate-intel-committee-releases-bipartisan-report-russia-e2-80-99s-use-social-media/" target="_blank" rel="noreferrer">调查说明 ↗</a></p>
+              <blockquote class="source-quote">“The first billion dollars that they spent was on trying to understand… what people really liked and didn't like… sub-segmenting the audience.”</blockquote>
+            </div>
+            <div class="key-point">
+              <h3>无害内容承担的是筛选与建立信任的功能</h3>
+              <p>地方风景、退伍军人福利或搞笑图片本身不一定有政治立场。它们的作用是先把有共同身份的人聚在一起。内容持续得够久，一个远程运营的账号就会看起来像真实社区。</p>
+              <blockquote class="source-quote">“We're slowly coming in and building up the trust with people who share a certain set of things.”</blockquote>
+            </div>
+            <div class="key-point">
+              <h3>极化不是终点，行为才是终点</h3>
+              <p>操作者可以同时经营对立的两边，让双方都越来越投入，然后分别给出不同指令。它不一定要把所有人说服到同一个立场；让一边去投票、另一边放弃投票，也能达到目的。</p>
+              <blockquote class="source-quote">“People on the left, you say don't go and vote because everybody's against you. And on the right, you say [go vote].”</blockquote>
+            </div>
+            <div class="key-point">
+              <h3>线上身份可以转化为线下冲突</h3>
+              <p>等虚构社区里有了足够多的真人，操作者还可以把不同群体约到线下。参与者确实认识其中一些人，所以很难发现最早组织活动的那个“人”根本不存在。</p>
+              <blockquote class="source-quote">“They set up these two groups… and the two groups clash in real time. So they're moving from the virtual world into the real world.”</blockquote>
+            </div>
+          </section>
+
+          <section class="notes-section" id="ai-scale">
+            <div class="notes-section__head"><span class="notes-section__no">04 / AI SCALE</span><h2>生成式 AI 改变了影响行动的规模</h2></div>
+            <div class="visual" role="img" aria-label="传统大众宣传与AI个性化说服的比较">
+              <div class="visual__label">Mass media vs AI persuasion</div>
+              <div class="comparison">
+                <article><h4>传统大众宣传</h4><dl><div><dt>对象</dt><dd>广泛群体</dd></div><div><dt>内容</dt><dd>少量统一信息</dd></div><div><dt>反馈</dt><dd>缓慢、粗粒度</dd></div><div><dt>关系</dt><dd>公开传播者与受众</dd></div></dl></article>
+                <article><h4>AI 个性化说服</h4><dl><div><dt>对象</dt><dd>细分群体，甚至个人</dd></div><div><dt>内容</dt><dd>实时生成并持续适配</dd></div><div><dt>反馈</dt><dd>行为信号自动进入下一轮</dd></div><div><dt>关系</dt><dd>私人、连续、具有亲密感</dd></div></dl></article>
+              </div>
+            </div>
+            <div class="key-point">
+              <h3>AI 把影响活动变成可自动优化的系统</h3>
+              <p>课堂把流程分成四步：先定目标，再给模型信息和工具；接着检查结果，最后把反馈送回去继续调整。以前一个团队要做几个月的内容网络，现在可能几个人、很短时间就能搭起来。</p>
+              <p class="context-note">案例背景：CounterCloud 是 2023 年公开的概念验证，开发者用生成式 AI 搭建反俄叙事的信息网络，并称总成本约 400 美元；它展示的是低成本自动化能力，不是已验证的真实影响效果。<a href="https://arstechnica.com/ai/2023/08/research-builds-anti-russia-ai-disinformation-machine-for-400/" target="_blank" rel="noreferrer">案例报道 ↗</a></p>
+              <blockquote class="source-quote">“You start with knowing what you actually want to have happen… create a harness… have an eval… and then you have an improvement cycle.”</blockquote>
+            </div>
+            <div class="visual" role="img" aria-label="AI影响系统的自动化改进循环">
+              <div class="visual__label">Automated influence loop</div>
+              <div class="agent-loop">
+                <div class="agent-node"><b>01</b><strong>Objective</strong><small>定义希望发生的态度或行为变化</small></div>
+                <div class="agent-node"><b>02</b><strong>Context &amp; tools</strong><small>接入受众、渠道、资料与生成能力</small></div>
+                <div class="agent-node"><b>03</b><strong>Evaluation</strong><small>将输出和目标、规则及效果信号比较</small></div>
+                <div class="agent-node"><b>04</b><strong>Improvement</strong><small>自动调整内容、语气、对象与分发</small></div>
+              </div>
+              <div class="loop-return"><span>↺</span> 反馈持续返回系统，缩短每一轮学习时间</div>
+            </div>
+            <div class="key-point">
+              <h3>可信度可以被大规模合成</h3>
+              <p>生成式 AI 不只能写一篇假文章，还能补出作者履历、以前写过的内容、彼此引用的关系，甚至安排几个角色互相辩论。每一部分看起来都有迹可循，拼在一起就很像一个真的媒体系统。</p>
+              <blockquote class="source-quote">“Every one of these correspondents had a full background with other articles that they had written, which showed a balanced perspective.”</blockquote>
+            </div>
+            <div class="key-point">
+              <h3>个性化、规模化与说服力可以同时存在</h3>
+              <p>过去很难同时做到大规模和高度个性化，AI 把这两件事放到了一起。它可以对很多人讲不同版本的故事，还能从每次互动里继续学习。问题不只是网上多了假内容，而是每个人都可能看到一个专门为自己定制的现实。</p>
+              <p class="context-note">出处说明：Transcript 只提到有多项研究认为模型比人更具说服力，没有给出论文名称，因此这里保留课堂表述，不对应到某一项具体研究。</p>
+              <blockquote class="source-quote">“These models now are more persuasive than humans, and they can be scaled… they can be personalized, they can be scaled all the way across.”</blockquote>
+            </div>
+          </section>
+
+          <section class="notes-section" id="emotion">
+            <div class="notes-section__head"><span class="notes-section__no">05 / OBJECTIVE</span><h2>情绪决定我们想优化什么</h2></div>
+            <div class="visual" role="img" aria-label="从情绪到行动的目标函数层级图">
+              <div class="visual__label">Human objective stack</div>
+              <div class="objective-stack">
+                <div class="objective-level" style="--width:55%"><strong>情绪与价值</strong><small>什么对我重要</small></div>
+                <div class="objective-level" style="--width:70%"><strong>欲望与目标</strong><small>我想得到什么</small></div>
+                <div class="objective-level" style="--width:85%"><strong>理性优化</strong><small>怎样实现它</small></div>
+                <div class="objective-level" style="--width:100%"><strong>选择与行动</strong><small>注意、相信、分享、投票</small></div>
+              </div>
+            </div>
+            <div class="key-point">
+              <h3>没有情绪，人不一定会变得更理性</h3>
+              <p>经典脑损伤案例里，有些人的逻辑能力还在，但失去情绪后，连日常决定都很难做。理性可以帮人想办法，却不会自动告诉人什么值得追求。这个方向通常来自情绪和价值。</p>
+              <p class="context-note">案例背景：铁路工人被铁杆贯穿头部的是 1848 年的 Phineas Gage；“逻辑能力仍在、却难以做决定”的论证来自 Damasio 对 Gage 与现代额叶损伤患者的综合研究，课堂叙述将相关材料放在了一起。<a href="https://pubmed.ncbi.nlm.nih.gov/8178168/" target="_blank" rel="noreferrer">研究摘要 ↗</a></p>
+              <blockquote class="source-quote">“If you do not have emotions, how would you know what you want? The rationality comes in when you're trying to optimize to get something you want.”</blockquote>
+            </div>
+            <div class="key-point">
+              <h3>影响“想要什么”比改变事实判断更深</h3>
+              <p>错误事实还有机会被查证和纠正。更深的影响，是慢慢改变一个人的身份认同、信任和欲望，也就是改变他真正想要什么。目标一旦变了，人会自己找理由、想办法去维护它。</p>
+              <blockquote class="source-quote">“The what to want comes from your emotion. And that, in AI terms, is the objective function… when they hack that, they change what you want.”</blockquote>
+            </div>
+          </section>
+
+        </article>
+      </main>
+    </div>
+  </div>
+</body>
+</html>
